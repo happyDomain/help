@@ -1,0 +1,38 @@
+baseURL = "https://help.happydns.org/"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir= true
+
+theme = "hugo-theme-learn"
+metaDataFormat = "yaml"
+
+[Languages]
+[Languages.en]
+title = "happyDNS help center"
+weight = 1
+languageName = "English"
+landingPageURL = "/en"
+landingPageName = "<i class='fas fa-home'></i> Home"
+
+[Languages.fr]
+title = "happyDNS centre d'aide"
+weight = 2
+languageName = "Français"
+landingPageURL = "/fr"
+landingPageName = "<i class='fas fa-home'></i> Accueil"
+
+[params]
+  editURL = "https://framagit.org/happyDNS/help/-/blob/master/content/"
+  description = "Finally a simple interface for domain names."
+  themeVariant = "green"
+  author = "The happyDNS team"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableMermaid = true
+
+[outputs]
+  home = [ "HTML", "RSS", "JSON"]
+
+[[menu.shortcuts]]
+  name = "<i class='fab fa-gitlab'></i> Project sources"
+  url = "https://framagit.org/happyDNS/"
+  weight = 15
