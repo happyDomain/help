@@ -9,7 +9,7 @@ weight: 19
 Vous accédez à cet écran soit :
 
 - lorsque vous souhaitez ajouter un hébergeur, après avoir sélectionné le fournisseur,
-- lorsque vous souhaitez modifier les paramètres de connexion entre happyDNS et un hébergeur, par exemple sur la [page d'accueil]({{< relref "home#modifier-ou-supprimer-un-hébergeur" >}}).
+- lorsque vous souhaitez modifier les paramètres de connexion entre happyDomain et un hébergeur, par exemple sur la [page d'accueil]({{< relref "home#modifier-ou-supprimer-un-hébergeur" >}}).
 
 ## Nom de la connexion
 
@@ -19,5 +19,5 @@ Ce nom servira uniquement pour vous permettre d'identifier facilement l'héberge
 
 ## Autres champs
 
-Chaque hébergeur a besoin d'informations différentes pour établir une connexion avec happyDNS.
+Chaque hébergeur a besoin d'informations différentes pour établir une connexion avec happyDomain.
 Suivez les instructions sur chaque écran.

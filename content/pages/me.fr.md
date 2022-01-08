@@ -23,8 +23,8 @@ Il n'est pour l'instant pas possible de changer l'adresse électronique de votre
 
 ## Supprimer son compte
 
-La dernière partie de la page vous permet de supprimer votre compte happyDNS.
+La dernière partie de la page vous permet de supprimer votre compte happyDomain.
 
 Une fois la suppression validée, votre compte ne sera plus accessible et l'ensemble des données vous appartenant sera supprimé peu de temps après, lors d'un nettoyage régulier de la base de données.
 
-À partir du moment où vous supprimez votre compte, vos domaines continueront de répondre selon la dernière mise à jour que vous avez effectué sur happyDNS. La suppression n'affectera pas les données distribuées.
+À partir du moment où vous supprimez votre compte, vos domaines continueront de répondre selon la dernière mise à jour que vous avez effectué sur happyDomain. La suppression n'affectera pas les données distribuées.

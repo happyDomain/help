@@ -16,5 +16,5 @@ Cette page montre uniquement la liste des registres et des hébergeurs de domain
 
 Vous pouvez ajouter un nouvel hébergeur en cliquant sur le bouton +, présent en haut de la page.
 
-En cliquant sur une ligne du tableau, vous accéderez aux paramètres qu'utilise happyDNS pour contacter cet hébergeur.
+En cliquant sur une ligne du tableau, vous accéderez aux paramètres qu'utilise happyDomain pour contacter cet hébergeur.
 C'est là que vous allez pouvoir modifier le nom que vous avez donné à cet hébergeur, et que vous pourrez modifier les paramètres d'accès.

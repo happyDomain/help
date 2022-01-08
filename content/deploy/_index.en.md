@@ -6,6 +6,6 @@ chapter: true
 weight: 40
 ---
 
-# Installation and deployment of happyDNS
+# Installation and deployment of happyDomain
 
 ---

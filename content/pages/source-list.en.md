@@ -17,5 +17,5 @@ The hosters of your domains](hosters-list.png)
 
 You can add a new host by clicking on the "+" button at the top of the page.
 
-By clicking on a row of the table, you will access the parameters used by happyDNS to contact this host.
+By clicking on a row of the table, you will access the parameters used by happyDomain to contact this host.
 This is where you'll be able to modify the name you gave to this host, and where you'll be able to modify the access parameters.

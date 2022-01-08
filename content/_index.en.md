@@ -1,6 +1,6 @@
 ---
 date: 2021-01-12T21:38:49+02:00
-title: Welcome to happyDNS
+title: Welcome to happyDomain
 chapter: true
 author: Frederic
 aliases:
@@ -8,13 +8,13 @@ aliases:
     en/pages/signup
 ---
 
-# Welcome to happyDNS
+# Welcome to happyDomain
 
 ---
 
-happyDNS is a software that makes the domain names management easy and reduces the usual friction points, by offering a simpler interface and centralizing your domains.
+happyDomain is a software that makes the domain names management easy and reduces the usual friction points, by offering a simpler interface and centralizing your domains.
 
-We are an open source project: you can use the official interface available at [`www.happydns.org`](https://www.happydns.org/), or install it at home.
+We are an open source project: you can use the official interface available at [`www.happydomain.org`](https://www.happydomain.org/), or install it at home.
 The source code is available on [framagit](https://framagit.org/happyDNS/): you can consult it, copy it, give your opinion, report bugs or make modifications, as you wish.
 
 ---

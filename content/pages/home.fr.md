@@ -8,9 +8,9 @@ weight: 10
 
 ## Vos domaines
 
-La page d'accueil présente la liste de l'ensemble des domaines gérés par happyDNS, quelque soit leur hébergeur :
+La page d'accueil présente la liste de l'ensemble des domaines gérés par happyDomain, quelque soit leur hébergeur :
 
-![Les domaines gérés par happyDNS](domain-list.png)
+![Les domaines gérés par happyDomain](domain-list.png)
 
 Cliquez sur l'un des domaines pour commencer à [y apporter des modifications]({{< relref "domain-abstract" >}}) (ajouter un sous-domaine, ajouter un service, ...).
 
@@ -25,7 +25,7 @@ Vous pouvez [ajouter un nouvel hébergeur]({{< relref "source-new-choice" >}}) e
 
 En cliquant sur une ligne de ce tableau, vous filtrerez la liste des domaines pour n'afficher que les domaines gérés par cet hébergeur.
 
-Vous verrez aussi, si l'hébergeur permet de lister les domaines qui vous appartiennent, les domaines que vous pouvez ajouter à happyDNS :
+Vous verrez aussi, si l'hébergeur permet de lister les domaines qui vous appartiennent, les domaines que vous pouvez ajouter à happyDomain :
 
 ![Filtrage des domaines en fonction de l'hébergeur](hoster-ovh.png)
 
@@ -43,7 +43,7 @@ Notez que vous ne pourrez pas supprimer l'hébergeur tant que des domaines y fai
 
 ## Ajouter un domaine
 
-Vous avez un nouveau domaine que vous souhaitez gérer dans happyDNS ? Commencez par entrer son nom dans le champ présent sous la liste. Vous serez ensuite guidé vers l'écran [permettant de choisir l'hébergeur]({{< relref "domain-new" >}}).
+Vous avez un nouveau domaine que vous souhaitez gérer dans happyDomain ? Commencez par entrer son nom dans le champ présent sous la liste. Vous serez ensuite guidé vers l'écran [permettant de choisir l'hébergeur]({{< relref "domain-new" >}}).
 
 ![Emplacement pour ajouter un domaine qui n'est pas listé](new-domain.png)
 

@@ -9,9 +9,9 @@ weight: 10
 
 ## Your domains
 
-The home page presents the list of all the domains managed by happyDNS, whatever their host:
+The home page presents the list of all the domains managed by happyDomain, whatever their host:
 
-The domains managed by happyDNS](domain-list.png)
+The domains managed by happyDomain](domain-list.png)
 
 Click one of the domains to start [make changes]({{< relref "domain-abstract" >}}) (add a sub-domain, add a service, ...).
 
@@ -26,7 +26,7 @@ You can [add new host]({{< relref "source-new-choice" >}}) by clicking on the + 
 
 Clicking on a row in this table will filter the list of domains to show only domains managed by this host.
 
-You will also see, if the host allows you to list the domains that belong to you, the domains that you can add to happyDNS:
+You will also see, if the host allows you to list the domains that belong to you, the domains that you can add to happyDomain:
 
 ![Domain filtering according to the host](hoster-ovh.png)
 
@@ -44,7 +44,7 @@ Note that you will not be able to remove the host as long as domains referring t
 
 ## Add a domain
 
-You have a new domain you want to manage in happyDNS? Start by entering its name in the field below the list. You will then be guided to the [to choose the host] screen ({{< relref "domain-new" >}}).
+You have a new domain you want to manage in happyDomain? Start by entering its name in the field below the list. You will then be guided to the [to choose the host] screen ({{< relref "domain-new" >}}).
 
 Location to add a domain that is not listed](new-domain.png)
 

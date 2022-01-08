@@ -24,8 +24,8 @@ It is currently not possible to change the email address of your account. We inv
 
 ## Delete your account
 
-The last part of the page allows you to delete your happyDNS account.
+The last part of the page allows you to delete your happyDomain account.
 
 Once the deletion is validated, your account will no longer be accessible and all data belonging to you will be deleted shortly after, during a regular database cleanup.
 
-From the moment you delete your account, your domains will continue to respond according to the last update you made on happyDNS. The deletion will not affect the distributed data.
+From the moment you delete your account, your domains will continue to respond according to the last update you made on happyDomain. The deletion will not affect the distributed data.

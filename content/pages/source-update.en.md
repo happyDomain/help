@@ -10,7 +10,7 @@ weight: 19
 You access this screen either:
 
 - when you want to add a host, after having selected the provider,
-- when you want to change the connection settings between happyDNS and a host, for example on the [home page]({{< relref "home#modify-or-delete-a-host" >}}).
+- when you want to change the connection settings between happyDomain and a host, for example on the [home page]({{< relref "home#modify-or-delete-a-host" >}}).
 
 ## Connection name
 
@@ -20,5 +20,5 @@ This name will only be used to allow you to easily identify the host of your dom
 
 ## Other fields
 
-Each host needs different information to establish a connection with happyDNS.
+Each host needs different information to establish a connection with happyDomain.
 Follow the instructions on each screen.
