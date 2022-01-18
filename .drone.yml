@@ -24,24 +24,22 @@ steps:
       hugo_version: 0.70.0
       validate: true
 
-  - name: deploy
-    image: appleboy/drone-scp
+  - name: publish on s3
+    image: plugins/s3
     settings:
-      debug: true
-      tar_tmp_path: /tmp/
-      host: help.happydns.org
-      target: /var/www/happydns.org/help/
-      source: public/*
-      strip_components: 1
-      username:
-        from_secret: ssh_username
-      key:
-        from_secret: deploy_key
-      port:
-        from_secret: ssh_port
-    when:
-      branch:
-        - master
-      event:
-        exclude:
-          - pull_request
+      endpoint: https://storage.nemunai.re
+      path_style: true
+      bucket: happydomain-help
+      access_key:
+        from_secret: s3_access_key
+      secret_key:
+        from_secret: s3_secret_key
+      source: public/**/*
+      strip_prefix: public/
+      target: /${DRONE_BRANCH//\//-}
+
+trigger:
+  event:
+  - cron
+  - push
+  - tag
