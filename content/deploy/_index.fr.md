@@ -9,4 +9,9 @@ weight: 40
 
 ---
 
+Selon vos besoins, happyDomain peut être déployé de différentes manières selon votre environnement.
+Grâce à plusieurs éléments modulables, il y a certainement une voie correspondant à vos attentes.
+
+---
+
 {{% children %}}
