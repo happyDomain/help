@@ -1,7 +1,7 @@
 ---
 data: 2023-02-09T09:12:25+01:00
 title: Connect to a local knot
-weight: 21
+weight: 31
 ---
 
 [Knot](https://knot-dns.cz) is an authoritative DNS server developed by the [cz.nic](https://nic.cz) association.

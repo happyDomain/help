@@ -1,7 +1,7 @@
 ---
 data: 2023-02-09T08:03:25+01:00
 title: Connexion à un knot local
-weight: 21
+weight: 31
 ---
 
 [Knot](https://knot-dns.cz) est un serveur DNS faisant autorité développé par l'association [cz.nic](https://nic.cz).
