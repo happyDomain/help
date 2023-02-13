@@ -8,9 +8,9 @@ happyDomain respecte la méthodologie [*12 factor*](https://12factor.net/) et pe
 
 ## Par quels moyens configurer happyDomain ?
 
-Il est possible de configurer happyDomain de trois manières différentes : fichier de configuration, environnement, ligne de commande. Toutes les options sont disponibles pour chacun de ces méchanismes.
+Il est possible de configurer happyDomain de trois manières différentes : fichier de configuration, environnement, ligne de commande. Toutes les options sont disponibles pour chacun de ces mécanismes.
 
-La précédence, lorsqu'une option est définie par plusieurs méchanismes simultanément, est qu'une option présente dans un fichier de configuration sera écrasée par l'environnement, qui sera écrasée par une option passée sur la ligne de commande.
+La précédence, lorsqu'une option est définie par plusieurs mécanismes simultanément, est qu'une option présente dans un fichier de configuration sera écrasé par l'environnement, qui sera écrasée par une option passée sur la ligne de commande.
 
 ### Configuration par fichier
 
@@ -72,7 +72,7 @@ ou encore en utilisant le signe `=` pour assigner clairement la valeur.
 
 ## Éléments de configuration
 
-La liste exhaustive des éléments configurables peuvent être listés en appelant `happyDomain` avec l'option `-h` ou `--help`.
+La liste exhaustive des éléments configurables peut être listé en appelant `happyDomain` avec l'option `-h` ou `--help`.
 
 Voici la liste des principales options :
 
@@ -88,7 +88,7 @@ Voici la liste des principales options :
 : Adresse et port du serveur résolveur de noms à utiliser par défaut lorsqu'une résolution de nom est nécessaire.
 
 `dev`
-: URL vers laquelle toutes les requêtes liés à l'interface graphique seront renvoyées.
+: URL vers laquelle toutes les requêtes liées à l'interface graphique seront renvoyées.
 
 `externalurl`
 : URL du service, tel qu'il doit apparaître dans les mails et contenus à destination du public.
@@ -118,7 +118,7 @@ Voici la liste des principales options :
 Nous employons [`go-mail`](https://github.com/go-mail/mail) comme bibliothèque pour envoyer les mails.
 
 `mail-from`
-: Défini le nom et l'adresse de l'expéditeur des mails envoyés par le service.
+: Définit le nom et l'adresse de l'expéditeur des mails envoyés par le service.
 
 Notez que sans les options `mail-smtp-*`, happyDomain utilisera le binaire `sendmail` pour envoyer les mails. Cela peut être couplé aux paquets `msmtp` ou `ssmtp` par exemple, pour définir les paramètres pour tout le système.
 
