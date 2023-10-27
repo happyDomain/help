@@ -1,30 +1,17 @@
----
-kind: pipeline
-type: docker
-name: default
-
-platform:
-  os: linux
-  arch: arm64
-
 clone:
-  disable: true
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      recursive: true
 
 steps:
-  - name: clone
-    image: alpine
-    commands:
-      - apk add --no-cache git
-      - git clone --recursive $DRONE_GIT_HTTP_URL .
-      - git checkout $DRONE_COMMIT
-
-  - name: build
+  build:
     image: plugins/hugo
     settings:
       hugo_version: 0.70.0
       validate: true
 
-  - name: publish on s3
+  publish-on-s3:
     image: plugins/s3
     settings:
       endpoint: https://storage.nemunai.re
@@ -36,10 +23,4 @@ steps:
         from_secret: s3_secret_key
       source: public/**/*
       strip_prefix: public/
-      target: /${DRONE_BRANCH//\//-}
-
-trigger:
-  event:
-  - cron
-  - push
-  - tag
+      target: "/${CI_COMMIT_BRANCH//\\//-}"
