@@ -2,13 +2,10 @@
 date: 2021-01-12T21:38:49+02:00
 title: Welcome to happyDomain
 author: Frederic
+archetype: home
 aliases:
     en/pages/login
     en/pages/signup
----
-
-# Welcome to happyDomain
-
 ---
 
 happyDomain is an interface that makes domain names accessible and reduces the usual friction points.

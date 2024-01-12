@@ -12,7 +12,7 @@ La page d'accueil présente la liste de l'ensemble des domaines gérés par happ
 
 ![Les domaines gérés par happyDomain](domain-list.png)
 
-Cliquez sur l'un des domaines pour commencer à [y apporter des modifications]({{< relref "domain-abstract" >}}) (ajouter un sous-domaine, ajouter un service, ...).
+Cliquez sur l'un des domaines pour commencer à [y apporter des modifications]({{% relref "domain-abstract" %}}) (ajouter un sous-domaine, ajouter un service, ...).
 
 
 ## Vos registres et hébergeurs de domaines
@@ -21,7 +21,7 @@ Sur la droite, vous voyez la liste des différents hébergeurs de vos domaines :
 
 ![Les hébergeurs de vos domaines](hosters-list.png)
 
-Vous pouvez [ajouter un nouvel hébergeur]({{< relref "source-new-choice" >}}) en cliquant sur le bouton +, présent dans l'en-tête du tableau.
+Vous pouvez [ajouter un nouvel hébergeur]({{% relref "source-new-choice" %}}) en cliquant sur le bouton +, présent dans l'en-tête du tableau.
 
 En cliquant sur une ligne de ce tableau, vous filtrerez la liste des domaines pour n'afficher que les domaines gérés par cet hébergeur.
 
@@ -34,7 +34,7 @@ Pour afficher à nouveau la liste dans son intégralité, recliquez simplement s
 
 ### Modifier ou supprimer un hébergeur
 
-Si vous constatez une erreur ou n'avez plus besoin d'un hébergeur, cliquez sur les ... sur la ligne de l'hébergeur concerné. Vous aurez alors la possibilité de choisir entre [mettre à jour les informations]({{< relref "source-update" >}}) ou supprimer l'hébergeur :
+Si vous constatez une erreur ou n'avez plus besoin d'un hébergeur, cliquez sur les ... sur la ligne de l'hébergeur concerné. Vous aurez alors la possibilité de choisir entre [mettre à jour les informations]({{% relref "source-update" %}}) ou supprimer l'hébergeur :
 
 ![Modification ou suppression d'un hébergeur](hoster-edit.png)
 
@@ -43,7 +43,7 @@ Notez que vous ne pourrez pas supprimer l'hébergeur tant que des domaines y fai
 
 ## Ajouter un domaine
 
-Vous avez un nouveau domaine que vous souhaitez gérer dans happyDomain ? Commencez par entrer son nom dans le champ présent sous la liste. Vous serez ensuite guidé vers l'écran [permettant de choisir l'hébergeur]({{< relref "domain-new" >}}).
+Vous avez un nouveau domaine que vous souhaitez gérer dans happyDomain ? Commencez par entrer son nom dans le champ présent sous la liste. Vous serez ensuite guidé vers l'écran [permettant de choisir l'hébergeur]({{% relref "domain-new" %}}).
 
 ![Emplacement pour ajouter un domaine qui n'est pas listé](new-domain.png)
 

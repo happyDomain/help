@@ -94,7 +94,7 @@ knotc reload
 
 ## Liaison entre happyDomain et knot
 
-Une fois `knot` bien configuré, vous pouvez le relier à happyDomain en utilisant [le connecteur *Dynamic DNS*]({{< ref "/pages/source-new-choice.md" >}}) :
+Une fois `knot` bien configuré, vous pouvez le relier à happyDomain en utilisant [le connecteur *Dynamic DNS*]({{% ref "/pages/source-new-choice.md" %}}) :
 
 ![Le connecteur Dynamic DNS sur la page de choix de l'hébergeur](/img/choose-dynamic-dns.png)
 

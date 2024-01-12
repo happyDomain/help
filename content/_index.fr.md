@@ -1,13 +1,11 @@
 ---
 date: 2020-11-23T12:59:49+01:00
 title: happyDomain
+author: nemunaire
+archetype: home
 aliases:
     fr/pages/login
     fr/pages/signup
----
-
-# happyDomain
-
 ---
 
 happyDomain est une interface qui rend accessibles les noms de domaines et réduit les points de friction habituels.

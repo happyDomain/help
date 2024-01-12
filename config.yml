@@ -2,36 +2,53 @@ baseURL: https://help.happydomain.org/
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
 
-theme: hugo-theme-learn
+theme: hugo-theme-relearn
+
 
 languages:
   en:
     title: "happyDomain help center"
-    weight: 1
     languageName: "English"
-    landingPageURL: "/en"
-    landingPageName: "<i class='fas fa-home'></i> Home"
+    weight: 1
+    params:
+      landingPageName: "<i class='fas fa-home'></i> Home"
+
+    menu:
+      shortcuts:
+        - name: "<i class='fab fa-gitlab'></i> Project sources"
+          url: "https://framagit.org/happyDomain/"
+        - name: "<i class='fas fa-comments'></i> Matrix channel"
+          url: "https://matrix.to/#/#happyDNS:matrix.org"
+        - name: "<i class='fab fa-mastodon'></i> Mastodon"
+          url: "https://floss.social/@happyDomain"
 
   fr:
     title: "happyDomain centre d'aide"
     weight: 2
     languageName: "Français"
-    landingPageURL: "/fr"
-    landingPageName: "<i class='fas fa-home'></i> Accueil"
+    params:
+      landingPageName: "<i class='fas fa-home'></i> Accueil"
+
+    menu:
+      shortcuts:
+        - name: "<i class='fab fa-gitlab'></i> Sources"
+          url: "https://framagit.org/happyDomain/"
+        - name: "<i class='fas fa-comments'></i> Canal Matrix"
+          url: "https://matrix.to/#/#happyDNS:matrix.org"
+        - name: "<i class='fab fa-mastodon'></i> Mastodon"
+          url: "https://floss.social/@happyDomain"
 
 params:
   editURL: "https://framagit.org/happyDNS/help/-/blob/master/content/"
   description: "Finally a simple interface for domain names."
-  themeVariant: "green"
-  author: "The happyDNS team"
+  author:
+    name: "The happyDNS team"
   showVisitedLinks: true
-  disableBreadcrumb: false
   disableMermaid: true
+  themeVariant:
+    - auto
+    - green
+
 
 outputs:
-  home: [ "HTML", "RSS", "JSON"]
-
-  shortcuts:
-    name: "<i class='fab fa-gitlab'></i> Project sources"
-    url: "https://framagit.org/happyDNS/"
-    weight: 15
+  home: [ "HTML", "RSS", "SEARCH"]
