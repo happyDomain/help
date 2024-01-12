@@ -1,7 +1,6 @@
 ---
 date: 2021-01-12T21:38:49+02:00
 title: Welcome to happyDomain
-chapter: true
 author: Frederic
 aliases:
     en/pages/login
@@ -12,13 +11,35 @@ aliases:
 
 ---
 
-happyDomain is a software that makes the domain names management easy and reduces the usual friction points, by offering a simpler interface and centralizing your domains.
+happyDomain is an interface that makes domain names accessible and reduces the usual friction points.
+Our interface centralizes your domains and includes all the features you'd expect in the 2024 century for effortless domain management.
 
-We are an open source project: you can use the official interface available at [`www.happydomain.org`](https://www.happydomain.org/), or install it at home.
+We built happyDomain because we want to save operational teams time by giving them superpowers:
+to have all the power of domain names, without having to read and learn all the new standards, by staying focused on needs.
+
+Here's an overview of happyDomain's main features:
+
+- consolidate domain names from over 45 domain name providers or authoritative servers,
+- guide administrators with clear forms,
+- clearly visualize the changes that will be propagated,
+- keep a history of changes made to the zone,
+- return to a previous zone status with a single click,
+- group records by services/needs: email, delegation, server, load balancing, etc.
+- abstract all technical complexity into a logical view,
+- import/export the zone as a standard file,
+- keep track of actions for later auditing,
+- automate tasks via a REST API.
+
+We are a free and open source project: you can use the official interface available at [`www.happydomain.org`](https://www.happydomain.org/), or install it at home.
 The source code is available on [framagit](https://framagit.org/happyDNS/): you can consult it, copy it, give your opinion, report bugs or make modifications, as you wish.
+
+![The happyDomain home page: see all your domain status](https://www.happydomain.org/img/screenshots/domains-list.webp)
 
 ---
 
-Discover our project by consulting the different sections of our documentation:
+## Join us on Matrix! 💬
 
-{{% children %}}
+We're building a community of users who want to regain control of their DNS zones.
+[Join us!](https://matrix.to/#/#happyDNS:matrix.org)
+
+You can also find out more about us by following [our blog](https://blog.happydomain.org/) and [our Mastodon account](https://floss.social/@happyDomain).
