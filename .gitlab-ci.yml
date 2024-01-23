@@ -1,0 +1,19 @@
+#
+#   All available Hugo versions are listed under https://gitlab.com/pages/hugo/container_registry.
+#
+image: registry.gitlab.com/pages/hugo/hugo:latest
+
+stages:
+  - build
+
+before_script:
+  - git submodule init
+  - git submodule update
+
+pages:
+  stage: build
+  script:
+    - hugo
+  artifacts:
+    paths:
+      - public
