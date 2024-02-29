@@ -9,7 +9,7 @@ aliases:
 ---
 
 happyDomain est une interface qui rend accessibles les noms de domaines et réduit les points de friction habituels.
-Notre interface centralise vos domaines et inclut toutes les fonctionnalités que l'on attendrait en 2024 siècle pour gérer ses domaines sans peine.
+Notre interface centralise vos domaines et inclut toutes les fonctionnalités que l'on attendrait en 2024 pour gérer ses domaines sans peine.
 
 Nous avons construit happyDomain parce que nous voulons faire gagner du temps aux équipes opérationnelles en leur donnant des superpouvoirs :
 avoir toute la puissances des noms de domaines, sans devoir lire et apprendre toutes les nouvelles normes, en restant focalisé sur les besoins.

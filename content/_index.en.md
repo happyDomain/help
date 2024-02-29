@@ -9,7 +9,7 @@ aliases:
 ---
 
 happyDomain is an interface that makes domain names accessible and reduces the usual friction points.
-Our interface centralizes your domains and includes all the features you'd expect in the 2024 century for effortless domain management.
+Our interface centralizes your domains and includes all the features you'd expect in 2024 for effortless domain management.
 
 We built happyDomain because we want to save operational teams time by giving them superpowers:
 to have all the power of domain names, without having to read and learn all the new standards, by staying focused on needs.
