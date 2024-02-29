@@ -28,7 +28,7 @@ Here's an overview of happyDomain's main features:
 - automate tasks via a REST API.
 
 We are a free and open source project: you can use the official interface available at [`www.happydomain.org`](https://www.happydomain.org/), or install it at home.
-The source code is available on [framagit](https://framagit.org/happyDNS/): you can consult it, copy it, give your opinion, report bugs or make modifications, as you wish.
+The source code is available on [framagit](https://framagit.org/happyDomain/): you can consult it, copy it, give your opinion, report bugs or make modifications, as you wish.
 
 ![The happyDomain home page: see all your domain status](https://www.happydomain.org/img/screenshots/domains-list.webp)
 
