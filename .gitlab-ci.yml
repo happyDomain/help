@@ -3,17 +3,20 @@
 #
 image: registry.gitlab.com/pages/hugo/hugo:latest
 
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
 stages:
   - build
-
-before_script:
-  - git submodule init
-  - git submodule update
 
 pages:
   stage: build
   script:
     - hugo
+    - cp public/en/404.html public/404.html
   artifacts:
     paths:
       - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  environment: production
