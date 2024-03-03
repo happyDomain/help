@@ -8,7 +8,7 @@ steps:
   build:
     image: registry.nemunai.re/plugins/hugo
     settings:
-      hugo_version: 0.121.0
+      hugo_version: 0.123.0
 
   publish-on-s3:
     image: plugins/s3
