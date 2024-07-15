@@ -153,7 +153,7 @@ Certain bureau d'enregistrement nécessitent que les applications tierces s'iden
 
 #### OVH
 
-Veuillez vous référer à cette documentation afin de générer les identifiants: <https://docs.ovh.com/gb/en/api/api-rights-delegation/#application-registration>.
+Veuillez vous référer à [cette documentation]({{% relref "ovh" %}}) afin de générer les identifiants.
 
 `ovh-application-key`
 : Application key pour l'API d'OVH

@@ -154,7 +154,7 @@ Some registrars require third-party applications to identify themselves in addit
 
 #### OVH
 
-Please refer to this documentation in order to generate application credentials: <https://docs.ovh.com/gb/en/api/api-rights-delegation/#application-registration>.
+Please refer to [this documentation]({{% relref "ovh" %}}) to generate the identifiers.
 
 `ovh-application-key`
 : Application key for OVH API.
