@@ -40,7 +40,6 @@ languages:
 
 params:
   editURL: "https://framagit.org/happyDNS/help/-/blob/master/content/"
-  description: "Finally a simple interface for domain names."
   author:
     name: "The happyDNS team"
   showVisitedLinks: true

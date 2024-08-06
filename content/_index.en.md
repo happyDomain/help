@@ -2,6 +2,7 @@
 date: 2021-01-12T21:38:49+02:00
 title: Welcome to happyDomain
 author: Frederic
+description: "Finally a simple interface for domain names."
 archetype: home
 aliases:
     en/pages/login
