@@ -1,5 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "themes/hugo-theme-relearn"
+      ],
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ],
   "git-submodules": {
     "enabled": true
   }
