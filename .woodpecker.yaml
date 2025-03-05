@@ -15,17 +15,3 @@ steps:
     image: registry.nemunai.re/plugins/hugo
     settings:
       hugo_version: 0.126.0
-
-  publish-on-s3:
-    image: plugins/s3
-    settings:
-      endpoint: https://storage.nemunai.re
-      path_style: true
-      bucket: happydomain-help
-      access_key:
-        from_secret: s3_access_key
-      secret_key:
-        from_secret: s3_secret_key
-      source: public/**/*
-      strip_prefix: public/
-      target: "/${CI_COMMIT_BRANCH//\\//-}"
