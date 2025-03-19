@@ -94,6 +94,9 @@ Here is a list of the main options:
 `externalurl`
 : URL of the service, as it should appear in emails and content to the public.
 
+`disable-providers-edit`
+: Disallow all actions on provider (add/edit/delete), eg. for demo mode.
+
 
 #### Page layout
 
@@ -102,6 +105,15 @@ Here is a list of the main options:
 
 `custom-body-html`
 : String to be placed before the end of the HTML body.
+
+`hide-feedback-button`
+: Hide the icon on page that permit to give feedback.
+
+`msg-header-text`
+: Custom message banner to add at the top of the app.
+
+`msg-header-color`
+: Background color class of the banner added at the top of the app (default "danger", can be primary, secondary, info, success, warning, danger, light, dark, or any bootstrap color class).
 
 
 ### Data storage
@@ -141,16 +153,30 @@ Note that without the `mail-smtp-*` options, happyDomain will use the `sendmail`
 `no-auth`
 : Disables the notion of users and access control. A default account is used.
 
+`disable-embedded-login`
+: Disables the internal user/password login in favor of external-auth or OIDC.
+
+`disable-registration`
+: Forbids new account creation through public form/API (still allow registration from external services).
+
 `external-auth`
 : URL base of the authentication and registration service to be used instead of the embedded login system.
 
 `jwt-secret-key`
 : Secret key used to verify JWT tokens.
 
+See also [OpenID Connect settings]({{% relref "oidc" %}}).
+
 
 ### Specific to registrars
 
 Some registrars require third-party applications to identify themselves in addition to the user.
+
+#### Bind
+
+`with-bind-provider`
+: Enable the BIND provider (not suitable for cloud/shared instance as it'll access the local file system).
+
 
 #### OVH
 

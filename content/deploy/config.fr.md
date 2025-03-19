@@ -93,6 +93,9 @@ Voici la liste des principales options :
 `externalurl`
 : URL du service, tel qu'il doit apparaître dans les mails et contenus à destination du public.
 
+`disable-providers-edit`
+: Interdit toute action sur les fournisseurs de service DNS (ajour/édition/suppression), par exemple pour avoir un mode de démonstration.
+
 
 #### Mise en page
 
@@ -101,6 +104,15 @@ Voici la liste des principales options :
 
 `custom-body-html`
 : Chaîne de caractères à placer avant la fin du corps HTML.
+
+`hide-feedback-button`
+: Cache l'icône permettant de donner son retour d'expérience.
+
+`msg-header-text`
+: Ajoute un message personnalisé dans une bannière en haut de toutes les pages.
+
+`msg-header-color`
+: Classe de couleur de fond pour la bannière ajoutée en haut de l'application web (par défaut "danger", pourrait être primary, secondary, info, success, warning, danger, light, dark, ou toute autre classe de couleur bootstrap).
 
 
 ### Stockage des données
@@ -140,16 +152,30 @@ Notez que sans les options `mail-smtp-*`, happyDomain utilisera le binaire `send
 `no-auth`
 : Désactive la notion d'utilisateurs et de contrôle d'accès. Un compte par défaut est utilisé.
 
+`disable-embedded-login`
+: Désactive le mécanisme de connexion interne en faveur de l'external-auth ou d'OIDC.
+
+`disable-registration`
+: Interdit la création de nouveau compte à travers le formulaire ou l'API (cela ne désactive pas la création de compte lorsque l'on se connecte pour la première fois à partir d'un service d'authentification externe).
+
 `external-auth`
 : Base de l'URL du service d'authentification et d'enregistrement à utiliser à la place du système de connexion embarqué.
 
 `jwt-secret-key`
 : Clef secrète utilisée pour vérifier les tokens JWT.
 
+Voir aussi [paramètres OpenID Connect]({{% relref "oidc" %}}).
+
 
 ### Spécifique aux bureaux d'enregistrement
 
 Certain bureau d'enregistrement nécessitent que les applications tierces s'identifient en plus d'identifier l'utilisateur.
+
+#### Bind
+
+`with-bind-provider`
+: Active BIND en tant que fournisseur DNS (attention, ce paramètre n'est pas adapté à un environnement partagé/cloud car il accède au système de fichiers local).
+
 
 #### OVH
 
