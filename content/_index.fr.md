@@ -9,8 +9,8 @@ aliases:
     fr/pages/signup
 ---
 
-happyDomain est une interface qui rend accessibles les noms de domaines et réduit les points de friction habituels.
-Notre interface centralise vos domaines et inclut toutes les fonctionnalités que l'on attendrait en 2024 pour gérer ses domaines sans peine.
+happyDomain est une interface qui centralise vos noms de domaines et réduit les points de friction habituels.
+Notre interface centralise vos domaines et inclut toutes les fonctionnalités que l'on attendrait en 2025 pour gérer ses domaines sans peine.
 
 Nous avons construit happyDomain parce que nous voulons faire gagner du temps aux équipes opérationnelles en leur donnant des superpouvoirs :
 avoir toute la puissances des noms de domaines, sans devoir lire et apprendre toutes les nouvelles normes, en restant focalisé sur les besoins.
@@ -29,7 +29,7 @@ Voici un aperçu des principales fonctionnalités d'happyDomain :
 - automatiser des tâches via une API REST.
 
 Nous sommes un projet libre : vous pouvez utiliser l'interface officielle disponible sur [`www.happydomain.org`](https://www.happydomain.org/), ou bien l'installer chez vous.
-Le code source est disponible sur [framagit](https://framagit.org/happyDomain/) : vous pouvez le consulter, le copier, donner votre avis, rapporter des bugs ou y apporter des modifications, à votre guise.
+Le code source est disponible sur [framagit](https://framagit.org/happyDomain/), [GitLab](https://gitlab.com/happyDomain/) ou encore [GitHub](https://github.com/happyDomain/) : vous pouvez le consulter, le copier, donner votre avis, rapporter des bugs ou y apporter des modifications, à votre guise.
 
 ![La page d'accueil d'happyDomain: gardez un œil sur tous vos domaines](https://www.happydomain.org/img/screenshots/domains-list.webp)
 
