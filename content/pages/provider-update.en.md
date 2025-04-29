@@ -4,6 +4,7 @@ author: Frederic
 title: Hosting provider settings
 aliases:
     source-new-state
+    source-update
 weight: 19
 ---
 

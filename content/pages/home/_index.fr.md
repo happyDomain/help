@@ -21,7 +21,7 @@ Sur la droite, vous voyez la liste des différents hébergeurs de vos domaines :
 
 ![Les hébergeurs de vos domaines](hosters-list.png)
 
-Vous pouvez [ajouter un nouvel hébergeur]({{% relref "source-new-choice" %}}) en cliquant sur le bouton +, présent dans l'en-tête du tableau.
+Vous pouvez [ajouter un nouvel hébergeur]({{% relref "provider-new-choice" %}}) en cliquant sur le bouton +, présent dans l'en-tête du tableau.
 
 En cliquant sur une ligne de ce tableau, vous filtrerez la liste des domaines pour n'afficher que les domaines gérés par cet hébergeur.
 
@@ -34,7 +34,7 @@ Pour afficher à nouveau la liste dans son intégralité, recliquez simplement s
 
 ### Modifier ou supprimer un hébergeur
 
-Si vous constatez une erreur ou n'avez plus besoin d'un hébergeur, cliquez sur les ... sur la ligne de l'hébergeur concerné. Vous aurez alors la possibilité de choisir entre [mettre à jour les informations]({{% relref "source-update" %}}) ou supprimer l'hébergeur :
+Si vous constatez une erreur ou n'avez plus besoin d'un hébergeur, cliquez sur les ... sur la ligne de l'hébergeur concerné. Vous aurez alors la possibilité de choisir entre [mettre à jour les informations]({{% relref "provider-update" %}}) ou supprimer l'hébergeur :
 
 ![Modification ou suppression d'un hébergeur](hoster-edit.png)
 

@@ -3,6 +3,7 @@ date: 2020-12-09T18:12:45+01:00
 title: Paramètres de l'hébergeur
 aliases:
     source-new-state
+    source-update
 weight: 19
 ---
 

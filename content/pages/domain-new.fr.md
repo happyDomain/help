@@ -11,4 +11,4 @@ Vous accédez à cet écran après avoir validé sur [la page d'accueil]({{% rel
 Vous pouvez voir sur cet écran les différents hébergeurs que vous avez déjà configuré.
 Si votre domaine fait parti d'un des comptes listés, cliquez simplement dessus, il sera ajouté automatiquement.
 
-Si vous n'avez pas encore ajouté l'hébergeur, vous pouvez le faire maintenant, en suivant le lien [« Ajouter maintenant ! »]({{% relref "source-new-choice" %}}).
+Si vous n'avez pas encore ajouté l'hébergeur, vous pouvez le faire maintenant, en suivant le lien [« Ajouter maintenant ! »]({{% relref "provider-new-choice" %}}).

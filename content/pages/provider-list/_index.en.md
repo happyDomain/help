@@ -4,6 +4,7 @@ author: Frederic
 title: Hosting providers
 aliases:
     hosters
+    source-list
 weight: 15
 ---
 
@@ -11,9 +12,9 @@ You can access this page by clicking on the the top menu link "The hosts of my d
 
 ## Your registries and domain hosts
 
-This page shows only the list of registries and domain hosts you have added to your account, and [allows you to add more]({{% relref "source-new-choice" %}}).
+This page shows only the list of registries and domain hosts you have added to your account, and [allows you to add more]({{% relref "provider-new-choice" %}}).
 
-The hosters of your domains](hosters-list.png)
+![The hosters of your domains](hosters-list.png)
 
 You can add a new host by clicking on the "+" button at the top of the page.
 

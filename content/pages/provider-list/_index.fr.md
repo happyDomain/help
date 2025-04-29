@@ -3,6 +3,7 @@ date: 2020-12-09T18:12:45+01:00
 title: Les hébergeurs
 aliases:
     hosters
+    source-list
 weight: 15
 ---
 
@@ -10,7 +11,7 @@ Vous accédez à cette page en cliquant sur le lien « Les hôtes de mes domaine
 
 ## Vos registres et hébergeurs de domaines
 
-Cette page montre uniquement la liste des registres et des hébergeurs de domaines que vous avez ajouté à votre compte, et [vous permet d'en ajouter]({{% relref "source-new-choice" %}}).
+Cette page montre uniquement la liste des registres et des hébergeurs de domaines que vous avez ajouté à votre compte, et [vous permet d'en ajouter]({{% relref "provider-new-choice" %}}).
 
 ![Les hébergeurs de vos domaines](hosters-list.png)
 

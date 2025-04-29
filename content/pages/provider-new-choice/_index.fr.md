@@ -1,10 +1,12 @@
 ---
 date: 2020-12-09T18:12:45+01:00
 title: Ajouter un hébergeur
+aliases:
+    source-new-choice
 weight: 17
 ---
 
-Vous accédez à cet écran en cliquant sur le lien [« Les hôtes de mes domaines »]({{% relref "source-list" %}}) dans le menu en haut, puis en cliquant sur le bouton « + Ajouter un nouvel hébergeur de domaines ».
+Vous accédez à cet écran en cliquant sur le lien [« Les hébergeurs de mes domaines »]({{% relref "provider-list" %}}) dans le menu en haut, puis en cliquant sur le bouton « + Ajouter un nouvel hébergeur de domaines ».
 
 ## Les registres et hébergeurs de domaines compatibles
 
@@ -14,4 +16,4 @@ Dans cet écran, on vous demande de sélectionner, parmi la liste des hébergeur
 
 ![Les hébergeurs de domaines compatibles](hosters-choice.png)
 
-Une fois que vous l'avez sélectionné, vous êtes dirigé vers l'écran [de paramétrage de la connexion à l'hébergeur]({{% relref "source-update" %}}).
+Une fois que vous l'avez sélectionné, vous êtes dirigé vers l'écran [de paramétrage de la connexion à l'hébergeur]({{% relref "provider-update" %}}).
