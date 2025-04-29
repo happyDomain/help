@@ -43,11 +43,11 @@ params:
   author:
     name: "The happyDNS team"
   showVisitedLinks: true
-  disableMermaid: true
+  mermaid: false
   themeVariant:
     - auto
     - green
 
 
 outputs:
-  home: [ "HTML", "RSS", "SEARCH"]
+  home: [ "HTML", "RSS", "PRINT"]
