@@ -1,9 +1,9 @@
 ---
 date: 2021-01-12T21:38:49+02:00
-title: The Home page
+title: Centralize your domains
 author: Frederic
 aliases:
-    domains
+    home
 weight: 10
 ---
 

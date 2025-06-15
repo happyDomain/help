@@ -11,7 +11,7 @@ weight: 19
 You access this screen either:
 
 - when you want to add a host, after having selected the provider,
-- when you want to change the connection settings between happyDomain and a host, for example on the [home page]({{% relref "home#modify-or-delete-a-host" %}}).
+- when you want to change the connection settings between happyDomain and a host, for example on the [home page]({{% relref "domains#modify-or-delete-a-host" %}}).
 
 ## Connection name
 

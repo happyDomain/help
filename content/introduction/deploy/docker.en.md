@@ -22,7 +22,7 @@ Currently, available tags are:
 
 ### For testing purpose
 
-You can test happyDomain or use it for your own usage, with the option `HAPPYDOMAIN_NO_AUTH=1`: this will automatically creates a default account, and disable all features related to the user management (signup, login. ...).
+You can test happyDomain or use it for your own usage, with the option `HAPPYDOMAIN_NO_AUTH=1`: this will automatically creates a default account, and disable all features related to the user management (signup, login, ...).
 
 ```
 docker run -e HAPPYDOMAIN_NO_AUTH=1 -p 8081:8081 happydomain/happydomain
@@ -44,6 +44,14 @@ Use the options `HAPPYDOMAIN_MAIL_SMTP_HOST`, `HAPPYDOMAIN_MAIL_SMTP_PORT` (defa
 docker run -e HAPPYDOMAIN_MAIL_SMTP_HOST=smtp.yourcompany.com -e HAPPYDOMAIN_MAIL_SMTP_USERNAME=happydomain -e HAPPYDOMAIN_MAIL_SMTP_PASSWORD=secret -v /var/lib/happydomain:/data -p 8081:8081 happydomain/happydomain
 ```
 
+If you prefer using a configuration file, you can place it either in `/data/happydomain.conf` to use the volume, or bind your file to `/etc/happydomain.conf`:
+
+```
+docker run -v happydomain.conf:/etc/happydomain.conf -p 8081:8081 happydomain/happydomain
+```
+
+#### Extend the base image
+
 By default, happyDomain uses `sendmail`, if you prefer, you can create you own image with the package `ssmtp`:
 
 ```
@@ -52,11 +60,6 @@ RUN apk --no-cache add ssmtp
 COPY my_ssmtp.conf /etc/ssmtp/ssmtp.conf
 ```
 
-If you prefer using a configuration file, you can place it either in `/data/happydomain.conf` to use the volume, or bind your file to `/etc/happydomain.conf`:
-
-```
-docker run -v happydomain.conf:/etc/happydomain.conf -p 8081:8081 happydomain/happydomain
-```
 
 ## Admin Interface
 

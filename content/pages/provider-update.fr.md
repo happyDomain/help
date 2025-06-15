@@ -10,7 +10,7 @@ weight: 19
 Vous accédez à cet écran soit :
 
 - lorsque vous souhaitez ajouter un hébergeur, après avoir sélectionné le fournisseur,
-- lorsque vous souhaitez modifier les paramètres de connexion entre happyDomain et un hébergeur, par exemple sur la [page d'accueil]({{% relref "home#modifier-ou-supprimer-un-hébergeur" %}}).
+- lorsque vous souhaitez modifier les paramètres de connexion entre happyDomain et un hébergeur, par exemple sur la [page d'accueil]({{% relref "domains#modifier-ou-supprimer-un-hébergeur" %}}).
 
 ## Nom de la connexion
 

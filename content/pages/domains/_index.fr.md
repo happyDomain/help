@@ -1,10 +1,13 @@
 ---
 date: 2020-12-09T18:12:45+01:00
-title: La page d'accueil
+title: Regrouper vos domaines
 aliases:
-    domains
+    home
 weight: 10
 ---
+
+happyDomain vous apporte une interface graphique unifiée et avec des fonctionnalités modernes quelque soit l'endroit où sont hébergés vos noms de domaine. Ils peuvent être sur un serveur DNS (PowerDNS, bind, knot, ...) qui vous est propre, ou bien chez un ou plusieurs hébergeurs (une 50aine sont supportés à l'heure actuelle).
+
 
 ## Vos domaines
 
@@ -15,7 +18,7 @@ La page d'accueil présente la liste de l'ensemble des domaines gérés par happ
 Cliquez sur l'un des domaines pour commencer à [y apporter des modifications]({{% relref "domain-abstract" %}}) (ajouter un sous-domaine, ajouter un service, ...).
 
 
-## Vos registres et hébergeurs de domaines
+## Vos hébergeurs de domaines
 
 Sur la droite, vous voyez la liste des différents hébergeurs de vos domaines :
 
@@ -38,7 +41,7 @@ Si vous constatez une erreur ou n'avez plus besoin d'un hébergeur, cliquez sur 
 
 ![Modification ou suppression d'un hébergeur](hoster-edit.png)
 
-Notez que vous ne pourrez pas supprimer l'hébergeur tant que des domaines y faisant référence, existeront dans la liste de gauche.
+Notez que vous ne pourrez pas supprimer l'hébergeur tant que des domaines y faisant référence existeront dans la liste de gauche.
 
 
 ## Ajouter un domaine

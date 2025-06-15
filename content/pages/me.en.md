@@ -1,6 +1,6 @@
 ---
 date: 2021-01-12T21:38:49+02:00
-title: "My account"
+title: "Set up your profile"
 author: Frederic
 weight: 40
 ---

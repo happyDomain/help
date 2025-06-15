@@ -1,6 +1,6 @@
 ---
 date: 2020-12-10T10:26:54+01:00
-title: "Mon compte"
+title: "Paramétrer son profil"
 weight: 40
 ---
 

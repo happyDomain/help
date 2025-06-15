@@ -1,6 +1,6 @@
 ---
 date: 2020-12-09T18:12:45+01:00
-title: Les hébergeurs
+title: Lister vos hébergeurs de noms
 aliases:
     hosters
     source-list
