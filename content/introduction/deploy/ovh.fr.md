@@ -23,7 +23,7 @@ Pour plus d'information, voir cette page : <https://docs.ovh.com/gb/en/api/api-r
 2. Remplissez le formulaire avec un nom et une description qui refléte le nom et l'usage de votre application, par exemple *happyDomain*.
 
 Une fois le formulaire validé, vous obtiendrez une clef et un secret.
-Ces informations sont à indiqué dans la configuration d'happyDomain :
+Ces informations sont à indiquer dans la configuration d'happyDomain :
 
 `ovh-application-key`
 : Application key pour l'API d'OVH
