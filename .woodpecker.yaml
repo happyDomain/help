@@ -11,7 +11,10 @@ clone:
       recursive: true
 
 steps:
-  build:
-    image: registry.nemunai.re/plugins/hugo
-    settings:
-      hugo_version: 0.144.2
+  - name: build
+    image: hugomods/hugo:base
+    commands:
+      - hugo
+      - cp public/en/404.html public/404.html
+    environment:
+      HUGO_ENVIRONMENT: production
