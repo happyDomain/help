@@ -42,11 +42,24 @@ params:
   editURL: "https://framagit.org/happyDNS/help/-/blob/master/content/"
   author:
     name: "The happyDNS team"
+  # Wordmark logo handled by the theme's logo system (replaces the old
+  # layouts/partials/logo.html override that broke after the theme update).
+  logo:
+    src: "/img/happyDomain.png"
+  # The wordmark already reads "happyDomain", so don't render a text title
+  # next to it (a single space resolves to an empty logo title).
+  linkTitle: " "
   showVisitedLinks: true
   mermaid: false
+  # "auto" follows the OS light/dark preference: light -> green, dark ->
+  # relearn-dark. Both must be declared as variants so the theme attaches the
+  # logo to each (the logo is variant-gated since the theme update); otherwise
+  # the logo disappears in dark mode.
   themeVariant:
-    - auto
-    - green
+    - identifier: auto
+      auto: ["green", "relearn-dark"]
+    - identifier: green
+    - identifier: relearn-dark
 
 
 outputs:
