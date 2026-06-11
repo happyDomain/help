@@ -1,311 +1,235 @@
 ---
-title: "Écrire un plugin happyDomain"
-description: "Guide technique pour développer des plugins de test pour happyDomain"
+title: "Écrire un plugin de vérification happyDomain"
+description: "Guide technique pour développer des plugins checker pour happyDomain"
 ---
 
-happyDomain prend en charge des **plugins de test** externes — des bibliothèques partagées (fichiers `.so`) qui ajoutent des vérifications de santé sur les domaines ou les services d'une instance en cours d'exécution. Les plugins sont chargés au démarrage sans recompiler le serveur ; l'opérateur dépose simplement un fichier `.so` dans un répertoire configuré.
+happyDomain peut être étendu par des **plugins de vérification** (*checkers*) externes : des bibliothèques partagées (fichiers `.so`) qui ajoutent des diagnostics automatisés sur les zones, les domaines, les services ou les utilisateurs. Un plugin checker est chargé dans le processus happyDomain au démarrage. L'opérateur dépose simplement un fichier `.so` dans un répertoire configuré, sans recompiler le serveur.
 
-## Fonctionnement
-
-Un plugin reçoit un ensemble d'options assemblées depuis plusieurs portées de configuration, exécute une vérification (appel HTTP, requête DNS, …) et renvoie un résultat avec un niveau de statut et un rapport détaillé optionnel. Les résultats sont stockés et affichés dans l'interface happyDomain aux côtés du domaine ou du service concerné.
-
-Au démarrage, happyDomain parcourt chaque répertoire listé dans l'option de configuration `plugins-directories`. Pour chaque fichier trouvé, il :
-
-1. Ouvre la bibliothèque partagée.
-2. Recherche le symbole exporté `NewTestPlugin`.
-3. Appelle `NewTestPlugin()` pour obtenir une valeur de plugin.
-4. Enregistre le plugin sous chaque nom renvoyé par `PluginEnvName()`.
-
-Si le fichier n'est pas un plugin Go valide, si `NewTestPlugin` est absent ou s'il retourne une erreur, un avertissement est journalisé et le fichier est ignoré. Le serveur démarre toujours, quels que soient les échecs de chargement individuels.
-
----
-
-## L'interface `TestPlugin`
-
-Tout plugin doit implémenter quatre méthodes :
-
-```go
-type TestPlugin interface {
-    PluginEnvName() []string
-    Version()          PluginVersionInfo
-    AvailableOptions() PluginOptionsDocumentation
-    RunTest(PluginOptions, map[string]string) (*PluginResult, error)
-}
-```
-
----
-
-## Structure du projet
-
-Un plugin est un module Go autonome compilé avec `-buildmode=plugin`. Il doit être dans `package main` et exporter exactement un symbole :
-
-```go
-func NewTestPlugin() (happydns.TestPlugin, error)
-```
-
-Organisation recommandée :
-
-```
-myplugin/
-├── go.mod
-├── Makefile
-└── plugin.go       # (ou réparti sur plusieurs fichiers .go)
-```
-
-### go.mod
-
-```
-module git.happydns.org/happyDomain/plugins/myplugin
-
-go 1.25
-
-require git.happydns.org/happyDomain v0.0.0
-replace git.happydns.org/happyDomain => ../../
-```
-
-La directive `replace` pointe vers votre dépôt local happyDomain, garantissant que le plugin est compilé avec exactement les mêmes types que le serveur.
+Un checker comporte deux moitiés. Il **collecte** d'abord des données brutes sur une cible (une observation). Il **évalue** ensuite ces données au regard d'un ensemble de règles afin de produire un statut. Les résultats sont stockés puis affichés dans l'interface de happyDomain, à côté du domaine ou du service concerné.
 
 {{< notice style="warning" >}}
-Un plugin Go et le processus hôte partagent le même environnement d'exécution. Ils **doivent** être compilés avec la même version de la chaîne d'outils Go et les mêmes versions de toutes les dépendances partagées. Tout écart provoque une erreur fatale au chargement.
+Un plugin `.so` est chargé dans le processus happyDomain et s'exécute avec les mêmes privilèges que le serveur. Le répertoire des plugins doit être considéré comme un emplacement de confiance : happyDomain refuse de charger des plugins depuis un répertoire qui ne l'est pas (voir [Sécurité et déploiement](#sécurité-et-déploiement)).
 {{< /notice >}}
 
 ---
 
-## Point d'entrée
+## Ce qu'un plugin checker doit exporter
+
+Les plugins sont construits avec le module **`checker-sdk-go`**, publié séparément du cœur de happyDomain. Dans cette page, `checker` désigne le paquet `git.happydns.org/checker-sdk-go/checker`.
+
+Le chargeur de happyDomain recherche un unique symbole exporté nommé `NewCheckerPlugin`, avec cette signature exacte :
 
 ```go
+func NewCheckerPlugin() (*checker.CheckerDefinition, checker.ObservationProvider, error)
+```
+
+Les deux valeurs de retour décrivent les deux moitiés d'un checker :
+
+- **`*CheckerDefinition`** décrit le checker : son identifiant, son nom, sa version, les clés d'observation dont il dépend, les options qu'il accepte, ses règles, un agrégateur optionnel, un intervalle de planification, et s'il expose des rapports HTML ou des métriques. Voir le [tableau des champs](#champs-de-checkerdefinition) ci-dessous.
+- **`ObservationProvider`** est la moitié chargée de la collecte. Elle expose une méthode `Key()` (la clé d'observation que les règles consultent) et une méthode `Collect(ctx, opts)` qui renvoie la charge utile brute de l'observation. happyDomain sérialise ce résultat en JSON et le met en cache pour chaque contexte d'observation.
+- Renvoyez une `error` non nulle si le plugin ne peut pas s'initialiser (variable d'environnement manquante, dépendance cgo cassée, …). L'hôte journalise l'erreur et ignore le fichier, sans interrompre le démarrage.
+
+Un même fichier `.so` peut exporter plusieurs types de plugins. Le chargeur applique chaque chargeur connu à chaque fichier, puis ignore tout symbole qu'il ne reconnaît pas. Un binaire peut donc fournir plusieurs plugins.
+
+---
+
+## Exemple minimal
+
+Voici le plus petit plugin qui se charge. Il collecte une observation fixe et ne déclare aucune règle. On peut l'adapter à partir de [`checker-dummy`](https://git.happydns.org/checker-dummy), l'implémentation de référence.
+
+```go
+// Command plugin is the happyDomain plugin entrypoint for the dummy checker.
+//
+// Build with:
+//   go build -buildmode=plugin -o checker-dummy.so ./plugin
 package main
 
-import "git.happydns.org/happyDomain/model"
+import (
+	"context"
 
-func NewTestPlugin() (happydns.TestPlugin, error) {
-    return &MyPlugin{}, nil
+	"git.happydns.org/checker-sdk-go/checker"
+)
+
+type dummyProvider struct{}
+
+func (dummyProvider) Key() checker.ObservationKey { return "dummy.observation" }
+
+func (dummyProvider) Collect(ctx context.Context, opts checker.CheckerOptions) (any, error) {
+	return map[string]string{"hello": "world"}, nil
+}
+
+// NewCheckerPlugin is the symbol resolved by happyDomain at startup.
+func NewCheckerPlugin() (*checker.CheckerDefinition, checker.ObservationProvider, error) {
+	def := &checker.CheckerDefinition{
+		ID:              "com.example.dummy",
+		Name:            "Dummy checker",
+		Version:         "0.1.0",
+		ObservationKeys: []checker.ObservationKey{"dummy.observation"},
+		// Add Rules / Aggregator / Options here in a real plugin.
+	}
+	return def, dummyProvider{}, nil
 }
 ```
 
-Le constructeur est l'endroit idéal pour effectuer une initialisation unique (ouvrir des fichiers de configuration, créer un client HTTP, …). Retournez une erreur si le plugin ne peut pas fonctionner.
+{{< notice style="warning" >}}
+Un plugin Go et le processus hôte partagent le même *runtime*. Ils **doivent** être compilés avec la même version de la chaîne d'outils Go et les mêmes versions de chaque dépendance partagée. Toute divergence produit une erreur bloquante au chargement. Voir [Contraintes de build](#contraintes-de-build).
+{{< /notice >}}
 
 ---
 
-## Nommage — `PluginEnvName()`
+## Champs de `CheckerDefinition`
 
-Renvoie un ou plusieurs identifiants courts en minuscules. Ces noms sont utilisés pour retrouver le plugin via l'API et pour indexer sa configuration stockée.
-
-```go
-func (p *MyPlugin) PluginEnvName() []string {
-    return []string{"myplugin"}
-}
-```
-
-Choisissez des noms peu susceptibles d'entrer en conflit (ex. `"zonemaster"`, `"matrixim"`) et gardez-les **stables entre les versions**, car ils sont persistés avec la configuration utilisateur. Si deux plugins chargés revendiquent le même nom, le second est ignoré et un conflit est journalisé.
-
----
-
-## Version et disponibilité — `Version()`
-
-Décrit le plugin et contrôle l'endroit où il apparaît dans l'interface :
-
-```go
-func (p *MyPlugin) Version() happydns.PluginVersionInfo {
-    return happydns.PluginVersionInfo{
-        Name:    "My Plugin",
-        Version: "1.0",
-        AvailableOn: happydns.PluginAvailability{
-            ApplyToDomain:    true,
-            ApplyToService:   false,
-            LimitToProviders: nil,  // nil ou vide = tous les fournisseurs
-            LimitToServices:  []string{"abstract.MatrixIM"},
-        },
-    }
-}
-```
+Le `*CheckerDefinition` renvoyé par `NewCheckerPlugin` est la description de votre checker :
 
 | Champ | Type | Description |
 |---|---|---|
-| `ApplyToDomain` | `bool` | Le plugin peut être exécuté sur un domaine entier |
-| `ApplyToService` | `bool` | Le plugin peut être exécuté sur un service DNS spécifique |
-| `LimitToProviders` | `[]string` | Restreint à certains identifiants de fournisseurs DNS (vide = aucune restriction) |
-| `LimitToServices` | `[]string` | Restreint à certains types de services, ex. `"abstract.MatrixIM"` (vide = aucune restriction) |
+| `ID` | `string` | **Requis.** Identifiant stable et persistant. Choisissez une valeur préfixée par un espace de noms (`com.example.dnssec-freshness`, et non `dnssec`) et ne la changez jamais : elle indexe les résultats stockés et la configuration utilisateur. |
+| `Name` | `string` | Nom lisible affiché dans l'interface. |
+| `Version` | `string` | Version du plugin (par exemple `"1.0.0"`). |
+| `Availability` | `CheckerAvailability` | Déclare les portées auxquelles le checker s'applique et d'éventuelles restrictions de fournisseur ou de service (voir ci-dessous). |
+| `Options` | `CheckerOptionsDocumentation` | Documente les options acceptées par le checker, regroupées par portée (voir ci-dessous). |
+| `Rules` | `[]CheckRule` | Les règles évaluées sur l'observation collectée. |
+| `Aggregator` | `CheckAggregator` | Optionnel. Combine les `CheckState` produits par chaque règle en un état de synthèse unique. |
+| `Interval` | `*CheckIntervalSpec` | Bornes de planification optionnelles (durées `Min`, `Max`, `Default`). |
+| `HasHTMLReport` | `bool` | À activer lorsque le provider implémente `CheckerHTMLReporter`. |
+| `HasMetrics` | `bool` | À activer lorsque le provider implémente `CheckerMetricsReporter`. |
+| `ObservationKeys` | `[]ObservationKey` | Les clés d'observation que ce checker lit. |
 
-`ApplyToDomain` et `ApplyToService` peuvent être tous les deux `true` simultanément.
+### Disponibilité
 
----
-
-## Options — `AvailableOptions()`
-
-Les options sont des paires clé/valeur (`map[string]any`) qui configurent chaque exécution de test. Elles sont déclarées regroupées par **portée**, c'est-à-dire qui les définit et combien de temps elles persistent :
-
-```go
-func (p *MyPlugin) AvailableOptions() happydns.PluginOptionsDocumentation {
-    return happydns.PluginOptionsDocumentation{
-        RunOpts:     []happydns.PluginOptionDocumentation{ /* … */ },
-        ServiceOpts: []happydns.PluginOptionDocumentation{ /* … */ },
-        DomainOpts:  []happydns.PluginOptionDocumentation{ /* … */ },
-        UserOpts:    []happydns.PluginOptionDocumentation{ /* … */ },
-        AdminOpts:   []happydns.PluginOptionDocumentation{ /* … */ },
-    }
-}
-```
-
-### Portées des options
-
-| Portée | Qui la définit | Clé de stockage | Usage typique |
-|---|---|---|---|
-| `RunOpts` | L'utilisateur, au moment du test | _(transitoire)_ | Paramètres propres à l'exécution |
-| `ServiceOpts` | L'utilisateur | plugin + utilisateur + domaine + service | Configuration au niveau du service |
-| `DomainOpts` | L'utilisateur | plugin + utilisateur + domaine | Configuration au niveau du domaine |
-| `UserOpts` | L'utilisateur | plugin + utilisateur | Préférences personnelles (ex. langue) |
-| `AdminOpts` | L'administrateur | plugin | Paramètres d'instance, identifiants partagés |
-
-Avant l'appel à `RunTest`, happyDomain fusionne toutes les valeurs par portée, de la moins spécifique (admin) à la plus spécifique (exécution). Les valeurs plus spécifiques écrasent silencieusement les moins spécifiques. `RunTest` reçoit toujours une map plate unique et n'a pas besoin de savoir de quelle portée provient chaque valeur.
-
-### Champs d'une option
-
-Chaque option est un `PluginOptionDocumentation` (un alias pour `Field`) :
+`CheckerAvailability` contrôle l'endroit où le checker est proposé dans l'interface :
 
 | Champ | Type | Description |
 |---|---|---|
-| `Id` | `string` | **Obligatoire.** Clé utilisée dans la map `PluginOptions` dans `RunTest` |
-| `Type` | `string` | Type de saisie : `"string"`, `"select"` |
-| `Label` | `string` | Libellé lisible affiché dans l'interface |
-| `Placeholder` | `string` | Texte indicatif du champ de saisie |
-| `Default` | `any` | Valeur par défaut pré-remplie dans le formulaire |
-| `Choices` | `[]string` | Options pour les saisies de type `"select"` |
-| `Required` | `bool` | Indique si le champ doit être rempli avant l'exécution |
-| `Secret` | `bool` | Marque le champ comme sensible (ex. une clé API) |
-| `Hide` | `bool` | Masque entièrement le champ à l'utilisateur |
-| `Textarea` | `bool` | Affiche une zone de texte multiligne |
-| `Description` | `string` | Texte d'aide affiché sous le champ |
-| `AutoFill` | `string` | Remplit le champ automatiquement depuis le contexte (voir ci-dessous) |
+| `ApplyToDomain` | `bool` | Le checker peut s'exécuter sur un domaine entier. |
+| `ApplyToZone` | `bool` | Le checker peut s'exécuter sur une zone. |
+| `ApplyToService` | `bool` | Le checker peut s'exécuter sur un service précis. |
+| `LimitToProviders` | `[]string` | Restreint à certains identifiants de fournisseurs DNS (vide = aucune restriction). |
+| `LimitToServices` | `[]string` | Restreint à certains identifiants de types de services, par exemple `"abstract.MatrixIM"` (vide = aucune restriction). |
 
-### Remplissage automatique
+### Options
 
-Lorsque `AutoFill` est défini, happyDomain remplit le champ à partir du contexte du test ; l'utilisateur n'est pas sollicité :
+Les options sont déclarées par **portée**, c'est-à-dire selon qui les définit et combien de temps elles persistent. Chaque portée est une tranche de `CheckerOptionDocumentation` :
 
-| Constante | Valeur chaîne | Rempli avec |
+| Portée | Qui la définit | Usage habituel |
 |---|---|---|
-| `happydns.AutoFillDomainName` | `"domain_name"` | FQDN du domaine testé, ex. `"example.com."` |
-| `happydns.AutoFillSubdomain` | `"subdomain"` | Sous-domaine relatif à la zone, ex. `"www"` — tests à portée service uniquement |
-| `happydns.AutoFillServiceType` | `"service_type"` | Identifiant du type de service, ex. `"abstract.MatrixIM"` — tests à portée service uniquement |
+| `AdminOpts` | Administrateur | Réglages valables pour toute l'instance, identifiants partagés. |
+| `UserOpts` | Utilisateur | Préférences personnelles (par exemple la langue). |
+| `DomainOpts` | Utilisateur | Configuration au niveau du domaine. |
+| `ServiceOpts` | Utilisateur | Configuration au niveau du service. |
+| `RunOpts` | Utilisateur, au moment de l'exécution | Paramètres propres à une invocation. |
 
-```go
-{
-    Id:       "domainName",
-    Type:     "string",
-    Label:    "Nom de domaine",
-    AutoFill: happydns.AutoFillDomainName,
-    Required: true,
-}
-```
+happyDomain fusionne les valeurs des différentes portées, de la moins spécifique (administrateur) à la plus spécifique (exécution), avant d'appeler `Collect`. Le provider reçoit donc une unique table `CheckerOptions` à plat. Chaque option est un `CheckerOptionField` avec des champs comme `Id`, `Type`, `Label`, `Default`, `Choices`, `Required`, `Secret`, `Description` et `AutoFill`. On lit les valeurs typées de la table à l'aide des fonctions du SDK `checker.GetOption`, `checker.GetIntOption`, `checker.GetBoolOption`, …
+
+{{< notice style="info" >}}
+Lorsque happyDomain enregistre un checker externalisable, il ajoute automatiquement une option d'administration `endpoint`. L'administrateur peut ainsi déléguer la collecte à un point d'accès HTTP distant plutôt que de l'exécuter dans le processus. Laissée vide, elle fait fonctionner le checker localement.
+{{< /notice >}}
 
 ---
 
-## Exécuter la vérification — `RunTest()`
+## L'`ObservationProvider`
 
-`RunTest` reçoit la map d'options fusionnée et une map de métadonnées (réservée à un usage futur), effectue la vérification et renvoie un `PluginResult`.
-
-Convertissez toujours les valeurs d'options vers un type concret avant de les utiliser — la map contient des valeurs de type `any` :
+Le provider est la moitié du checker chargée de la collecte :
 
 ```go
-func (p *MyPlugin) RunTest(opts happydns.PluginOptions, _ map[string]string) (*happydns.PluginResult, error) {
-    domain, ok := opts["domainName"].(string)
-    if !ok || domain == "" {
-        return nil, fmt.Errorf("l'option domainName est obligatoire")
-    }
-
-    // … effectuer la vérification …
-
-    return &happydns.PluginResult{
-        Status:     happydns.PluginResultStatusOK,
-        StatusLine: "Tout est bon",
-        Report:     myStructuredReport,
-    }, nil
+type ObservationProvider interface {
+	Key() ObservationKey
+	Collect(ctx context.Context, opts CheckerOptions) (any, error)
 }
 ```
 
-Retournez une **erreur non nulle** uniquement pour les échecs inattendus (erreurs réseau, configuration invalide). Pour les échecs de vérification attendus — le service surveillé est indisponible, les enregistrements DNS sont incorrects — retournez un `PluginResult` avec un statut approprié et un `StatusLine` lisible par un humain.
+- `Key()` renvoie la clé d'observation que ce provider remplit. Elle doit correspondre à l'une des `ObservationKeys` déclarées dans la définition.
+- `Collect` effectue le travail réel (une requête DNS, un appel HTTP, …) et renvoie n'importe quelle valeur sérialisable en JSON. happyDomain la convertit en JSON et la met en cache ; les règles la relisent ensuite.
 
-### Champs du résultat
+Un provider peut implémenter des interfaces supplémentaires du SDK pour étendre son comportement :
 
-| Champ | Type | Description |
-|---|---|---|
-| `Status` | `PluginResultStatus` | Niveau de résultat global (voir ci-dessous) |
-| `StatusLine` | `string` | Résumé court affiché dans l'interface |
-| `Report` | `any` | Toute valeur sérialisable en JSON, stockée comme données de diagnostic structurées |
-
-### Niveaux de statut (du pire au meilleur)
-
-| Constante | Signification |
+| Interface | Rôle |
 |---|---|
-| `PluginResultStatusKO` | La vérification a échoué |
-| `PluginResultStatusWarn` | La vérification a réussi avec des avertissements |
-| `PluginResultStatusInfo` | Informatif, aucune action requise |
-| `PluginResultStatusOK` | La vérification a entièrement réussi |
+| `CheckerHTMLReporter` | `GetHTMLReport(ctx ReportContext)` rend l'observation stockée sous forme de document HTML. |
+| `CheckerMetricsReporter` | `ExtractMetrics(ctx ReportContext, collectedAt)` produit des métriques temporelles. |
+| `CheckEnabler` | `IsEligible(ctx, opts)` décide, à partir des données réelles de la cible, s'il est pertinent d'exécuter le checker. |
+| `DiscoveryPublisher` | `DiscoverEntries(data)` publie des enregistrements `DiscoveryEntry` que d'autres checkers peuvent consommer. |
+
+Les règles renvoient des valeurs `CheckState` dont le `Status` vaut `StatusOK`, `StatusInfo`, `StatusWarn`, `StatusCrit`, `StatusError` ou `StatusUnknown`.
+
+### Optionnel : serveur autonome
+
+Le SDK fournit aussi `checker.Server`, une ossature HTTP pour exécuter un checker comme un point d'accès distant plutôt que (ou en plus) d'un plugin chargé dans le processus. Elle expose les routes `/health` et `/collect`, ainsi que `/definition`, `/evaluate` et `/report` lorsque le provider implémente les interfaces optionnelles correspondantes. Un provider qui implémente `CheckerInteractive` (`RenderForm` / `ParseForm`) dispose en outre d'un formulaire `/check` destiné aux humains, utilisable en dehors de happyDomain. Voir le [README du SDK](https://git.happydns.org/checker-sdk-go) pour les détails ; le mode plugin décrit plus haut n'en a pas besoin.
 
 ---
 
-## Compilation
+## Contraintes de build
 
-```bash
-go build -buildmode=plugin -o happydomain-plugin-test-myplugin.so \
-    git.happydns.org/happyDomain/plugins/myplugin
-```
+Le paquet `plugin` de Go est intransigeant. Pour se charger correctement, votre plugin doit être compilé avec :
 
-`Makefile` minimal :
+- la **même version de la chaîne d'outils Go** que happyDomain, jusqu'au même niveau de correctif ;
+- les **mêmes versions de chaque dépendance partagée** (à figer dans votre `go.mod`, en vendorisant les versions exactes que happyDomain embarque) ;
+- `CGO_ENABLED=1` ;
+- les mêmes `GOOS` et `GOARCH` que le binaire hôte.
 
-```makefile
-PLUGIN_NAME=myplugin
-TARGET=../happydomain-plugin-test-$(PLUGIN_NAME).so
+Si l'un de ces points ne correspond pas, `plugin.Open` échoue avec une erreur parfois obscure, du type *« plugin was built with a different version of package … »*. L'hôte la journalise et ignore le fichier.
 
-all: $(TARGET)
-
-$(TARGET): *.go
-	go build -buildmode=plugin -o $@ git.happydns.org/happyDomain/plugins/$(PLUGIN_NAME)
-```
-
-Le préfixe `happydomain-plugin-test-` est une convention ; happyDomain charge tous les fichiers présents dans les répertoires de plugins, quel que soit leur nom.
+Le paquet `plugin` de Go ne fonctionne que sur **linux**, **darwin** et **freebsd**. Sur les autres plateformes, happyDomain est construit sans prise en charge des plugins et les répertoires configurés sont ignorés, avec un avertissement journalisé au démarrage.
 
 ---
 
-## Déploiement
+## Sécurité et déploiement
 
-### 1. Copier le fichier `.so`
+### Permissions du répertoire et des fichiers
 
-```bash
-cp happydomain-plugin-test-myplugin.so /usr/lib/happydomain/plugins/
-```
+Charger un fichier `.so` revient à exécuter du code arbitraire avec les droits du processus happyDomain. Le chargeur impose donc des règles strictes de propriété avant de toucher au moindre fichier :
 
-### 2. Indiquer le répertoire à happyDomain
+- Le répertoire des plugins **ne doit pas être un lien symbolique** : happyDomain refuse de le suivre, pour éviter qu'il soit redirigé vers un chemin contrôlé par un attaquant.
+- Le répertoire des plugins **ne doit pas être accessible en écriture au groupe ni à tous**. Un répertoire modifiable par quelqu'un d'autre que son propriétaire est traité comme une erreur de configuration bloquante et interrompt le chargement.
+- Tout fichier `.so` **accessible en écriture au groupe ou à tous est ignoré** (journalisé puis écarté), même dans un répertoire par ailleurs verrouillé.
 
-`happydomain.conf` :
-
-```
-plugins-directories=/usr/lib/happydomain/plugins
-```
-
-Variable d'environnement :
+En pratique : conservez le répertoire détenu par l'utilisateur happydomain, en mode `0755`, et les fichiers de plugins en mode `0644`.
 
 ```bash
-HAPPYDOMAIN_PLUGINS_DIRECTORIES=/usr/lib/happydomain/plugins
+sudo install -d -m 0755 -o happydomain /var/lib/happydomain/plugins
+sudo install -m 0644 -o happydomain checker-dummy.so /var/lib/happydomain/plugins/
 ```
 
-Plusieurs répertoires peuvent être listés en les séparant par des virgules.
+### Construire le plugin
 
-### 3. Vérifier les journaux
-
-En cas de chargement réussi :
-
-```
-Plugin My Plugin loaded (version 1.0)
+```bash
+CGO_ENABLED=1 go build -buildmode=plugin -o checker-dummy.so ./plugin
 ```
 
-En cas de conflit de nom ou d'erreur de chargement, un avertissement est journalisé avec le nom du fichier et la raison.
+### Indiquer le répertoire à happyDomain
+
+Le répertoire se configure avec l'option **`--plugins-directory`**, qui **peut être répétée** pour analyser plusieurs répertoires :
+
+```bash
+happydomain --plugins-directory /var/lib/happydomain/plugins
+```
+
+La variable d'environnement équivalente est `HAPPYDOMAIN_PLUGINS_DIRECTORY`.
+
+Le chargeur analyse chaque répertoire configuré et tente de charger tous les fichiers `.so` qu'il y trouve. Un plugin qui échoue au chargement (mauvaise compilation, symboles absents, panique dans sa fabrique) est journalisé puis ignoré, sans interrompre le démarrage : un seul `.so` défectueux n'empêche jamais le chargement des autres.
+
+### Redémarrer et vérifier les journaux
+
+```bash
+sudo systemctl restart happydomain
+```
+
+En cas de chargement réussi, happyDomain journalise :
+
+```
+Plugin com.example.dummy (/var/lib/happydomain/plugins/checker-dummy.so) loaded
+```
 
 ---
 
-## Implémentations de référence
+## Licence
 
-Deux plugins sont fournis dans ce répertoire :
+Les plugins checker n'importent que `git.happydns.org/checker-sdk-go/checker`, sous licence **Apache-2.0**. Le SDK a été délibérément détaché du cœur de happyDomain (sous AGPL-3.0) pour offrir une API publique réduite et stable aux checkers tiers.
 
-- **`matrix/`** — interroge l'API de test de fédération Matrix. Illustre `ApplyToService` avec `LimitToServices` et `AdminOpts` pour l'URL du serveur tiers.
-- **`zonemaster/`** — pilote l'API JSON-RPC de Zonemaster, attend la fin du test et agrège les résultats par niveau de sévérité. Illustre `AutoFillDomainName`, `UserOpts` pour la sélection de la langue et la gestion de statuts multi-niveaux.
+Un plugin construit avec ce SDK n'est donc **pas** une œuvre dérivée de happyDomain. Vous pouvez distribuer votre `.so` sous la licence de votre choix (MIT, Apache, propriétaire ou AGPL, selon vos besoins).
+
+---
+
+## Implémentation de référence
+
+[`checker-dummy`](https://git.happydns.org/checker-dummy) est le modèle complet et documenté dont s'inspire cette page. Partez-en pour écrire votre propre checker.

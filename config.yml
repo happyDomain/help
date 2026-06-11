@@ -62,5 +62,17 @@ params:
     - identifier: relearn-dark
 
 
+# The relearn theme attaches CSS classes to generated blocks (e.g. the
+# `children` shortcode appends `{class="children ..."}` after its list).
+# Goldmark only interprets that as block attributes when block parsing is
+# enabled; otherwise it is rendered as literal text.
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+    renderer:
+      unsafe: true
+
 outputs:
   home: [ "HTML", "RSS", "PRINT"]
