@@ -4,9 +4,6 @@ title: Welcome to happyDomain
 author: Frederic
 description: "Finally a simple interface for domain names."
 archetype: home
-aliases:
-    en/pages/login
-    en/pages/signup
 ---
 
 happyDomain is an interface that centralize your domain names and reduces the usual friction points.

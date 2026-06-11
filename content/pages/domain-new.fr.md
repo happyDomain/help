@@ -1,7 +1,7 @@
 ---
 date: 2020-12-09T18:12:45+01:00
 title: Importer un domaine
-weight: 20
+weight: 800
 ---
 
 Importer un domaine dans happyDomain ne rend pas happyDomain propriétaire de votre domaine. Cette action n'implique aucune modification auprès de votre hébergeur habituel. happyDomain va communiquer avec votre hébergeur ou votre serveur afin de consulter les services qui sont actuellement enregistrés.

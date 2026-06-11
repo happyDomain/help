@@ -2,7 +2,7 @@
 date: 2026-04-05T12:00:00+02:00
 title: Surveillance & Vérifications
 author: nemunaire
-weight: 35
+weight: 1700
 description: "Mettez en place des vérifications automatiques pour surveiller vos domaines et vos services"
 ---
 

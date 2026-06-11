@@ -4,7 +4,7 @@ title: Paramètres de l'hébergeur
 aliases:
     source-new-state
     source-update
-weight: 19
+weight: 600
 ---
 
 Vous accédez à cet écran soit :

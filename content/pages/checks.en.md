@@ -2,7 +2,7 @@
 date: 2026-04-05T12:00:00+02:00
 title: Monitoring & Checks
 author: nemunaire
-weight: 35
+weight: 1700
 description: "Set up automated health checks to monitor your domains and services"
 ---
 

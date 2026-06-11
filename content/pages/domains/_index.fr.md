@@ -3,7 +3,7 @@ date: 2020-12-09T18:12:45+01:00
 title: Regrouper vos domaines
 aliases:
     home
-weight: 10
+weight: 300
 ---
 
 happyDomain vous apporte une interface graphique unifiée et avec des fonctionnalités modernes quelque soit l'endroit où sont hébergés vos noms de domaine. Ils peuvent être sur un serveur DNS (PowerDNS, bind, knot, ...) qui vous est propre, ou bien chez un ou plusieurs hébergeurs (une 50aine sont supportés à l'heure actuelle).
@@ -13,7 +13,7 @@ happyDomain vous apporte une interface graphique unifiée et avec des fonctionna
 
 La page d'accueil présente la liste de l'ensemble des domaines gérés par happyDomain, quelque soit leur hébergeur :
 
-![Les domaines gérés par happyDomain](domain-list.png)
+![Les domaines gérés par happyDomain](domain-list.webp)
 
 Cliquez sur l'un des domaines pour commencer à [y apporter des modifications]({{% relref "domain-abstract" %}}) (ajouter un sous-domaine, ajouter un service, ...).
 
@@ -22,7 +22,7 @@ Cliquez sur l'un des domaines pour commencer à [y apporter des modifications]({
 
 Sur la droite, vous voyez la liste des différents hébergeurs de vos domaines :
 
-![Les hébergeurs de vos domaines](hosters-list.png)
+![Les hébergeurs de vos domaines](providers-list.webp)
 
 Vous pouvez [ajouter un nouvel hébergeur]({{% relref "provider-new-choice" %}}) en cliquant sur le bouton +, présent dans l'en-tête du tableau.
 
@@ -30,7 +30,7 @@ En cliquant sur une ligne de ce tableau, vous filtrerez la liste des domaines po
 
 Vous verrez aussi, si l'hébergeur permet de lister les domaines qui vous appartiennent, les domaines que vous pouvez ajouter à happyDomain :
 
-![Filtrage des domaines en fonction de l'hébergeur](hoster-ovh.png)
+![Filtrage des domaines en fonction de l'hébergeur](filtered-by-provider.webp)
 
 Pour afficher à nouveau la liste dans son intégralité, recliquez simplement sur l'hébergeur qui est sélectionné.
 
@@ -39,7 +39,7 @@ Pour afficher à nouveau la liste dans son intégralité, recliquez simplement s
 
 Si vous constatez une erreur ou n'avez plus besoin d'un hébergeur, cliquez sur les ... sur la ligne de l'hébergeur concerné. Vous aurez alors la possibilité de choisir entre [mettre à jour les informations]({{% relref "provider-update" %}}) ou supprimer l'hébergeur :
 
-![Modification ou suppression d'un hébergeur](hoster-edit.png)
+![Modification ou suppression d'un hébergeur](provider-menu.webp)
 
 Notez que vous ne pourrez pas supprimer l'hébergeur tant que des domaines y faisant référence existeront dans la liste de gauche.
 
@@ -48,10 +48,10 @@ Notez que vous ne pourrez pas supprimer l'hébergeur tant que des domaines y fai
 
 Vous avez un nouveau domaine que vous souhaitez gérer dans happyDomain ? Commencez par entrer son nom dans le champ présent sous la liste. Vous serez ensuite guidé vers l'écran [permettant de choisir l'hébergeur]({{% relref "domain-new" %}}).
 
-![Emplacement pour ajouter un domaine qui n'est pas listé](new-domain.png)
+![Emplacement pour ajouter un domaine qui n'est pas listé](new-domain.webp)
 
-Le champ n'apparaît pas lorsqu'un hébergeur est sélectionné à droite. Sauf si cet hébergeur ne permet pas de lister les domaines :
+Certains hébergeurs DNS vous permettent de créer un domaine directement dans leur base de données, même s'il n'était pas déjà enregistré. Vous devrez d'abord sélectionner le bon hébergeur. Vous verrez alors un bouton « Créer sur » dédié.
 
-![Cas particulier d'ajout pour les serveurs DNS autoritaire](hoster-self.png)
+![Certains hébergeurs permettent de créer un domaine](create-domain-on-provider.webp)
 
-Dans ce cas, la validation du champ recherchera automatiquement le nouveau domaine auprès de l'hébergeur sélectionné, comme l'indique le message juste au dessus du champ.
+Certains hébergeurs peuvent vous facturer cette action, soyez donc attentif si cela implique d'acheter réellement le domaine.

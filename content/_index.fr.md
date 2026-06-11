@@ -4,9 +4,6 @@ title: happyDomain
 description: "L'interface des noms de domaine."
 author: nemunaire
 archetype: home
-aliases:
-    fr/pages/login
-    fr/pages/signup
 ---
 
 happyDomain est une interface qui centralise vos noms de domaines et réduit les points de friction habituels.

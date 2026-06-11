@@ -1,9 +1,9 @@
 baseURL: https://help.happydomain.org/
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: true
+enableGitInfo: true
 
 theme: hugo-theme-relearn
-
 
 languages:
   en:
@@ -50,6 +50,7 @@ params:
   # next to it (a single space resolves to an empty logo title).
   linkTitle: " "
   showVisitedLinks: true
+  hideAuthorEmail: true
   mermaid: false
   # "auto" follows the OS light/dark preference: light -> green, dark ->
   # relearn-dark. Both must be declared as variants so the theme attaches the
@@ -60,7 +61,6 @@ params:
       auto: ["green", "relearn-dark"]
     - identifier: green
     - identifier: relearn-dark
-
 
 # The relearn theme attaches CSS classes to generated blocks (e.g. the
 # `children` shortcode appends `{class="children ..."}` after its list).
@@ -75,4 +75,4 @@ markup:
       unsafe: true
 
 outputs:
-  home: [ "HTML", "RSS", "PRINT"]
+  home: ["HTML", "RSS", "PRINT"]

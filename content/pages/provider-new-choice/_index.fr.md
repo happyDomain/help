@@ -3,7 +3,7 @@ date: 2020-12-09T18:12:45+01:00
 title: Ajouter un hébergeur
 aliases:
     source-new-choice
-weight: 17
+weight: 500
 ---
 
 Vous accédez à cet écran en cliquant sur le lien [« Les hébergeurs de mes domaines »]({{% relref "provider-list" %}}) dans le menu en haut, puis en cliquant sur le bouton « + Ajouter un nouvel hébergeur de domaines ».

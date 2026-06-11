@@ -5,7 +5,7 @@ title: List your name providers
 aliases:
     hosters
     source-list
-weight: 15
+weight: 400
 ---
 
 You can access this page by clicking on the the top menu link "The hosts of my domains".
@@ -14,9 +14,9 @@ You can access this page by clicking on the the top menu link "The hosts of my d
 
 This page shows only the list of registries and domain hosts you have added to your account, and [allows you to add more]({{% relref "provider-new-choice" %}}).
 
-![The hosters of your domains](hosters-list.png)
+![The hosters of your domains](providers-list.webp)
 
 You can add a new host by clicking on the "+" button at the top of the page.
 
-By clicking on a row of the table, you will access the parameters used by happyDomain to contact this host.
+By clicking on a row of the table, you will access [the parameters used by happyDomain to contact this host]({{% relref "provider-update" %}}).
 This is where you'll be able to modify the name you gave to this host, and where you'll be able to modify the access parameters.

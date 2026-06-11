@@ -5,7 +5,7 @@ title: Hosting provider settings
 aliases:
     source-new-state
     source-update
-weight: 19
+weight: 600
 ---
 
 You access this screen either:

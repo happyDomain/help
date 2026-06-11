@@ -2,7 +2,7 @@
 date: 2021-01-12T21:38:49+02:00
 title: Import a domain
 author: Frederic
-weight: 20
+weight: 800
 ---
 
 Importing a domain into happyDomain does not make happyDomain the owner of your domain. This action does not involve any changes to your usual hosting provider. happyDomain will contact your hosting provider or server to check which services are currently registered.

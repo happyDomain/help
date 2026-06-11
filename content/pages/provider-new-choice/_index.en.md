@@ -4,7 +4,7 @@ author: Frederic
 title: Add a provider
 aliases:
     source-new-choice
-weight: 17
+weight: 500
 ---
 
 You access this screen by clicking on the ["My domain providers"]({{% relref "provider-list" %}}) link in the top menu, then by clicking on the "+ Add a new domain host" button.
