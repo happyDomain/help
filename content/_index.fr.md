@@ -15,13 +15,15 @@ avoir toute la puissances des noms de domaines, sans devoir lire et apprendre to
 Voici un aperçu des principales fonctionnalités d'happyDomain :
 
 - regrouper les noms de domaines de plus de 45 prestataires de nom de domaine ou serveurs faisant autorité,
-- guider l'administrateur au moyen de formulaires clairs,
-- visualiser clairement les changements qui seront propagés,
-- garder un historique des changements effectués sur la zone,
-- pouvoir revenir à un état antérieur de la zone en un clic,
-- regrouper les enregistrements par services/besoins : emails, délégation, serveur, répartition de charge, ...
 - abstraire toute la complexité technique en une vue logique,
-- importer/exporter la zone sous forme d'un fichier standard,
+- regrouper les enregistrements par services/besoins : e-mails, site web, délégation, répartition de charge, ...
+- guider l'administrateur au moyen de formulaires clairs,
+- visualiser le détail des changements avant de les publier, et choisir précisément ceux à appliquer,
+- garder un historique des changements et revenir à un état antérieur de la zone en un clic,
+- surveiller vos domaines et services grâce à des vérifications automatiques (expiration, DNSSEC, temps de réponse, ...),
+- être alerté par notifications dès qu'une vérification change d'état,
+- vérifier la disponibilité d'un domaine à l'enregistrement et inspecter n'importe quel domaine (WHOIS, résolveur DNS),
+- importer/exporter la zone sous forme d'un fichier standard (format BIND),
 - garder une trace des actions pour les auditer plus tard,
 - automatiser des tâches via une API REST.
 

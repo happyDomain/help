@@ -15,13 +15,15 @@ to have all the power of domain names, without having to read and learn all the 
 Here's an overview of happyDomain's main features:
 
 - consolidate domain names from over 45 domain name providers or authoritative servers,
-- guide administrators with clear forms,
-- clearly visualize the changes that will be propagated,
-- keep a history of changes made to the zone,
-- return to a previous zone status with a single click,
-- group records by services/needs: email, delegation, server, load balancing, etc.
 - abstract all technical complexity into a logical view,
-- import/export the zone as a standard file,
+- group records by services/needs: email, website, delegation, load balancing, etc.
+- guide administrators with clear forms,
+- review the details of your changes before publishing, and pick exactly which ones to apply,
+- keep a history of changes and roll back to a previous zone state with a single click,
+- monitor your domains and services with automatic checks (expiration, DNSSEC, response time, etc.),
+- get notified as soon as a check changes state,
+- check whether a domain is available for registration and inspect any domain (WHOIS, DNS resolver),
+- import/export the zone as a standard file (BIND format),
 - keep track of actions for later auditing,
 - automate tasks via a REST API.
 
