@@ -174,7 +174,25 @@ Certain bureau d'enregistrement nécessitent que les applications tierces s'iden
 #### Bind
 
 `with-bind-provider`
-: Active BIND en tant que fournisseur DNS (attention, ce paramètre n'est pas adapté à un environnement partagé/cloud car il accède au système de fichiers local).
+: Active BIND en tant que fournisseur DNS, en le confinant au répertoire indiqué (attention, ce paramètre n'est pas adapté à un environnement partagé/cloud car il accède au système de fichiers local).
+
+Cette option attend le chemin absolu d'un répertoire contenant vos fichiers de zone, ce n'est pas un simple interrupteur : il n'est pas possible d'activer le fournisseur sans déclarer au moins un répertoire.
+
+Les utilisateurs de l'instance ne peuvent alors faire pointer leur connecteur *Bind files/RFC 1035* que vers ce répertoire ou vers l'un de ses sous-répertoires. Tout autre chemin est refusé, aussi bien à l'enregistrement du connecteur qu'à chaque listage, lecture ou écriture de zone : un connecteur enregistré avant l'existence de cette restriction est donc lui aussi neutralisé.
+
+Les liens symboliques sont résolus avant la comparaison, si bien qu'un lien déposé dans un répertoire autorisé ne permet pas d'en sortir. Les répertoires autorisés sont supposés appartenir à l'administrateur de l'instance, et non être accessibles en écriture à ses utilisateurs.
+
+Répétez l'option sur la ligne de commande pour autoriser plusieurs répertoires :
+
+```
+./happydomain -with-bind-provider /etc/named/zones -with-bind-provider /var/named
+```
+
+Dans l'environnement ou dans un fichier de configuration, où une option ne peut apparaître qu'une seule fois, séparez les répertoires avec le séparateur de liste de chemins (`:` sous UNIX) :
+
+```
+HAPPYDOMAIN_WITH_BIND_PROVIDER=/etc/named/zones:/var/named
+```
 
 
 #### OVH

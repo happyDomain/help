@@ -175,7 +175,25 @@ Some registrars require third-party applications to identify themselves in addit
 #### Bind
 
 `with-bind-provider`
-: Enable the BIND provider (not suitable for cloud/shared instance as it'll access the local file system).
+: Enable the BIND provider, confined to the given directory (not suitable for cloud/shared instance as it'll access the local file system).
+
+This option expects the absolute path of a directory containing your zone files, it is not a simple on/off switch: there is no way to enable the provider without declaring at least one directory.
+
+Users of the instance can then only point their *Bind files/RFC 1035* connector at that directory or at one of its subdirectories. Any other path is refused, both when the connector is saved and every time a zone is listed, read or written, so a connector stored before this restriction existed is neutralized as well.
+
+Symbolic links are resolved before the comparison, so a link placed inside an allowed directory cannot be used to escape it. The allowed directories are expected to belong to the administrator of the instance, not to be writable by its users.
+
+Repeat the option on the command line to allow several directories:
+
+```
+./happydomain -with-bind-provider /etc/named/zones -with-bind-provider /var/named
+```
+
+In the environment or in a configuration file, where an option can only appear once, separate the directories with the path list separator (`:` on UNIX):
+
+```
+HAPPYDOMAIN_WITH_BIND_PROVIDER=/etc/named/zones:/var/named
+```
 
 
 #### OVH

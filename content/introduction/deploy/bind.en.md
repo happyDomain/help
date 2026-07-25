@@ -1,14 +1,14 @@
 ---
 data: 2024-06-26T20:44:25+02:00
-title: Connect to a remote BIND server
+title: Connect to a BIND server
 weight: 30
 ---
 
 [BIND](https://www.isc.org/bind/) is an authoritative and recursive DNS server developed by the [Internet Systems Consortium](https://isc.org).
 
-It is possible to use it with happyDomain through [Dynamic DNS (RFC 2136)](https://www.rfc-editor.org/rfc/rfc2136).
+It is possible to use it with happyDomain through [Dynamic DNS (RFC 2136)](https://www.rfc-editor.org/rfc/rfc2136), which works with a remote server, or by editing the zone files directly, when happyDomain runs on the same host.
 
-This documentation will guide you through configuring BIND to enable Dynamic DNS and connect your domains to happyDomain.
+This documentation will guide you through configuring BIND to enable Dynamic DNS and connect your domains to happyDomain, then through the zone file alternative.
 
 
 ## Configure BIND to enable Dynamic DNS
@@ -100,3 +100,23 @@ Follow these steps:
 Once the provider is added, it does not allow you to list existing domains, but you can still manually add all your domains.
 
 By following these steps, you will have configured BIND to work with happyDomain using Dynamic DNS, ensuring secure and authenticated DNS updates.
+
+
+## Editing zone files directly
+
+When happyDomain runs on the same host as BIND, it can also edit the zone files on disk instead of going through Dynamic DNS. This is the *Bind files/RFC 1035* connector.
+
+As it gives access to the local file system, this connector is disabled by default and has to be enabled by the administrator of the instance, who must declare which directory it may use:
+
+```
+./happydomain -with-bind-provider /etc/named/zones
+```
+
+Users are confined to that directory and its subdirectories, so they cannot read or overwrite a file located elsewhere on the host. See [the `with-bind-provider` option]({{% relref "config#bind" %}}) for the details, including how to allow several directories.
+
+Once the option is set, the connector is available on the host selection page and asks for two fields:
+
+- **Directory**: where the zone files are stored. It has to be the allowed directory, or one of its subdirectories.
+- **File format**: how the file of a zone is named, `%U.zone` by default. It must remain a bare file name, without any path separator. The available placeholders are documented in [the dnscontrol documentation](https://docs.dnscontrol.org/service-providers/providers/bind#filenameformat).
+
+Remember that BIND does not reload a zone file on its own: after publishing your changes, run `rndc reload <zone>` (or configure BIND to watch the files) for them to be served.
