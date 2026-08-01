@@ -3,7 +3,7 @@ title: "Writing a happyDomain Checker Plugin"
 description: "Technical guide for developing checker plugins for happyDomain"
 ---
 
-happyDomain can be extended with external **checker plugins** — shared libraries (`.so` files) that add automated diagnostics on zones, domains, services or users. A checker plugin is loaded into the running happyDomain process at startup; the operator simply drops a `.so` file into a configured directory, no recompilation of the server required.
+happyDomain can be extended with external **checker plugins**: shared libraries (`.so` files) that add automated diagnostics on zones, domains, services or users. A checker plugin is loaded into the running happyDomain process at startup; the operator simply drops a `.so` file into a configured directory, no recompilation of the server required.
 
 A checker has two halves: it **collects** raw data about a target (an observation), then **evaluates** that data against a set of rules to produce a status. Results are stored and displayed in the happyDomain UI alongside the domain or service they concern.
 
@@ -158,6 +158,26 @@ The SDK also provides `checker.Server`, HTTP scaffolding for running a checker a
 
 ---
 
+## The host must be a plugin-capable build
+
+{{< notice style="warning" >}}
+The default happyDomain binaries and the default container image **cannot load
+plugins**. They are compiled statically with `CGO_ENABLED=0`, which keeps them
+small and portable but disables Go's `plugin` package entirely.
+{{< /notice >}}
+
+To use plugins, run a **`-cgo` build**:
+
+- **binary**: on [get.happydomain.org](https://get.happydomain.org), pick the
+  asset whose name ends in `-cgo` (for example `happydomain-linux-amd64-cgo`);
+- **container**: use an image tag suffixed with `-cgo`.
+
+These builds are dynamically linked against the system C library, so they are
+only published for the platforms where Go supports plugins (Linux, and more
+generally the platforms listed below). If plugins are not part of your
+deployment, the default static build remains the better choice.
+
+
 ## Build constraints
 
 Go's `plugin` package is unforgiving. To load successfully, your plugin must be built with:
@@ -179,7 +199,7 @@ Go's `plugin` package only works on **linux**, **darwin** and **freebsd**. On ot
 
 Loading a `.so` file is arbitrary code execution as the happyDomain process, so the loader enforces strict ownership before it touches any file:
 
-- The plugin directory **must not be a symbolic link** — happyDomain refuses to follow one, to prevent it being redirected to an attacker-controlled path.
+- The plugin directory **must not be a symbolic link**: happyDomain refuses to follow one, to prevent it being redirected to an attacker-controlled path.
 - The plugin directory **must not be group- or world-writable**. A directory writable by anyone but the owner is treated as a fatal misconfiguration and aborts loading.
 - Any individual `.so` file that is **group- or world-writable is skipped** (logged and ignored), even inside a properly locked-down directory.
 
@@ -206,7 +226,7 @@ happydomain --plugins-directory /var/lib/happydomain/plugins
 
 The equivalent environment variable is `HAPPYDOMAIN_PLUGINS_DIRECTORY`.
 
-The loader scans each configured directory and attempts to load every `.so` file it finds. An individual plugin that fails to load — wrong build, missing symbols, a panic in its factory — is logged and skipped without aborting startup; one bad `.so` never prevents the others from loading.
+The loader scans each configured directory and attempts to load every `.so` file it finds. An individual plugin that fails to load (wrong build, missing symbols, a panic in its factory) is logged and skipped without aborting startup; one bad `.so` never prevents the others from loading.
 
 ### Restart and check the logs
 
@@ -226,7 +246,7 @@ Plugin com.example.dummy (/var/lib/happydomain/plugins/checker-dummy.so) loaded
 
 Checker plugins import only `git.happydns.org/checker-sdk-go/checker`, which is licensed under **Apache-2.0**. The SDK is deliberately split out of the AGPL-3.0 happyDomain core as a small, stable public API for third-party checkers.
 
-A plugin built against this SDK is therefore **not** a derivative work of happyDomain, and you may distribute your checker `.so` under any license you choose (MIT, Apache, proprietary, AGPL — whatever fits your needs).
+A plugin built against this SDK is therefore **not** a derivative work of happyDomain, and you may distribute your checker `.so` under any license you choose (MIT, Apache, proprietary, AGPL, whatever fits your needs).
 
 ---
 

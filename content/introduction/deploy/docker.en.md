@@ -7,7 +7,7 @@ weight: 15
 happyDomain is sponsored by Docker.
 You'll find the official container image on [the Docker Hub](https://hub.docker.com/r/happydomain/happydomain/).
 
-The image runs happyDomain as a single process with a LevelDB database stored on disk — no extra database to configure.
+The image runs happyDomain as a single process with a LevelDB database stored on disk: no extra database to configure. **Every checker shipped with happyDomain is built into the binary**, so a single container is already a complete, fully featured happyDomain.
 
 
 ## Supported tags and architectures
@@ -17,6 +17,11 @@ All tags are built for `amd64`, `arm64` and `arm/v7` and are based on Alpine.
 Currently available tags:
 
 - `latest`: the most up-to-date version, corresponding to the master branch.
+
+Tags suffixed with **`-cgo`** contain a dynamically linked build, the only one
+able to load [plugins]({{% relref "/reference/plugins" %}}). Use them only if
+you need that: the default tags are statically built, smaller and more
+portable, but they ignore any plugin directory.
 
 
 ## Quick start (single container)
@@ -47,22 +52,25 @@ docker run \
 ```
 
 
-## Full deployment with all checkers
+## Recommended deployment: `docker compose`
 
-happyDomain ships every checker built-in, but several of them rely on
-external tools (DNSViz, Zonemaster, Matrix federation tester) that are
-packaged in their own container images. Running these as separate services
-gives you the full checker experience and better isolation.
+This is the setup we recommend for **almost every deployment**, from a personal
+instance to a company-wide one. It is the same file you'll find at the root of
+[the happyDomain repository](https://github.com/happyDomain/happydomain/blob/master/docker-compose.yml).
 
-The recommended approach is `docker compose`. Save the following file as
-`docker-compose.yml` and run `docker compose up -d`.
+Beside happyDomain itself, it runs the few third-party backends that some
+checkers need to reach (DNSViz, Zonemaster and the Matrix federation tester),
+plus a local recursive resolver so that DNS lookups don't depend on your
+hosting provider's resolver.
+
+Save the file as `docker-compose.yml` and run `docker compose up -d`.
 
 ```yaml
 services:
   happydomain:
     image: happydomain/happydomain
     ports:
-      - "8080:8081"
+      - "8081:8081"
     environment:
       # Uncomment for single-user / testing
       # HAPPYDOMAIN_NO_AUTH: "1"
@@ -70,250 +78,165 @@ services:
       # Mail configuration (required for multi-user production use)
       # HAPPYDOMAIN_MAIL_SMTP_HOST: "mailer"
 
-      # ── DNS / DNSSEC ─────────────────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_DNSVIZ_ENDPOINT: "http://checker-dnsviz:8080"
-      HAPPYDOMAIN_CHECKER_DNSSEC_ENDPOINT: "http://checker-dnssec:8080"
-      HAPPYDOMAIN_CHECKER_ZONEMASTER_ENDPOINT: "http://checker-zonemaster:8080"
+      # Use the local helper backends instead of the public ones
+      HAPPYDOMAIN_CHECKER_DNSVIZ_ENDPOINT: "http://dnsviz:8080"
       HAPPYDOMAIN_CHECKER_ZONEMASTER_ZONEMASTERAPIURL: "http://zonemaster:5000"
-      HAPPYDOMAIN_CHECKER_DELEGATION_ENDPOINT: "http://checker-delegation:8080"
-      HAPPYDOMAIN_CHECKER_AUTHORITATIVE_CONSISTENCY_ENDPOINT: "http://checker-authoritative-consistency:8080"
-      HAPPYDOMAIN_CHECKER_ALIAS_ENDPOINT: "http://checker-alias:8080"
-      HAPPYDOMAIN_CHECKER_LEGACY_RECORDS_ENDPOINT: "http://checker-legacy-records:8080"
-      HAPPYDOMAIN_CHECKER_NS_RESTRICTIONS_ENDPOINT: "http://checker-ns-restrictions:8080"
-      HAPPYDOMAIN_CHECKER_RESOLVER_PROPAGATION_ENDPOINT: "http://checker-resolver-propagation:8080"
-      HAPPYDOMAIN_CHECKER_REVERSE_ZONE_ENDPOINT: "http://checker-reverse-zone:8080"
-      HAPPYDOMAIN_CHECKER_PTR_ENDPOINT: "http://checker-ptr:8080"
-      HAPPYDOMAIN_CHECKER_DANGLING_ENDPOINT: "http://checker-dangling:8080"
-
-      # ── Security / Certificates ───────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_TLS_ENDPOINT: "http://checker-tls:8080"
-      HAPPYDOMAIN_CHECKER_DANE_ENDPOINT: "http://checker-dane:8080"
-      HAPPYDOMAIN_CHECKER_CAA_ENDPOINT: "http://checker-caa:8080"
-      HAPPYDOMAIN_CHECKER_BLACKLIST_ENDPOINT: "http://checker-blacklist:8080"
-
-      # ── E-mail ────────────────────────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_SMTP_ENDPOINT: "http://checker-smtp:8080"
-      HAPPYDOMAIN_CHECKER_EMAIL_AUTOCONFIG_ENDPOINT: "http://checker-email-autoconfig:8080"
-      HAPPYDOMAIN_CHECKER_OPENPGPKEY_SMIMEA_ENDPOINT: "http://checker-email-keys:8080"
-
-      # ── Web & Protocols ───────────────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_HTTP_ENDPOINT: "http://checker-http:8080"
-      HAPPYDOMAIN_CHECKER_SSH_ENDPOINT: "http://checker-ssh:8080"
-      HAPPYDOMAIN_CHECKER_PING_ENDPOINT: "http://checker-ping:8080"
-      HAPPYDOMAIN_CHECKER_SRV_ENDPOINT: "http://checker-srv:8080"
-
-      # ── Collaboration / Messaging ─────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_MATRIXIM_ENDPOINT: "http://checker-matrix:8080"
       HAPPYDOMAIN_CHECKER_MATRIXIM_FEDERATIONTESTERSERVER: "http://matrixfederationtester:8080/api/report?server_name=%s"
-      HAPPYDOMAIN_CHECKER_XMPP_ENDPOINT: "http://checker-xmpp:8080"
-      HAPPYDOMAIN_CHECKER_SIP_ENDPOINT: "http://checker-sip:8080"
 
-      # ── Directory & Auth ──────────────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_LDAP_ENDPOINT: "http://checker-ldap:8080"
-      HAPPYDOMAIN_CHECKER_KERBEROS_ENDPOINT: "http://checker-kerberos:8080"
-      HAPPYDOMAIN_CHECKER_STUNTURN_ENDPOINT: "http://checker-stun-turn:8080"
-
-      # ── CalDAV / CardDAV ──────────────────────────────────────────────────
-      HAPPYDOMAIN_CHECKER_CALDAV_ENDPOINT: "http://checker-caldav:8080"
-      HAPPYDOMAIN_CHECKER_CARDDAV_ENDPOINT: "http://checker-carddav:8080"
-
-      # ── Optional: happyDeliver integration ────────────────────────────────
-      # HAPPYDOMAIN_CHECKER_HAPPYDELIVER_ENDPOINT: "http://checker-happydeliver:8080"
-
+    dns:
+      - 172.28.0.53
     restart: unless-stopped
     volumes:
-      - storage:/var/lib/happydomain:rw
+      - storage:/data:rw
 
-  # ── DNS / DNSSEC checkers ──────────────────────────────────────────────────
+  # Local recursive resolver, so DNS checks don't rely on a third-party resolver
+  unbound:
+    image: alpinelinux/unbound
+    restart: unless-stopped
+    configs:
+      - source: unbound_conf
+        target: /etc/unbound/unbound.conf
+        uid: "100"
+        gid: "101"
+    networks:
+      default:
+        ipv4_address: 172.28.0.53
 
-  checker-dnsviz:
+  # DNSViz analysis backend, used by the DNSSEC visualisation checker
+  dnsviz:
     image: happydomain/checker-dnsviz
     restart: unless-stopped
 
-  checker-dnssec:
-    image: happydomain/checker-dnssec
-    restart: unless-stopped
-
-  checker-zonemaster:
-    image: happydomain/checker-zonemaster
-    restart: unless-stopped
-
+  # Zonemaster backend, used by the Zonemaster checker
   zonemaster:
     image: zonemaster/backend
     command: full
     restart: unless-stopped
 
-  checker-delegation:
-    image: happydomain/checker-delegation
-    restart: unless-stopped
-
-  checker-authoritative-consistency:
-    image: happydomain/checker-authoritative-consistency
-    restart: unless-stopped
-
-  checker-alias:
-    image: happydomain/checker-alias
-    restart: unless-stopped
-
-  checker-legacy-records:
-    image: happydomain/checker-legacy-records
-    restart: unless-stopped
-
-  checker-ns-restrictions:
-    image: happydomain/checker-ns-restrictions
-    restart: unless-stopped
-
-  checker-resolver-propagation:
-    image: happydomain/checker-resolver-propagation
-    restart: unless-stopped
-
-  checker-reverse-zone:
-    image: happydomain/checker-reverse-zone
-    restart: unless-stopped
-
-  checker-ptr:
-    image: happydomain/checker-ptr
-    restart: unless-stopped
-
-  checker-dangling:
-    image: happydomain/checker-dangling
-    restart: unless-stopped
-
-  # ── Security / Certificate checkers ───────────────────────────────────────
-
-  checker-tls:
-    image: happydomain/checker-tls
-    restart: unless-stopped
-
-  checker-dane:
-    image: happydomain/checker-dane
-    restart: unless-stopped
-
-  checker-caa:
-    image: happydomain/checker-caa
-    restart: unless-stopped
-
-  checker-blacklist:
-    image: happydomain/checker-blacklist
-    restart: unless-stopped
-
-  # ── E-mail checkers ────────────────────────────────────────────────────────
-
-  checker-smtp:
-    image: happydomain/checker-smtp
-    restart: unless-stopped
-
-  checker-email-autoconfig:
-    image: happydomain/checker-email-autoconfig
-    restart: unless-stopped
-
-  checker-email-keys:
-    image: happydomain/checker-email-keys
-    restart: unless-stopped
-
-  # ── Web & Protocol checkers ────────────────────────────────────────────────
-
-  checker-http:
-    image: happydomain/checker-http
-    restart: unless-stopped
-
-  checker-ssh:
-    image: happydomain/checker-ssh
-    restart: unless-stopped
-
-  checker-ping:
-    image: happydomain/checker-ping
-    restart: unless-stopped
-    cap_add:
-      - NET_RAW  # required for ICMP ping
-
-  checker-srv:
-    image: happydomain/checker-srv
-    restart: unless-stopped
-
-  # ── Collaboration / Messaging checkers ─────────────────────────────────────
-
-  checker-matrix:
-    image: happydomain/checker-matrix
-    restart: unless-stopped
-
+  # Matrix federation tester, used by the Matrix checker
   matrixfederationtester:
     image: matrixdotorg/federation-tester-backend
     environment:
       BIND_ADDRESS: "0.0.0.0:8080"
     restart: unless-stopped
 
-  checker-xmpp:
-    image: happydomain/checker-xmpp
-    restart: unless-stopped
+configs:
+  unbound_conf:
+    content: |
+      server:
+          verbosity: 1
+          interface: 0.0.0.0
+          port: 53
+          do-ip4: yes
+          do-ip6: no
+          do-udp: yes
+          do-tcp: yes
 
-  checker-sip:
-    image: happydomain/checker-sip
-    restart: unless-stopped
+          access-control: 127.0.0.0/8 allow
+          access-control: 172.28.0.0/24 allow
 
-  # ── Directory & Auth checkers ──────────────────────────────────────────────
+          cache-max-ttl: 60
 
-  checker-ldap:
-    image: happydomain/checker-ldap
-    restart: unless-stopped
+          so-sndbuf: 0
+          so-rcvbuf: 0
 
-  checker-kerberos:
-    image: happydomain/checker-kerberos
-    restart: unless-stopped
-
-  checker-stun-turn:
-    image: happydomain/checker-stun-turn
-    restart: unless-stopped
-
-  # ── CalDAV / CardDAV checkers ──────────────────────────────────────────────
-
-  checker-caldav:
-    image: happydomain/checker-caldav
-    restart: unless-stopped
-
-  checker-carddav:
-    image: happydomain/checker-carddav
-    restart: unless-stopped
+          trust-anchor-file: "/etc/unbound/root.key"
 
 volumes:
   storage:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
 ```
 
-### How it works
+With this stack, **all the checkers shipped with happyDomain are available**:
+they run inside the happyDomain process, and the three services above only
+provide the external analysis engines two or three of them rely on.
 
-Each checker runs as a standalone HTTP service. happyDomain delegates check
-requests to the matching container via the `HAPPYDOMAIN_CHECKER_<ID>_ENDPOINT`
-environment variable. When an endpoint is not set, the corresponding checker
-runs locally inside the happyDomain process instead.
 
-Two checkers rely on additional third-party backends:
+## Where do checkers run?
 
-- **Zonemaster** (`checker-zonemaster`) queries the `zonemaster/backend`
-  service. The `HAPPYDOMAIN_CHECKER_ZONEMASTER_ZONEMASTERAPIURL` variable tells
-  the checker where that backend listens.
-- **Matrix federation tester** (`checker-matrix`) queries the
-  `matrixdotorg/federation-tester-backend` service. The
-  `HAPPYDOMAIN_CHECKER_MATRIXIM_FEDERATIONTESTERSERVER` variable points to its
-  report endpoint.
+There are two separate questions here, and mixing them up is a common source of
+confusion.
 
-### Optional: happyDeliver
+**First, how does happyDomain know a checker exists?** Only two answers:
 
-If you run a [happyDeliver](https://happydeliver.io) instance for mail-flow
-monitoring, uncomment the `HAPPYDOMAIN_CHECKER_HAPPYDELIVER_ENDPOINT` line and
-add the corresponding service:
+- **built-in**: the checker is compiled into the happyDomain binary. Every
+  checker we ship is available this way, and it's what you get with the
+  deployments above;
+- **plugin**: a shared library (`.so`) dropped into a directory passed with
+  `-plugins-directory`, loaded at start-up. This is the only way to add a
+  checker that is *not* part of happyDomain (one you wrote for your own needs,
+  or one from a third party), without patching and rebuilding the server. It
+  requires a **`-cgo` image tag**: the default image is a static build with no
+  plugin support (see [Plugins]({{% relref "/reference/plugins" %}})).
 
-```yaml
-  checker-happydeliver:
-    image: happydomain/checker-happydeliver
-    restart: unless-stopped
+**Then, where does the work actually run?** A registered checker runs inside the
+happyDomain process by default. If you set
+`HAPPYDOMAIN_CHECKER_<ID>_ENDPOINT`, it instead delegates the collection to a
+**standalone container** exposing that checker over HTTP.
+
+The important consequence: a checker container is *not* a way to add a checker.
+The `endpoint` setting only exists for checkers happyDomain already knows about,
+so a home-made checker must first be loaded as a plugin, and only then may you
+point it at a container.
+
+For a given checker, running it locally or delegating it to a container performs
+exactly the same checks and produces the same results. Delegating buys you
+process isolation and the ability to scale a single checker independently; it
+costs you a lot more RAM, more moving parts and a much less pleasant debugging
+experience when one of them misbehaves.
+
+Unless you're operating at a scale where that trade-off pays off, or you need a
+checker that isn't shipped with happyDomain, stay with the compose file above.
+If you do need it, see
+[Running checkers as separate containers]({{% relref "checkers-containers" %}}).
+
+
+## Updating the stack
+
+**1. Check whether the reference `docker-compose.yml` has changed.** Upgrading
+the images is not always enough: a new version may come with a new service (a
+checker that needs its own backend, for instance) or new settings to declare.
+Compare your file with the one in
+[the happyDomain repository](https://github.com/happyDomain/happydomain/blob/master/docker-compose.yml),
+and port the changes that concern you into your own copy:
+
+```
+curl -sO https://raw.githubusercontent.com/happyDomain/happydomain/master/docker-compose.yml
+diff -u docker-compose.yml /path/to/your/docker-compose.yml
 ```
 
-### Optional: blacklist API keys
+**2. Pull the images and recreate the containers.**
 
-The `checker-blacklist` service works without API keys (it uses DNS-based
-blocklists by default), but you can enable additional sources — Google Safe
-Browsing, VirusTotal, abuse.ch URLhaus — by configuring the matching admin
-options from the happyDomain administration interface once the stack is running.
+```
+docker compose up -d --pull always
+```
+
+`--pull always` fetches the latest image for every service before recreating
+the ones that actually changed; the others are left untouched. Your data live
+in the `storage` volume and survive the operation.
+
+Then check that everything came back up, and reclaim the disk space taken by
+the replaced images:
+
+```
+docker compose ps
+docker compose logs -f happydomain
+docker image prune
+```
+
+For a single container started with `docker run`, the equivalent is to pull the
+image, remove the old container and start it again with the same options (your
+volume keeps the data):
+
+```
+docker pull happydomain/happydomain
+docker rm -f my_container
+```
 
 
 ## Admin interface
@@ -326,7 +249,7 @@ docker exec my_container hadmin /api/users
 docker exec my_container hadmin /api/users/0123456789/send_validation_email -X POST
 ```
 
-`hadmin` is a thin wrapper around `curl` — start with the URL path, then add
+`hadmin` is a thin wrapper around `curl`: start with the URL path, then add
 any `curl` options after it.
 
 

@@ -158,6 +158,29 @@ Le SDK fournit aussi `checker.Server`, une ossature HTTP pour exécuter un check
 
 ---
 
+## L'hôte doit être une version compatible avec les plugins
+
+{{< notice style="warning" >}}
+Les binaires happyDomain par défaut et l'image de conteneur par défaut **ne
+peuvent pas charger de plugins**. Ils sont compilés statiquement avec
+`CGO_ENABLED=0`, ce qui les rend plus légers et plus portables, mais désactive
+complètement le paquet `plugin` de Go.
+{{< /notice >}}
+
+Pour utiliser les plugins, exécutez une **version `-cgo`** :
+
+- **binaire** : sur [get.happydomain.org](https://get.happydomain.org),
+  choisissez le fichier dont le nom se termine par `-cgo` (par exemple
+  `happydomain-linux-amd64-cgo`) ;
+- **conteneur** : utilisez une étiquette d'image suffixée par `-cgo`.
+
+Ces versions sont liées dynamiquement à la bibliothèque C du système : elles ne
+sont donc publiées que pour les plateformes où Go prend en charge les plugins
+(Linux, et plus généralement celles listées ci-dessous). Si les plugins ne font
+pas partie de votre déploiement, la version statique par défaut reste le
+meilleur choix.
+
+
 ## Contraintes de build
 
 Le paquet `plugin` de Go est intransigeant. Pour se charger correctement, votre plugin doit être compilé avec :
