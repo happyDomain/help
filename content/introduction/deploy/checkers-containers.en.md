@@ -164,9 +164,24 @@ services:
       # ── Optional: happyDeliver integration ────────────────────────────────
       # HAPPYDOMAIN_CHECKER_HAPPYDELIVER_ENDPOINT: "http://checker-happydeliver:8080"
 
+    dns:
+      - ${HAPPYDOMAIN_DNS_IP:-172.28.0.53}
     restart: unless-stopped
     volumes:
       - storage:/var/lib/happydomain:rw
+
+  # Local recursive resolver, so DNS checks don't rely on a third-party resolver
+  unbound:
+    image: alpinelinux/unbound
+    restart: unless-stopped
+    configs:
+      - source: unbound_conf
+        target: /etc/unbound/unbound.conf
+        uid: "100"
+        gid: "101"
+    networks:
+      default:
+        ipv4_address: ${HAPPYDOMAIN_DNS_IP:-172.28.0.53}
 
   # ── DNS / DNSSEC checkers ──────────────────────────────────────────────────
 
@@ -319,8 +334,36 @@ services:
     image: happydomain/checker-carddav
     restart: unless-stopped
 
+configs:
+  unbound_conf:
+    content: |
+      server:
+          verbosity: 1
+          interface: 0.0.0.0
+          port: 53
+          do-ip4: yes
+          do-ip6: no
+          do-udp: yes
+          do-tcp: yes
+
+          access-control: 127.0.0.0/8 allow
+          access-control: ${HAPPYDOMAIN_SUBNET:-172.28.0.0/24} allow
+
+          cache-max-ttl: 60
+
+          so-sndbuf: 0
+          so-rcvbuf: 0
+
+          trust-anchor-file: "/etc/unbound/root.key"
+
 volumes:
   storage:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: ${HAPPYDOMAIN_SUBNET:-172.28.0.0/24}
 ```
 
 
