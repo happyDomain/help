@@ -146,6 +146,9 @@ Notez que sans les options `mail-smtp-*`, happyDomain utilisera le binaire `send
 `mail-smtp-password`
 : Lorsque de l'authentification est nécessaire sur le serveur distant, mot de passe à utiliser.
 
+`no-mail`
+: Désactive tous les e-mails automatiques, et saute l'étape de validation de l'adresse e-mail lors de l'inscription.
+
 
 ### Authentification
 
@@ -165,6 +168,17 @@ Notez que sans les options `mail-smtp-*`, happyDomain utilisera le binaire `send
 : Clef secrète utilisée pour vérifier les tokens JWT.
 
 Voir aussi [paramètres OpenID Connect]({{% relref "oidc" %}}).
+
+#### Comptes et données
+
+Par défaut (connexion embarquée, sans `external-auth`), chaque compte est créé et stocké dans la base de données de **votre propre instance**, quel que soit le `storage-engine` que vous avez configuré ci-dessus. Rien n'est jamais envoyé vers happydomain.org : l'instance hébergée par le projet, `app.happydomain.org`, n'est qu'un déploiement parmi d'autres, totalement indépendant de toute instance que vous faites tourner vous-même.
+
+Les trois options ci-dessus peuvent se combiner pour définir le comportement de l'inscription sur votre instance :
+
+- Configuration par défaut : tout le monde peut s'inscrire librement, et (sauf si `no-mail` est activé) doit valider son adresse e-mail avant que le compte soit utilisable.
+- `no-mail` : l'inscription reste ouverte, mais l'étape de validation par e-mail est sautée ; les comptes sont utilisables immédiatement. Pratique lorsqu'aucun relais SMTP n'est configuré.
+- `disable-registration` : aucun nouveau compte ne peut être créé via le formulaire public ou l'API ; les comptes existants continuent de fonctionner, et des comptes peuvent toujours être créés via `external-auth` ou OIDC.
+- `no-auth` : supprime toute notion de compte ; chaque visiteur partage un unique compte par défaut. Adapté aux installations locales/mono-utilisateur ou d'évaluation.
 
 
 ### Spécifique aux bureaux d'enregistrement

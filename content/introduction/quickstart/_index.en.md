@@ -30,6 +30,10 @@ Go to : <https://app.happydomain.org/join>
 happyDomain will connect to your hosting provider (or local authoritative server).
 Your domain remains hosted where it is today; using happyDomain does not imply any transfer or change of ownership.
 
+{{% notice style="info" title="happyDomain is not your provider" icon="server" %}}
+happyDomain never becomes your provider, at any point. It only acts as a friendly interface on top of your existing setup, whether that is an actual DNS server or a hosting provider. Your data, the zone's content, genuinely lives with your provider (or authoritative server).
+{{% /notice %}}
+
 {{% notice style="info" title="I don't have a domain name yet" icon="question" %}}
 
 We don't sell domain names, you must already have one [with a supported hosting provider](https://app.happydomain.org/providers/features).

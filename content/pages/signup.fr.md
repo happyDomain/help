@@ -7,6 +7,10 @@ description: "Inscrivez-vous sur happyDomain et validez votre adresse e-mail"
 
 Avant de pouvoir gérer vos domaines, il vous faut un compte happyDomain. Sa création prend moins de deux minutes et ne demande qu'une adresse e-mail et un mot de passe.
 
+{{% notice style="info" title="Où se trouve ce compte ?" icon="server" %}}
+Le compte que vous créez ici est stocké dans la base de données de **cette** instance happyDomain, quel que soit le serveur sur lequel vous vous trouvez. Rien n'est envoyé vers happydomain.org, sauf si l'adresse affichée dans votre navigateur est `app.happydomain.org` elle-même, l'instance hébergée par le projet. Les instances auto-hébergées sont entièrement indépendantes : l'administrateur qui fait tourner le serveur contrôle sa base de données et décide si l'inscription et la validation par e-mail sont même activées.
+{{% /notice %}}
+
 ## Remplir le formulaire d'inscription
 
 Depuis la page d'accueil, suivez le lien d'inscription, puis remplissez le formulaire :

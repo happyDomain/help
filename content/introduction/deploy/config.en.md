@@ -147,6 +147,9 @@ Note that without the `mail-smtp-*` options, happyDomain will use the `sendmail`
 `mail-smtp-password`
 : When authentication is required on the remote server, password to use.
 
+`no-mail`
+: Disables all automatic mails, and skips the email verification step at registration.
+
 
 ### Authentication
 
@@ -166,6 +169,17 @@ Note that without the `mail-smtp-*` options, happyDomain will use the `sendmail`
 : Secret key used to verify JWT tokens.
 
 See also [OpenID Connect settings]({{% relref "oidc" %}}).
+
+#### Accounts and data
+
+By default (embedded login, no `external-auth`), every account is created and stored in **your own instance's** database, using whichever `storage-engine` you configured above. Nothing is ever sent to happydomain.org: the project's hosted instance at `app.happydomain.org` is just one deployment among others, entirely separate from any instance you run yourself.
+
+The three options above can be combined to shape how registration behaves on your instance:
+
+- Leave everything default: anyone can self-register, and (unless `no-mail` is set) must validate their email address before the account is usable.
+- `no-mail`: registration stays open, but the email verification step is skipped; accounts are usable immediately. Useful when no SMTP relay is configured.
+- `disable-registration`: no new account can be created through the public form or API; existing accounts still work, and accounts can still be provisioned through `external-auth` or OIDC.
+- `no-auth`: removes the whole notion of accounts; every visitor shares a single default account. Suited for local/single-user or evaluation setups.
 
 
 ### Specific to registrars

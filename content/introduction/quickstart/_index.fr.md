@@ -30,6 +30,10 @@ Rendez-vous sur : <https://app.happydomain.org/join>
 happyDomain va se connecter à votre hébergeur (ou à votre serveur local faisant autorité).
 Votre domaine reste hébergé là où il est aujourd'hui, utiliser happyDomain n'implique aucun transfert ou changement de propriété.
 
+{{% notice style="info" title="happyDomain n'est pas votre prestataire" icon="server" %}}
+happyDomain ne devient pas, à aucun moment, votre prestataire. Il agit seulement comme une interface conviviale par dessus votre déploiement existant (qu'il s'agisse d'un véritable serveur DNS ou d'un prestataire). Vos données, le contenu de la zone, sont véritablement présentes auprès de votre prestataire (ou serveur faisant autorité).
+{{% /notice %}}
+
 {{% notice style="info" title="Je n'ai pas encore de nom de domaine" icon="question" %}}
 
 Nous ne vendons pas de noms de domaine, il faut que vous en disposiez déjà d'un [chez un hébergeur supporté](https://app.happydomain.org/providers/features).
