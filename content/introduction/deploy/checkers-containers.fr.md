@@ -111,6 +111,8 @@ supplémentaires :
 ## Fichier `docker compose` complet
 
 ```yaml
+name: happydomain
+
 services:
   happydomain:
     image: happydomain/happydomain

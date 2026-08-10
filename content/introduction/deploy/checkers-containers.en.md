@@ -100,6 +100,8 @@ choice:
 ## Full compose file
 
 ```yaml
+name: happydomain
+
 services:
   happydomain:
     image: happydomain/happydomain

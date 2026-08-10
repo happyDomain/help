@@ -66,6 +66,8 @@ hosting provider's resolver.
 Save the file as `docker-compose.yml` and run `docker compose up -d`.
 
 ```yaml
+name: happydomain
+
 services:
   happydomain:
     image: happydomain/happydomain
@@ -84,7 +86,7 @@ services:
       HAPPYDOMAIN_CHECKER_MATRIXIM_FEDERATIONTESTERSERVER: "http://matrixfederationtester:8080/api/report?server_name=%s"
 
     dns:
-      - 172.28.0.53
+      - ${HAPPYDOMAIN_DNS_IP:-172.28.0.53}
     restart: unless-stopped
     volumes:
       - storage:/data:rw
@@ -100,7 +102,7 @@ services:
         gid: "101"
     networks:
       default:
-        ipv4_address: 172.28.0.53
+        ipv4_address: ${HAPPYDOMAIN_DNS_IP:-172.28.0.53}
 
   # DNSViz analysis backend, used by the DNSSEC visualisation checker
   dnsviz:
@@ -133,7 +135,7 @@ configs:
           do-tcp: yes
 
           access-control: 127.0.0.0/8 allow
-          access-control: 172.28.0.0/24 allow
+          access-control: ${HAPPYDOMAIN_SUBNET:-172.28.0.0/24} allow
 
           cache-max-ttl: 60
 
@@ -149,7 +151,7 @@ networks:
   default:
     ipam:
       config:
-        - subnet: 172.28.0.0/24
+        - subnet: ${HAPPYDOMAIN_SUBNET:-172.28.0.0/24}
 ```
 
 With this stack, **all the checkers shipped with happyDomain are available**:
