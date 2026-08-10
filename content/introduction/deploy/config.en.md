@@ -131,7 +131,7 @@ Here is a list of the main options:
 We use [`go-mail`](https://github.com/go-mail/mail) as a library to send mails.
 
 `mail-from`
-: Defines the name and address of the sender of emails sent by the service.
+: Defines the name and address of the sender of emails sent by the service. Accepts either a bare address (`info@domain.com`) or a display name followed by the address in angle brackets (`Domain <info@domain.com>`). For example, on the command line: `-mail-from "Domain <info@domain.com>"`; through the environment: `HAPPYDOMAIN_MAIL_FROM="Domain <info@domain.com>"`.
 
 Note that without the `mail-smtp-*` options, happyDomain will use the `sendmail` binary to send mail. This can be coupled with the `msmtp` or `ssmtp` packages, for example, to set the parameters for the whole system.
 
