@@ -10,9 +10,9 @@ Le vérificateur **LDAP** sonde le déploiement LDAP d'un domaine de bout en bou
 
 Il s'agit d'un vérificateur de **niveau service** : il cible un service *LDAP* (`abstract.LDAP`) publié sur un sous-domaine et se configure depuis l'onglet **Vérifications** de ce service. Pour chaque transport, il sonde `_ldap._tcp` (repli sur le port 389) et `_ldaps._tcp` (repli sur le port 636), en testant chaque adresse A/AAAA résolue par famille d'adresses.
 
-{{% notice style="info" title="La posture TLS est intégrée, pas dupliquée" %}}
+{{% callout style="info" title="La posture TLS est intégrée, pas dupliquée" %}}
 Le vérificateur LDAP confirme uniquement qu'une session TLS peut être établie, en enregistrant la version et l'algorithme négociés à titre de contexte. Chaque point d'accès sondé est publié comme entrée de découverte `tls.endpoint.v1` afin que le vérificateur TLS dédié puisse vérifier la chaîne de certificats, la correspondance du nom d'hôte et l'expiration. Ces constats sont réintégrés sur la page du service LDAP via la règle `ldap.tls_quality` : un certificat défectueux sur un point d'accès LDAP apparaît ici, et pas seulement dans une vue TLS distincte. Consultez {{< relref "/reference/checkers/tls" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

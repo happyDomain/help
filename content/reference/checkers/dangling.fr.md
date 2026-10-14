@@ -25,9 +25,9 @@ Il émet un constat par propriétaire concerné, classé par sévérité décroi
 | Statut enregistrable `pendingDelete` / `redemptionPeriod` | Critique | Observation `whois` apparentée |
 | Domaine enregistrable créé au cours des 90 derniers jours | Avertissement | Observation `whois` apparentée |
 
-{{% notice style="info" title="Les signaux WHOIS nécessitent un vérificateur compagnon" %}}
+{{% callout style="info" title="Les signaux WHOIS nécessitent un vérificateur compagnon" %}}
 Les signaux issus de la résolution DNS (NXDOMAIN, SERVFAIL, réponse vide) fonctionnent seuls. Les signaux issus du WHOIS (expiré, `pendingDelete`, créé récemment) ne se déclenchent que lorsque le vérificateur `domain_expiry` de l'hôte s'abonne aux entrées de découverte de cibles externes de ce vérificateur et publie une observation `whois` par cible. Sans ce câblage, le vérificateur fonctionne tout de même comme un détecteur d'orphelins basé uniquement sur le DNS.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

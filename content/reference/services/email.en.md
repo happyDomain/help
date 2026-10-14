@@ -29,9 +29,9 @@ A common setup looks like this:
 
 Here `mx1` is tried first, and `mx2` is the backup.
 
-{{% notice style="info" title="One E-Mail service per subdomain" %}}
+{{% callout style="info" title="One E-Mail service per subdomain" %}}
 The E-Mail servers service is *single*: a given subdomain can hold only one such service, which gathers all of its `MX` records together. To declare mail servers for both the apex (`example.com`) and a subdomain (`mail.example.com`), add the service to each of them separately.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Sending mail: authentication and anti-spoofing
 

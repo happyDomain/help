@@ -32,9 +32,9 @@ The checker also exposes a metric, `domain_expiry_days_remaining`, labelled with
 | Warning threshold (days) | Days before expiry at which a warning is raised. Must be positive. | 30 |
 | Critical threshold (days) | Days before expiry at which a critical alert is raised. Must be positive. | 7 |
 
-{{% notice style="info" title="Critical must be lower than warning" %}}
+{{% callout style="info" title="Critical must be lower than warning" %}}
 The critical threshold must be strictly smaller than the warning threshold. happyDomain rejects a configuration where `critical_days` is greater than or equal to `warning_days`.
-{{% /notice %}}
+{{% /callout %}}
 
 ## In happyDomain
 

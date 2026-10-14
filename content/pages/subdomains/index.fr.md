@@ -39,9 +39,9 @@ Une fenêtre s'ouvre et vous demande le nouveau sous-domaine à créer sous votr
 
 Le nom est validé au fur et à mesure de la saisie. Vous n'avez besoin de fournir que la partie située à gauche de votre nom de domaine ; happyDomain ajoute le domaine pour vous.
 
-{{% notice style="tip" title="Apex et chemins imbriqués" icon="sitemap" %}}
+{{% callout style="tip" title="Apex et chemins imbriqués" icon="sitemap" %}}
 Laissez le champ vide (ou utilisez `@`) pour viser la racine du domaine elle-même. Vous pouvez aussi créer plusieurs niveaux d'un coup en saisissant un chemin avec des points, comme `a.b.c` : les niveaux intermédiaires sont créés au besoin.
-{{% /notice %}}
+{{% /callout %}}
 
 ### 2. Ajouter un premier service
 
@@ -49,9 +49,9 @@ Créer un sous-domaine n'a de sens que s'il porte au moins un service : happyDom
 
 Le nouveau sous-domaine apparaît alors dans la barre latérale et dans le panneau principal, avec le service que vous venez d'ajouter.
 
-{{% notice style="info" title="Les modifications sont préparées" icon="circle-info" %}}
+{{% callout style="info" title="Les modifications sont préparées" icon="circle-info" %}}
 Créer un sous-domaine et son service ne contacte pas immédiatement votre hébergeur DNS. Comme toute autre modification, l'opération est préparée localement et n'est envoyée à votre hébergeur qu'au moment de la publication de la zone. Consultez la [vue abstraite]({{% relref "domain-abstract" %}}) pour savoir comment vérifier et appliquer vos modifications.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Autres actions sur le domaine
 

@@ -71,9 +71,9 @@ Le vérificateur évalue les règles suivantes. Plusieurs d'entre elles sont pil
 
 L'administrateur peut également définir un résolveur d'amorçage (`resolver`, au format `host:port`) servant à découvrir les serveurs de noms de l'apex et à interroger le `DS` parent ; sa valeur par défaut est `/etc/resolv.conf`.
 
-{{% notice style="info" title="Ce que ce vérificateur ne fait pas" %}}
+{{% callout style="info" title="Ce que ce vérificateur ne fait pas" %}}
 Le vérificateur DNSSEC ne vérifie pas l'intégralité de la chaîne de confiance cryptographique depuis la racine. Pour cette validation de bout en bout, utilisez le vérificateur fondé sur DNSViz. Le présent vérificateur le complète en détectant les problèmes de politique et d'exploitation (algorithmes faibles, signatures expirantes, NSEC parcourable) qu'une validation de chaîne seule ne révélerait pas.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Dans happyDomain
 

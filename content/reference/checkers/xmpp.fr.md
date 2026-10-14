@@ -10,9 +10,9 @@ Le vérificateur **XMPP** sonde de bout en bout le déploiement XMPP (Jabber) d'
 
 Il s'agit d'un vérificateur de **niveau service**. Il s'applique aux services de type **XMPP** et se configure depuis l'onglet **Vérifications** de ce service. Il sonde les quatre noms de service standard (`_xmpp-client._tcp`, `_xmpp-server._tcp`, `_xmpps-client._tcp`, `_xmpps-server._tcp`), l'ancien `_jabber._tcp`, et se rabat sur `<domaine>:5222` / `:5269` lorsqu'aucun enregistrement SRV n'est publié.
 
-{{% notice style="info" title="La posture TLS est vérifiée séparément" %}}
+{{% callout style="info" title="La posture TLS est vérifiée séparément" %}}
 La chaîne de certificats, la correspondance du nom d'hôte (SAN), l'expiration et la posture des chiffrements sont **hors périmètre** ici : un vérificateur {{< relref "/reference/checkers/tls" >}} dédié s'en charge. Le vérificateur XMPP confirme seulement que STARTTLS aboutit, enregistre la version et le chiffrement TLS négociés à titre de contexte, et reverse les conclusions TLS dans le rapport du service XMPP via la règle `xmpp.tls_quality`.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

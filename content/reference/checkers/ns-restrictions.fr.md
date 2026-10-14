@@ -23,9 +23,9 @@ Chaque règle émet un constat par adresse de serveur de noms sondée, avec un `
 | `ns_any_handled` | Les requêtes `ANY` sont traitées conformément à la RFC 8482 (HINFO ou réponse minimale plutôt que le contenu complet de la zone). | Avertissement |
 | `ns_is_authoritative` | Les serveurs de noms répondent de façon autoritaire (bit AA positionné) pour la zone. | Info |
 
-{{% notice style="info" title="Pourquoi c'est important" %}}
+{{% callout style="info" title="Pourquoi c'est important" %}}
 Un `AXFR` ouvert permet à quiconque de télécharger la zone entière, exposant votre nommage interne. La récursion ouverte transforme votre serveur faisant autorité en relais d'amplification et en cible d'empoisonnement de cache. Les réponses `ANY` non bornées constituent un vecteur d'amplification classique que la RFC 8482 a été écrite pour neutraliser.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

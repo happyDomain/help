@@ -33,9 +33,9 @@ Les comparaisons sont exactes et insensibles à la casse. Le masquage est détec
 | Adresse e-mail attendue | Si renseignée, les rôles configurés doivent rapporter cette adresse exacte (insensible à la casse). | *(vide)* |
 | Rôles de contact à vérifier | Liste de rôles séparés par des virgules parmi `registrant`, `admin`, `tech`. | `registrant` |
 
-{{% notice style="info" title="Au moins une valeur attendue est nécessaire" %}}
+{{% callout style="info" title="Au moins une valeur attendue est nécessaire" %}}
 Si ni le nom, ni l'organisation, ni l'adresse e-mail attendus ne sont renseignés, le vérificateur n'a rien à comparer et rapporte un statut *Inconnu*. Renseignez au moins une valeur attendue pour que la vérification ait du sens.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Dans happyDomain
 

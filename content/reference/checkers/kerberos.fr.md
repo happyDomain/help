@@ -10,9 +10,9 @@ Le vérificateur **Kerberos** audite un royaume Kerberos à partir de ses enregi
 
 Il s'agit d'un vérificateur de **niveau service** : il cible un service *Kerberos* (`abstract.Kerberos`) publié sur un sous-domaine et se configure depuis l'onglet **Vérifications** de ce service. Il inspecte la disposition SRV (`_kerberos._tcp`, `_kerberos._udp`, `_kerberos-master._tcp`, `_kerberos-adm._tcp`, `_kpasswd._tcp`, `_kpasswd._udp`), résout en avant chaque cible SRV (A + AAAA), teste l'accessibilité TCP de chaque hôte KDC/kadmin/kpasswd et l'accessibilité UDP du KDC via un véritable AS-REQ. La sonde AS-REQ anonyme confirme le royaume, lit les enctypes pris en charge depuis `ETYPE-INFO2`, détecte un indice PKINIT (`PA-PK-AS-REQ`) et mesure la dérive d'horloge.
 
-{{% notice style="info" title="Les identifiants sont transmis au KDC" %}}
+{{% callout style="info" title="Les identifiants sont transmis au KDC" %}}
 Lorsqu'un principal et un mot de passe sont fournis, ils servent une fois à obtenir un TGT puis à effectuer un TGS-REQ pour le service cible ; ils sont transmis au KDC sur le réseau et ne sont jamais stockés par le vérificateur. Laissez-les vides pour n'exécuter que les sondes anonymes.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

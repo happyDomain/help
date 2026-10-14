@@ -10,9 +10,9 @@ The **Kerberos** checker audits a Kerberos realm starting from its DNS records. 
 
 This checker is **service-level**: it targets a *Kerberos* service (`abstract.Kerberos`) published on a subdomain and is configured from that service's own **Checks** tab. It inspects the SRV layout (`_kerberos._tcp`, `_kerberos._udp`, `_kerberos-master._tcp`, `_kerberos-adm._tcp`, `_kpasswd._tcp`, `_kpasswd._udp`), forward-resolves every SRV target (A + AAAA), tests TCP reachability of each KDC/kadmin/kpasswd host and UDP reachability of the KDC via a real AS-REQ. The anonymous AS-REQ probe confirms the realm, reads the supported enctypes from `ETYPE-INFO2`, detects a PKINIT hint (`PA-PK-AS-REQ`) and measures clock skew.
 
-{{% notice style="info" title="Credentials are forwarded to the KDC" %}}
+{{% callout style="info" title="Credentials are forwarded to the KDC" %}}
 When a principal and password are supplied, they are used once to obtain a TGT and then a TGS-REQ for the target service; they are forwarded to the KDC over the network and are never stored by the checker. Leave them blank to run anonymous probes only.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

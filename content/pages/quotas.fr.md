@@ -7,9 +7,9 @@ description: "Comprendre les limites qu'un administrateur peut appliquer à votr
 
 Une instance happyDomain peut appliquer des **quotas** à chaque compte. Les quotas sont des limites définies par la personne qui administre l'instance (l'administrateur), et non par vous. Ils servent principalement à préserver l'équité sur une instance partagée et à éviter de surcharger les serveurs ; ils concernent avant tout le système de [supervision et contrôles]({{% relref "checks" %}}).
 
-{{% notice style="info" title="Les quotas sont gérés par l'administrateur" icon="circle-info" %}}
+{{% callout style="info" title="Les quotas sont gérés par l'administrateur" icon="circle-info" %}}
 Les quotas sont en **lecture seule** pour les utilisateurs ordinaires. Il n'existe aucun écran dans votre compte permettant de consulter ou de modifier votre propre quota : ils sont configurés côté serveur et ne sont ajustés qu'au travers de l'interface d'administration. Si une limite vous gêne, la bonne démarche consiste à contacter l'administrateur de votre instance.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## Ce que les quotas peuvent couvrir
@@ -23,9 +23,9 @@ Sur une instance happyDomain par défaut, les quotas portent sur le fonctionneme
 
 Chacun de ces réglages peut rester à la valeur par défaut de l'instance, être fixé à une valeur particulière pour votre compte, ou être explicitement rendu illimité, à la discrétion de l'administrateur.
 
-{{% notice style="tip" title="Pas de limite fixe sur le nombre de domaines" icon="lightbulb" %}}
+{{% callout style="tip" title="Pas de limite fixe sur le nombre de domaines" icon="lightbulb" %}}
 Sur une instance happyDomain standard, le système de quotas n'impose pas de plafond intégré sur le nombre de domaines que vous pouvez gérer. Si une instance particulière restreint ce point, il s'agit d'une politique propre à cette instance ; demandez à son administrateur les détails qui vous concernent.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## Ce que vous voyez lorsqu'une limite est atteinte

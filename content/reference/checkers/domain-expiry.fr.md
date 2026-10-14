@@ -32,9 +32,9 @@ Le vérificateur expose également une métrique, `domain_expiry_days_remaining`
 | Seuil d'avertissement (jours) | Nombre de jours avant l'expiration déclenchant un avertissement. Doit être positif. | 30 |
 | Seuil critique (jours) | Nombre de jours avant l'expiration déclenchant une alerte critique. Doit être positif. | 7 |
 
-{{% notice style="info" title="Le critique doit être inférieur à l'avertissement" %}}
+{{% callout style="info" title="Le critique doit être inférieur à l'avertissement" %}}
 Le seuil critique doit être strictement inférieur au seuil d'avertissement. happyDomain refuse une configuration où `critical_days` est supérieur ou égal à `warning_days`.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Dans happyDomain
 

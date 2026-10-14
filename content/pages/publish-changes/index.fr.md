@@ -46,9 +46,9 @@ Le résumé et le bouton d'application se mettent à jour en direct selon votre 
 
 Avant d'appliquer, saisissez un message dans le champ « Qu'est-ce qui a changé ? ». Ce message est consigné dans votre historique aux côtés des changements.
 
-{{% notice style="tip" title="Décrivez l'intention, pas les adresses IP" icon="lightbulb" %}}
+{{% callout style="tip" title="Décrivez l'intention, pas les adresses IP" icon="lightbulb" %}}
 Le différentiel décrit les opérations techniques, mais c'est votre message qui rendra votre historique lisible plus tard. Lorsque vous aurez besoin de revoir ce que vous avez fait, « Déplacement du courrier vers un nouvel hébergeur » est bien plus facile à comprendre que de reconstituer le sens à partir d'une liste de changements d'IP.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Une étape de confirmation par sécurité
 

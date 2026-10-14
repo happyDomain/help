@@ -4,7 +4,7 @@ title: Exécuter les vérificateurs dans des conteneurs séparés
 weight: 17
 ---
 
-{{% notice style="warning" title="Ce n'est pas le déploiement par défaut" %}}
+{{% callout style="warning" title="Ce n'est pas le déploiement par défaut" %}}
 Vous n'avez très probablement pas besoin de cette page. Le fichier
 `docker compose` décrit dans [Avec Docker]({{% relref "docker" %}}) vous donne
 déjà **tous les vérificateurs que nous distribuons**, avec exactement les mêmes
@@ -12,7 +12,7 @@ résultats. Les éclater en conteneurs n'ajoute aucune fonctionnalité : cela
 change seulement l'endroit où ils s'exécutent. (Ajouter un vérificateur qui ne
 fait *pas* partie d'happyDomain est une autre question ; la réponse est
 généralement un [greffon]({{% relref "/reference/plugins" %}}).)
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## À quoi ça sert
@@ -33,14 +33,14 @@ Une fois le vérificateur enregistré, vous décidez **où son travail s'exécut
 dans le processus happyDomain (par défaut), ou dans un **conteneur autonome**
 auquel il délègue en HTTP. C'est l'objet de cette page.
 
-{{% notice style="note" title="Un conteneur n'enregistre pas un vérificateur" %}}
+{{% callout style="note" title="Un conteneur n'enregistre pas un vérificateur" %}}
 Faire tourner `happydomain/checker-<quelque-chose>` et définir son point d'accès
 ne fonctionne que parce que ce vérificateur est déjà connu d'happyDomain.
 Pointer un point d'accès vers un vérificateur dont le serveur n'a jamais
 entendu parler ne produit rien : un vérificateur maison doit d'abord être
 chargé sous forme de greffon, et seulement ensuite il pourra être délégué à un
 conteneur.
-{{% /notice %}}
+{{% /callout %}}
 
 Prenons [`checker-ping`](https://framagit.org/happyDomain/checker-ping), qui
 vérifie que chaque adresse IP d'une zone répond au ping dans un délai donné. Il

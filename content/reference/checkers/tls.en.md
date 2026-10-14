@@ -43,8 +43,8 @@ The list of discovery entries is filled automatically from what other checkers p
 
 The TLS checker is a domain-level check: enable it from the domain's checks view. Because it works on endpoints discovered by other checkers, it pairs naturally with service-level checkers that publish TLS endpoints, such as {{< relref "/reference/checkers/smtp" >}}.
 
-{{% notice style="info" title="TLS posture vs DANE" %}}
+{{% callout style="info" title="TLS posture vs DANE" %}}
 This checker validates the live certificate against the system trust store. Pinning the certificate in DNS through TLSA records is a separate concern, handled by the {{< relref "/reference/checkers/dane" >}} checker.
-{{% /notice %}}
+{{% /callout %}}
 
 For the general workflow of configuring and reading checks, see {{< relref "/pages/checks" >}}.

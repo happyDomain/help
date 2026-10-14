@@ -25,9 +25,9 @@ It emits one finding per impacted owner, ranked by descending severity:
 | Registrable status `pendingDelete` / `redemptionPeriod` | Critical | `whois` related observation |
 | Registrable domain registered within the last 90 days | Warning | `whois` related observation |
 
-{{% notice style="info" title="WHOIS signals need a companion checker" %}}
+{{% callout style="info" title="WHOIS signals need a companion checker" %}}
 The DNS-resolution signals (NXDOMAIN, SERVFAIL, empty answer) work on their own. The WHOIS-driven signals (expired, `pendingDelete`, recently registered) only fire when the host's `domain_expiry` checker subscribes to this checker's external-target discovery entries and publishes a per-target `whois` observation. Without that wiring, the checker still works as a DNS-only dangling detector.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

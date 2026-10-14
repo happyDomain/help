@@ -32,9 +32,9 @@ To obtain a token you can use to call the API:
 
 The token secret is then displayed **once**. Use the eye button to reveal it and the copy button to put it on your clipboard.
 
-{{% notice style="warning" title="Copy the secret immediately" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Copy the secret immediately" icon="triangle-exclamation" %}}
 The session secret is shown only at creation time and is never displayed again. Copy it and store it somewhere safe before closing the dialog. If you lose it, delete the session and create a new one.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Using a token with the REST API
 
@@ -50,6 +50,6 @@ Replace `YOUR_SECRET_TOKEN` with the secret you copied, and the host with the ad
 
 To revoke a session (and the token associated with it), click the delete button on its row. The token stops working immediately. You cannot delete the session you are currently using from this list; to end it, simply log out, or use the option below.
 
-{{% notice style="info" title="Terminate all sessions" icon="circle-info" %}}
+{{% callout style="info" title="Terminate all sessions" icon="circle-info" %}}
 The **Terminate all sessions** button closes every session at once, including the one you are using. This is useful if you suspect a token has leaked: all existing tokens become invalid and you are sent back to the [login page]({{% relref "login" %}}). You will then need to log in again and recreate any API tokens you still need.
-{{% /notice %}}
+{{% /callout %}}

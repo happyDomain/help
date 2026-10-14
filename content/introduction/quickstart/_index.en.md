@@ -30,15 +30,15 @@ Go to : <https://app.happydomain.org/join>
 happyDomain will connect to your hosting provider (or local authoritative server).
 Your domain remains hosted where it is today; using happyDomain does not imply any transfer or change of ownership.
 
-{{% notice style="info" title="happyDomain is not your provider" icon="server" %}}
+{{% callout style="info" title="happyDomain is not your provider" icon="server" %}}
 happyDomain never becomes your provider, at any point. It only acts as a friendly interface on top of your existing setup, whether that is an actual DNS server or a hosting provider. Your data, the zone's content, genuinely lives with your provider (or authoritative server).
-{{% /notice %}}
+{{% /callout %}}
 
-{{% notice style="info" title="I don't have a domain name yet" icon="question" %}}
+{{% callout style="info" title="I don't have a domain name yet" icon="question" %}}
 
 We don't sell domain names, you must already have one [with a supported hosting provider](https://app.happydomain.org/providers/features).
 
-{{% /notice %}}
+{{% /callout %}}
 
 When you log on to happyDomain for the first time, a wizard will guide you through the process of linking your first domain.
 
@@ -60,13 +60,13 @@ To view the zone corresponding to a domain, click on the domain name that appear
 
 After a few seconds of fully automatic import and analysis, you'll immediately see a list of registrations or services as they are currently distributed to your visitors.
 
-{{% notice style="primary" title="About the “services”" %}}
+{{% callout style="primary" title="About the “services”" %}}
 
 The complexity of DNS stems in part from the mismatch between purely technical constraints and the actual use of records.
 
 happyDomain tries to simplify this by grouping technical records under their concrete uses. This is what we call “service”.
 
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## 4. Modify a record

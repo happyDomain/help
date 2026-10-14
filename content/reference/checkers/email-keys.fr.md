@@ -13,9 +13,9 @@ Le vérificateur de **clés de messagerie** (nommé *OPENPGPKEY & SMIMEA* dans h
 
 Ce vérificateur s'applique au **niveau service** : il concerne les services OpenPGP et S/MIME d'un sous-domaine, exécute une suite de tests complète, puis produit un rapport HTML dont le bloc supérieur pointe vers la correction des défauts les plus courants.
 
-{{% notice style="info" title="Publication et structure, pas confiance cryptographique" %}}
+{{% callout style="info" title="Publication et structure, pas confiance cryptographique" %}}
 Ce vérificateur valide la publication DNS ainsi que la structure et les métadonnées des clés qu'il trouve. Il ne les vérifie pas cryptographiquement : les signatures OpenPGP (auto-signatures, certifications par des tiers) ne sont pas vérifiées, et les chaînes S/MIME ne sont ni construites ni validées par rapport à une ancre de confiance (pas de CRL/OCSP). L'authenticité des enregistrements eux-mêmes est déléguée à un résolveur validant via le drapeau DNSSEC `AD`. Considérez un rapport vert comme « l'enregistrement est bien formé et signé par DNSSEC », et non comme « la clé est digne de confiance ».
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 
@@ -75,9 +75,9 @@ Ce vérificateur valide la publication DNS ainsi que la structure et les métado
 
 L'origine de la zone, le sous-domaine, le service et le type de service sont préremplis par happyDomain.
 
-{{% notice style="info" title="Interrogez un résolveur validant" %}}
+{{% callout style="info" title="Interrogez un résolveur validant" %}}
 L'authenticité des enregistrements étant déléguée au DNSSEC, exécutez ce vérificateur contre un résolveur en qui vous avez confiance pour effectuer la validation DNSSEC, afin que le drapeau `AD` reflète une validation réelle.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Dans happyDomain
 

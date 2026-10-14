@@ -51,9 +51,9 @@ Delivers push notifications to your devices through a [UnifiedPush](https://unif
 
 - **UnifiedPush endpoint** (required): the endpoint URL provided by your UnifiedPush application.
 
-{{% notice style="info" title="Other channel types" icon="circle-info" %}}
+{{% callout style="info" title="Other channel types" icon="circle-info" %}}
 The list of available types depends on what the instance administrator has enabled. For types that happyDomain does not provide a dedicated form for, the editor falls back to a raw JSON configuration field.
-{{% /notice %}}
+{{% /callout %}}
 
 ### Testing a channel
 
@@ -98,9 +98,9 @@ Each preference can be turned on or off with a switch, letting you temporarily s
 
 <!-- TODO: screenshot of the preference editor -->
 
-{{% notice style="tip" title="Start simple" icon="lightbulb" %}}
+{{% callout style="tip" title="Start simple" icon="lightbulb" %}}
 A common setup is a single **Global** preference, pointing at one channel, with a minimum status of **Warning** and recovery notifications enabled. You can later add more specific per-domain or per-service rules as your needs grow.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## History

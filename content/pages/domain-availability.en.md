@@ -41,9 +41,9 @@ The time of the last check is displayed next to the status.
 - Click **Check now** next to a domain to trigger a fresh check immediately. A spinner is shown while the check runs in the background, and the status updates automatically once it finishes.
 - Click the trash icon to stop watching a domain. A confirmation is asked before removal.
 
-{{% notice style="tip" title="Availability is a best effort" icon="lightbulb" %}}
+{{% callout style="tip" title="Availability is a best effort" icon="lightbulb" %}}
 The availability result is only an indication. Some extensions cannot be checked reliably, and a name that appears free may still be reserved or blocked at registration time. Always confirm with a registrar before counting on a name.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## WHOIS lookup
@@ -61,9 +61,9 @@ Enter a domain name and run the lookup. happyDomain then displays a clear summar
 
 If the name is not registered, a message tells you the domain was not found. If the lookup itself fails, the error is shown.
 
-{{% notice style="info" title="WHOIS and the availability checker" icon="circle-info" %}}
+{{% callout style="info" title="WHOIS and the availability checker" icon="circle-info" %}}
 The availability checker relies on the same underlying registration data as the WHOIS lookup. If you want the full registration picture for a name, use the WHOIS tool; if you simply want to know whether a name is free (and be notified later), add it to your availability watch list.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## DNS resolver
@@ -82,6 +82,6 @@ If you manage domains in happyDomain, their names are suggested as you type the 
 
 Results are grouped by record type, and each entry shows its fields together with its TTL. When the domain exists but has no record of the requested type, a message says so explicitly.
 
-{{% notice style="tip" title="Resolver vs. your zone in happyDomain" icon="lightbulb" %}}
+{{% callout style="tip" title="Resolver vs. your zone in happyDomain" icon="lightbulb" %}}
 The resolver shows what is **currently published** by the authoritative servers, which may differ from a draft zone you are editing in happyDomain until you [publish your changes]({{% relref "publish-changes" %}}).
-{{% /notice %}}
+{{% /callout %}}

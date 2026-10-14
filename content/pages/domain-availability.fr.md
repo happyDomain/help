@@ -40,9 +40,9 @@ La date de la dernière vérification est indiquée à côté du statut.
 - Cliquez sur **Vérifier maintenant** à côté d'un domaine pour déclencher immédiatement une nouvelle vérification. Une animation est affichée pendant que le contrôle s'exécute en arrière-plan, et le statut se met à jour automatiquement une fois terminé.
 - Cliquez sur l'icône de corbeille pour cesser de surveiller un domaine. Une confirmation est demandée avant la suppression.
 
-{{% notice style="tip" title="La disponibilité reste indicative" icon="lightbulb" %}}
+{{% callout style="tip" title="La disponibilité reste indicative" icon="lightbulb" %}}
 Le résultat de disponibilité n'est qu'une indication. Certaines extensions ne peuvent pas être vérifiées de manière fiable, et un nom qui semble libre peut tout de même être réservé ou bloqué au moment de l'enregistrement. Confirmez toujours auprès d'un bureau d'enregistrement avant de compter sur un nom.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## Recherche WHOIS
@@ -60,9 +60,9 @@ Saisissez un nom de domaine puis lancez la recherche. happyDomain affiche alors 
 
 Si le nom n'est pas enregistré, un message vous indique que le domaine est introuvable. Si la recherche elle-même échoue, l'erreur est affichée.
 
-{{% notice style="info" title="WHOIS et vérificateur de disponibilité" icon="circle-info" %}}
+{{% callout style="info" title="WHOIS et vérificateur de disponibilité" icon="circle-info" %}}
 Le vérificateur de disponibilité s'appuie sur les mêmes données d'enregistrement que la recherche WHOIS. Si vous souhaitez la vue complète de l'enregistrement d'un nom, utilisez l'outil WHOIS ; si vous voulez simplement savoir si un nom est libre (et être prévenu ultérieurement), ajoutez-le à votre liste de surveillance de disponibilité.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## Résolveur DNS
@@ -81,6 +81,6 @@ Si vous gérez des domaines dans happyDomain, leurs noms vous sont suggérés au
 
 Les résultats sont regroupés par type d'enregistrement, et chaque entrée affiche ses champs ainsi que son TTL. Lorsque le domaine existe mais ne possède aucun enregistrement du type demandé, un message l'indique explicitement.
 
-{{% notice style="tip" title="Résolveur et votre zone dans happyDomain" icon="lightbulb" %}}
+{{% callout style="tip" title="Résolveur et votre zone dans happyDomain" icon="lightbulb" %}}
 Le résolveur montre ce qui est **actuellement publié** par les serveurs faisant autorité, ce qui peut différer d'une zone en cours d'édition dans happyDomain tant que vous n'avez pas [publié vos modifications]({{% relref "publish-changes" %}}).
-{{% /notice %}}
+{{% /callout %}}

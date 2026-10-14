@@ -10,9 +10,9 @@ The **LDAP** checker probes a domain's LDAP directory deployment from end to end
 
 This checker is **service-level**: it targets an *LDAP* service (`abstract.LDAP`) published on a subdomain and is configured from that service's own **Checks** tab. For each transport it probes `_ldap._tcp` (falling back to port 389) and `_ldaps._tcp` (falling back to port 636), testing each resolved A/AAAA address per IP family.
 
-{{% notice style="info" title="TLS posture is folded in, not duplicated" %}}
+{{% callout style="info" title="TLS posture is folded in, not duplicated" %}}
 The LDAP checker confirms only that a TLS session can be established, recording the negotiated version and cipher for context. Each probed endpoint is published as a `tls.endpoint.v1` discovery entry so the dedicated TLS checker can verify the certificate chain, hostname match and expiry. Those findings are folded back onto the LDAP service page through the `ldap.tls_quality` rule — a bad certificate on an LDAP endpoint shows up here, not only in a separate TLS view. See {{< relref "/reference/checkers/tls" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

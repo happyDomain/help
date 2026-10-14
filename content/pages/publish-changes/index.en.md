@@ -46,9 +46,9 @@ The summary and the apply button update live to reflect your current selection. 
 
 Before applying, enter a message in the **What's changed?** field. This message is recorded in your history alongside the changes.
 
-{{% notice style="tip" title="Describe the intent, not the IPs" icon="lightbulb" %}}
+{{% callout style="tip" title="Describe the intent, not the IPs" icon="lightbulb" %}}
 The diff describes the technical operations, but your message is what makes your history readable later on. When you need to look back at what you did, "Move mail to a new provider" is far easier to understand than re-deriving meaning from a list of IP changes.
-{{% /notice %}}
+{{% /callout %}}
 
 ## A confirmation step for safety
 

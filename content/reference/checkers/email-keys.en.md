@@ -13,9 +13,9 @@ The **Mail keys** checker (named *OPENPGPKEY & SMIMEA* in happyDomain) validates
 
 This checker is **service-level**: it applies to the OpenPGP and S/MIME services of a subdomain and runs a comprehensive test suite, then renders an HTML report whose top block points to the fix for the most common failure scenarios.
 
-{{% notice style="info" title="Publication and structure, not cryptographic trust" %}}
+{{% callout style="info" title="Publication and structure, not cryptographic trust" %}}
 This checker validates DNS publication and the structure and metadata of the keys it finds. It does **not** cryptographically verify them: OpenPGP signatures (self-signatures, third-party certifications) are not verified, and S/MIME chains are not built or validated against any trust anchor (no CRL/OCSP). Authenticity of the records themselves is delegated to a validating resolver via the DNSSEC `AD` flag. Treat a green report as "the record is well-formed and DNSSEC-signed", not as "the key is trustworthy".
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 
@@ -75,9 +75,9 @@ This checker validates DNS publication and the structure and metadata of the key
 
 The domain origin, subdomain, service and service type are auto-filled by happyDomain.
 
-{{% notice style="info" title="Query a validating resolver" %}}
+{{% callout style="info" title="Query a validating resolver" %}}
 Because record authenticity is delegated to DNSSEC, run this checker against a resolver you trust to perform DNSSEC validation, so the `AD` flag reflects a real validation.
-{{% /notice %}}
+{{% /callout %}}
 
 ## In happyDomain
 

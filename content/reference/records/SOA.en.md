@@ -30,8 +30,8 @@ happyDomain does not present the SOA as a standalone record to edit field by fie
 
 The **serial** is, in most cases, handled automatically. When you publish your changes, many DNS providers manage the serial themselves: happyDomain detects this capability and re-reads the zone after publication to reflect the serial the provider actually assigned. You normally do not need (nor are you expected) to set it by hand.
 
-{{% notice style="info" title="What you can and cannot change" %}}
+{{% callout style="info" title="What you can and cannot change" %}}
 The exact behaviour depends on your DNS provider. Some providers expose the full SOA and let happyDomain submit its values; others manage the SOA serial — and sometimes the other timers — on their side. When the provider takes care of the serial, any value happyDomain shows for it simply reflects the published state and is refreshed automatically.
-{{% /notice %}}
+{{% /callout %}}
 
 For more on how the apex and other groupings are represented, see the {{< relref "../services" >}} chapter.

@@ -10,9 +10,9 @@ The **SIP** checker probes a domain's SIP/VoIP deployment from its DNS records, 
 
 This checker is **service-level**: it targets a *SIP* service (`abstract.SIP`) published on a subdomain and is configured from that service's own **Checks** tab. When no SRV record is published, the checker falls back to `<domain>:5060` / `<domain>:5061`, with a visible info marker in the report.
 
-{{% notice style="info" title="TLS posture is folded in, not duplicated" %}}
+{{% callout style="info" title="TLS posture is folded in, not duplicated" %}}
 For the TLS handshake the checker uses `InsecureSkipVerify`: it confirms only that a TLS session can be established. Every `_sips._tcp` target is published as a `tls.endpoint.v1` discovery entry so the dedicated TLS checker can verify the certificate chain, hostname match, expiry and cipher posture. Those findings are folded back onto the SIP service page through the `sip.tls_quality` rule. See {{< relref "/reference/checkers/tls" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

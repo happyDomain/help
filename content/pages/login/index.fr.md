@@ -15,9 +15,9 @@ Sur la page de connexion, saisissez l'adresse e-mail et le mot de passe choisis 
 
 Si les identifiants sont corrects, vous arrivez sur votre tableau de bord. Sinon, un message d'erreur s'affiche : vérifiez votre adresse et votre mot de passe, puis réessayez.
 
-{{% notice style="info" title="Tentatives répétées" icon="shield" %}}
+{{% callout style="info" title="Tentatives répétées" icon="shield" %}}
 Pour des raisons de sécurité, le serveur peut vous demander de compléter une vérification anti-robot (captcha) après plusieurs échecs, ou limiter temporairement les nouvelles tentatives. Patientez un instant, puis réessayez.
-{{% /notice %}}
+{{% /callout %}}
 
 ### Se connecter avec un fournisseur externe
 
@@ -39,6 +39,6 @@ Ouvrez le lien depuis votre messagerie pour accéder au formulaire de récupéra
 
 Une fois le mot de passe redéfini, vous êtes redirigé vers la page de connexion pour vous identifier avec vos nouveaux identifiants.
 
-{{% notice style="warning" title="Serveurs sans e-mail" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Serveurs sans e-mail" icon="triangle-exclamation" %}}
 Sur les instances fonctionnant sans service de messagerie, la récupération de mot de passe n'est pas disponible : cliquer sur « Mot de passe oublié ? » affiche un message vous invitant à contacter l'administrateur du serveur pour réinitialiser votre mot de passe.
-{{% /notice %}}
+{{% /callout %}}

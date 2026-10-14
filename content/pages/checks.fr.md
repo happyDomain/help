@@ -69,9 +69,9 @@ Dans la section **Planification** de la page de configuration du vérificateur :
 
 <!-- TODO: screenshot of the schedule card -->
 
-{{% notice style="info" title="Limites d'intervalle" icon="clock" %}}
+{{% callout style="info" title="Limites d'intervalle" icon="clock" %}}
 Chaque vérificateur définit un intervalle minimal et maximal afin d'éviter de surcharger les services externes. L'interface respecte ces bornes lorsque vous configurez la planification.
-{{% /notice %}}
+{{% /callout %}}
 
 Lorsque la planification est désactivée, le vérificateur peut tout de même être lancé manuellement à tout moment.
 

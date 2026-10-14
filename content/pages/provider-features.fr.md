@@ -33,9 +33,9 @@ La matrice compare les capacités suivantes :
 | **SSHFP** | Prise en charge des enregistrements `SSHFP`, qui publient les empreintes des clés d'hôte SSH dans le DNS. |
 | **TLSA** | Prise en charge des enregistrements `TLSA`, utilisés par DANE pour lier un certificat à un nom. |
 
-{{% notice style="info" title="Pourquoi c'est important" icon="circle-info" %}}
+{{% callout style="info" title="Pourquoi c'est important" icon="circle-info" %}}
 Lorsque vous ajoutez un [service]({{% relref "services" %}}) à un sous-domaine, happyDomain ne propose que les types de services que votre hébergeur peut réellement publier. Si un service que vous attendiez apparaît grisé, la matrice des fonctionnalités est l'endroit où vérifier si le type d'enregistrement sous-jacent est pris en charge par cet hébergeur.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Choisir un hébergeur
 

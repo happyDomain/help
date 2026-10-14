@@ -10,9 +10,9 @@ The **XMPP** checker probes a domain's XMPP (Jabber) deployment end-to-end, much
 
 This is a **service-level** checker. It applies to services of type **XMPP** and is configured from that service's own **Checks** tab. It probes the four standard service names (`_xmpp-client._tcp`, `_xmpp-server._tcp`, `_xmpps-client._tcp`, `_xmpps-server._tcp`), the legacy `_jabber._tcp`, and falls back to `<domain>:5222` / `:5269` when no SRV record is published.
 
-{{% notice style="info" title="TLS posture is checked separately" %}}
+{{% callout style="info" title="TLS posture is checked separately" %}}
 Certificate chain, hostname (SAN) match, expiry and cipher posture are **out of scope** here: a dedicated {{< relref "/reference/checkers/tls" >}} checker handles them. The XMPP checker only confirms that STARTTLS completes, records the negotiated TLS version and cipher for context, and folds the downstream TLS findings back onto the XMPP service report through the `xmpp.tls_quality` rule.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

@@ -20,9 +20,9 @@ Each service belongs to a family:
 - **Providers**: services tied to a specific third party that publishes its own helper (for example a hosted service that needs a predefined set of records).
 - **Raw DNS resources**: a fallback that lets you add a single record (`A`, `TXT`, `SRV`, ...) directly, when no abstract service fits your need.
 
-{{% notice style="info" title="Why services instead of records?" icon="lightbulb" %}}
+{{% callout style="info" title="Why services instead of records?" icon="lightbulb" %}}
 Working with services means you do not have to remember the exact record types, their order, or their syntax. happyDomain validates your input and generates valid DNS for you, which greatly reduces the risk of a misconfiguration.
-{{% /notice %}}
+{{% /callout %}}
 
 ## The service view of a subdomain
 
@@ -57,9 +57,9 @@ The selector is organised in tabs so you can narrow down the list:
 
 You can also type in the search box at the top to filter the list by name. Pressing Enter selects the first available match.
 
-{{% notice style="tip" title="Greyed-out entries" icon="circle-info" %}}
+{{% callout style="tip" title="Greyed-out entries" icon="circle-info" %}}
 Some service types may appear disabled. This happens when the service cannot be added in the current context: for example because your DNS provider does not support the underlying record type, or because that service already exists on this subdomain and only one instance is allowed. Hover over a disabled entry to see the reason.
-{{% /notice %}}
+{{% /callout %}}
 
 ### 2. Choose the service type
 

@@ -21,9 +21,9 @@ Ce vérificateur s'applique au **niveau service** : il est rattaché à un servi
 
 happyDeliver note le message sur plusieurs sections (DNS, authentification, filtres anti-spam, listes noires, en-têtes, contenu) et calcule un score global. Le vérificateur transforme chaque section en une règle.
 
-{{% notice style="info" title="Une instance happyDeliver externe est requise" %}}
+{{% callout style="info" title="Une instance happyDeliver externe est requise" %}}
 Ce vérificateur ne fait rien seul : il lui faut une instance happyDeliver accessible, identifiée par l'URL de son API et un jeton d'authentification. Ceux-ci sont en général configurés une fois par l'administrateur et peuvent être redéfinis par domaine.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

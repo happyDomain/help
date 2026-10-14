@@ -30,15 +30,15 @@ Rendez-vous sur : <https://app.happydomain.org/join>
 happyDomain va se connecter à votre hébergeur (ou à votre serveur local faisant autorité).
 Votre domaine reste hébergé là où il est aujourd'hui, utiliser happyDomain n'implique aucun transfert ou changement de propriété.
 
-{{% notice style="info" title="happyDomain n'est pas votre prestataire" icon="server" %}}
+{{% callout style="info" title="happyDomain n'est pas votre prestataire" icon="server" %}}
 happyDomain ne devient pas, à aucun moment, votre prestataire. Il agit seulement comme une interface conviviale par dessus votre déploiement existant (qu'il s'agisse d'un véritable serveur DNS ou d'un prestataire). Vos données, le contenu de la zone, sont véritablement présentes auprès de votre prestataire (ou serveur faisant autorité).
-{{% /notice %}}
+{{% /callout %}}
 
-{{% notice style="info" title="Je n'ai pas encore de nom de domaine" icon="question" %}}
+{{% callout style="info" title="Je n'ai pas encore de nom de domaine" icon="question" %}}
 
 Nous ne vendons pas de noms de domaine, il faut que vous en disposiez déjà d'un [chez un hébergeur supporté](https://app.happydomain.org/providers/features).
 
-{{% /notice %}}
+{{% /callout %}}
 
 Lorsque vous vous connectez pour la première fois à happyDomain, un assistant vous guide pour relier votre premier domaine.
 
@@ -60,13 +60,13 @@ Pour afficher la zone correspondant à un domaine, cliquez sur le nom de domaine
 
 Après quelques secondes d'import et d'analyse entièrement automatique, vous verrez tout de suite une liste d'enregistrements ou de services tels qu'actuellement diffusés auprès de vos visiteurs.
 
-{{% notice style="primary" title="À propos des « services »" %}}
+{{% callout style="primary" title="À propos des « services »" %}}
 
 La complexité du DNS vient en partie d'un décalage entre les contraintes purement techniques et l'usage concret des enregistrements.
 
 happyDomain essai de simplifier cela en regroupant les enregistrements techniques sous leurs usages concrets. C'est cela que l'on appel « service ».
 
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## 4. Modifier un enregistrement

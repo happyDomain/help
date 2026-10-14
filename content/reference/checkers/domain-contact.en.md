@@ -33,9 +33,9 @@ Comparisons are case-insensitive and exact. Redaction is detected from common ma
 | Expected email | If set, the configured roles must report this exact email (case-insensitive). | *(empty)* |
 | Contact roles to check | Comma-separated list of roles among `registrant`, `admin`, `tech`. | `registrant` |
 
-{{% notice style="info" title="At least one expected value is required" %}}
+{{% callout style="info" title="At least one expected value is required" %}}
 If none of the expected name, organization or email is set, the checker has nothing to compare and reports an *Unknown* status. Set at least one expected value for the check to be meaningful.
-{{% /notice %}}
+{{% /callout %}}
 
 ## In happyDomain
 

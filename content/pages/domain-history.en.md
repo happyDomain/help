@@ -38,6 +38,6 @@ Under each version (except the oldest one), the **View differences** section let
 
 Expand the section to reveal the changes: added records, deleted records, and modified records are highlighted, so you can see at a glance what each publication changed. The most recent comparison is expanded automatically when you open the page.
 
-{{% notice style="info" title="No history yet?" %}}
+{{% callout style="info" title="No history yet?" %}}
 A domain only builds up a history once you start publishing changes to it. If you have just imported a domain, its history will fill in as you make and publish your first modifications.
-{{% /notice %}}
+{{% /callout %}}

@@ -10,9 +10,9 @@ Le vérificateur **SIP** sonde le déploiement SIP/VoIP d'un domaine à partir d
 
 Il s'agit d'un vérificateur de **niveau service** : il cible un service *SIP* (`abstract.SIP`) publié sur un sous-domaine et se configure depuis l'onglet **Vérifications** de ce service. Lorsqu'aucun enregistrement SRV n'est publié, le vérificateur se rabat sur `<domaine>:5060` / `<domaine>:5061`, avec un marqueur d'information visible dans le rapport.
 
-{{% notice style="info" title="La posture TLS est intégrée, pas dupliquée" %}}
+{{% callout style="info" title="La posture TLS est intégrée, pas dupliquée" %}}
 Pour la poignée de main TLS, le vérificateur utilise `InsecureSkipVerify` : il confirme uniquement qu'une session TLS peut être établie. Chaque cible `_sips._tcp` est publiée comme entrée de découverte `tls.endpoint.v1` afin que le vérificateur TLS dédié puisse vérifier la chaîne de certificats, la correspondance du nom d'hôte, l'expiration et la posture des algorithmes. Ces constats sont réintégrés sur la page du service SIP via la règle `sip.tls_quality`. Consultez {{< relref "/reference/checkers/tls" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

@@ -43,8 +43,8 @@ La liste des entrées de découverte est remplie automatiquement à partir de ce
 
 Le vérificateur TLS est une vérification de niveau domaine : activez-le depuis la vue des vérifications du domaine. Comme il travaille sur des points de terminaison découverts par d'autres vérificateurs, il s'associe naturellement aux vérificateurs de service qui publient des points de terminaison TLS, comme {{< relref "/reference/checkers/smtp" >}}.
 
-{{% notice style="info" title="Posture TLS et DANE" %}}
+{{% callout style="info" title="Posture TLS et DANE" %}}
 Ce vérificateur valide le certificat en direct avec le magasin de confiance du système. L'épinglage du certificat dans le DNS via des enregistrements TLSA est un sujet distinct, traité par le vérificateur {{< relref "/reference/checkers/dane" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 Pour le fonctionnement général de la configuration et de la lecture des vérifications, voir {{< relref "/pages/checks" >}}.

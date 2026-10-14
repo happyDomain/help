@@ -22,9 +22,9 @@ A single rule, `caa_compliance`, loads the zone's CAA `issue` / `issuewild` poli
 | `caa_issuance_disallowed` | The policy contains `CAA 0 issue ";"` (issuance explicitly forbidden) but a certificate was still observed. | Critical |
 | `caa_issuer_unknown` | CCADB has no mapping for the observed issuer (AKI + DN). | Info |
 
-{{% notice style="info" title="Eventual consistency with TLS probes" %}}
+{{% callout style="info" title="Eventual consistency with TLS probes" %}}
 The `caa_no_tls` state is a normal steady state, not an error: until `checker-tls` has probed an endpoint on the target and published a certificate, the CAA checker has nothing to compare against and reports **Unknown**. Once probes arrive, the check resolves on its next run. The `caa_issuer_unknown` outcome means the CA simply isn't in the current CCADB snapshot; the fix is to file a CCADB update, not to change your zone.
-{{% /notice %}}
+{{% /callout %}}
 
 The issuer-to-CAA-domain mapping comes from an embedded snapshot of CCADB's "CAA Identifiers (V2)" report. Refreshing it only requires re-embedding a newer CSV and recompiling — no code change and no network dependency at build time.
 

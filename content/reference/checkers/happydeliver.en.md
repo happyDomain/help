@@ -21,9 +21,9 @@ For each run, the checker:
 
 happyDeliver grades the message across several sections (DNS, authentication, spam filters, blacklists, headers, content) and computes an overall score. The checker turns each section into a rule.
 
-{{% notice style="info" title="An external happyDeliver instance is required" %}}
+{{% callout style="info" title="An external happyDeliver instance is required" %}}
 This checker does nothing on its own: it needs a reachable happyDeliver instance, identified by its API URL and bearer token. Those are usually configured once by the administrator and can be overridden per domain.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

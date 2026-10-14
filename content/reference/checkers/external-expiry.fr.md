@@ -23,9 +23,9 @@ Sa propre règle, `external_whois_collected`, ne rapporte que le déroulement de
 | **Avertissement** | La requête WHOIS a échoué pour *toutes* les cibles externes |
 | **Erreur** | L'observation WHOIS externe n'a pas pu être lue |
 
-{{% notice style="info" title="Les verdicts se trouvent dans le vérificateur de références orphelines" %}}
+{{% callout style="info" title="Les verdicts se trouvent dans le vérificateur de références orphelines" %}}
 Ce vérificateur ne décide pas si un domaine externe est dangereusement proche de l'expiration. Il se contente d'en récupérer les informations. Les verdicts d'expiration, de rédemption et de ré-enregistrement sont produits par le vérificateur de références orphelines associé, qui consomme les informations collectées ici.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

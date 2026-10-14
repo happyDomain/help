@@ -14,9 +14,9 @@ This checker is **domain-level**: it evaluates the domain's delegation and zone 
 
 For each run the checker submits the domain to a Zonemaster JSON-RPC endpoint (the official public API by default), waits for the test batch to complete, and stores every message Zonemaster returns. Each message carries a module, a test case and a Zonemaster severity (INFO / NOTICE / WARNING / ERROR / CRITICAL).
 
-{{% notice style="info" title="Point only at a trusted Zonemaster instance" %}}
+{{% callout style="info" title="Point only at a trusted Zonemaster instance" %}}
 The Zonemaster API URL is an administrator option. Because the checker issues requests to whatever URL is configured and surfaces the responses, point it only at a Zonemaster instance you trust.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

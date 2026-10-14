@@ -29,9 +29,9 @@ Chaque règle émet un code de constat. Certaines sévérités sont atténuées 
 | `target_resolvable` | La cible finale de la chaîne n'a aucun enregistrement A ni AAAA. | Critique |
 | `multiple_records` | Un propriétaire de la chaîne porte plus d'un enregistrement CNAME/DNAME (malformé). | Critique |
 
-{{% notice style="info" title="Pourquoi un CNAME à l'apex pose problème" %}}
+{{% callout style="info" title="Pourquoi un CNAME à l'apex pose problème" %}}
 Un propriétaire de CNAME ne peut porter aucun autre type d'enregistrement, mais l'apex de la zone doit toujours contenir des enregistrements SOA et NS. Ces deux exigences sont incompatibles : un CNAME à l'apex est donc invalide (RFC 1912 §2.4). Certains hébergeurs contournent cela par un aplatissement ALIAS/ANAME côté serveur qui publie de simples A/AAAA à l'apex ; la règle `apex_flattening` reconnaît ce motif comme intentionnel lorsque l'option **Reconnaître l'aplatissement ALIAS/ANAME** est activée.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

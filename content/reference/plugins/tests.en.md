@@ -7,9 +7,9 @@ happyDomain can be extended with external **checker plugins**: shared libraries 
 
 A checker has two halves: it **collects** raw data about a target (an observation), then **evaluates** that data against a set of rules to produce a status. Results are stored and displayed in the happyDomain UI alongside the domain or service they concern.
 
-{{< notice style="warning" >}}
+{{< callout style="warning" >}}
 A `.so` plugin is loaded into the happyDomain process and runs with the same privileges as the server. Treat the plugin directory as a trusted location: happyDomain refuses to load plugins from a directory it cannot trust (see [Security and deployment](#security-and-deployment)).
-{{< /notice >}}
+{{< /callout >}}
 
 ---
 
@@ -71,9 +71,9 @@ func NewCheckerPlugin() (*checker.CheckerDefinition, checker.ObservationProvider
 }
 ```
 
-{{< notice style="warning" >}}
+{{< callout style="warning" >}}
 A Go plugin and the host process share the same runtime. They **must** be compiled with the same Go toolchain version and the same versions of every shared dependency. Any mismatch produces a hard error at load time. See [Build constraints](#build-constraints).
-{{< /notice >}}
+{{< /callout >}}
 
 ---
 
@@ -121,9 +121,9 @@ Options are declared grouped by **scope**, i.e. who sets them and how long they 
 
 happyDomain merges the scoped values from least specific (admin) to most specific (run-time) before calling `Collect`, so the provider receives a single flat `CheckerOptions` map. Each option is a `CheckerOptionField` with fields such as `Id`, `Type`, `Label`, `Default`, `Choices`, `Required`, `Secret`, `Description` and `AutoFill`. Read typed values out of the map with the SDK helpers `checker.GetOption`, `checker.GetIntOption`, `checker.GetBoolOption`, …
 
-{{< notice style="info" >}}
+{{< callout style="info" >}}
 When happyDomain registers an externalisable checker, it automatically appends an `endpoint` admin option, so the administrator can delegate collection to a remote HTTP endpoint instead of running the checker in-process. Leave it empty to run locally.
-{{< /notice >}}
+{{< /callout >}}
 
 ---
 
@@ -160,11 +160,11 @@ The SDK also provides `checker.Server`, HTTP scaffolding for running a checker a
 
 ## The host must be a plugin-capable build
 
-{{< notice style="warning" >}}
+{{< callout style="warning" >}}
 The default happyDomain binaries and the default container image **cannot load
 plugins**. They are compiled statically with `CGO_ENABLED=0`, which keeps them
 small and portable but disables Go's `plugin` package entirely.
-{{< /notice >}}
+{{< /callout >}}
 
 To use plugins, run a **`-cgo` build**:
 

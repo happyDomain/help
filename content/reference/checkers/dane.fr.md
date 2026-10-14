@@ -28,9 +28,9 @@ Il s'agit d'un vérificateur de **niveau service** : il s'exécute sur un servic
 - **Usage 2 (DANE-TA) / 3 (DANE-EE)** : le TLSA fait lui-même office d'ancre de confiance ; la validité PKIX est informative.
 - Le **sélecteur** 0 (certificat complet) ou 1 (Subject Public Key Info), et le **type de correspondance** 0 (complet) / 1 (SHA-256) / 2 (SHA-512), sont comparés à l'emplacement de chaîne impliqué par l'usage.
 
-{{% notice style="info" title="DANE repose sur DNSSEC" %}}
+{{% callout style="info" title="DANE repose sur DNSSEC" %}}
 DANE n'est digne de confiance que si les enregistrements TLSA proviennent d'une zone signée DNSSEC et sont validés par le résolveur. La règle `dane.dnssec_validated` vérifie que les enregistrements sont arrivés avec le bit AD (Authenticated Data) positionné ; sans DNSSEC, un enregistrement TLSA pourrait être falsifié et toute la liaison perd son sens.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

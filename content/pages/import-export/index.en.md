@@ -16,9 +16,9 @@ Before working with files, it is worth knowing that you can always pull the **cu
 
 This contacts your hosting provider, reads the zone as it stands right now, and refreshes your working copy from it. Use it when the zone may have been changed outside happyDomain, or to start again from a clean state.
 
-{{% notice style="warning" title="This replaces unpublished edits" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="This replaces unpublished edits" icon="triangle-exclamation" %}}
 Re-importing the live zone fetches the provider's version. Any local change you had not yet published may be superseded, so review your pending changes first (see {{% relref "publish-changes" %}}) if you want to keep them.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Importing a zone file
 
@@ -34,9 +34,9 @@ To load a zone from a standard zone file:
 
 happyDomain parses the zone file, recognises the records, and groups them back into services in your working copy. As with every other edit, the imported content stays local until you publish it.
 
-{{% notice style="info" title="Standard format" icon="circle-info" %}}
+{{% callout style="info" title="Standard format" icon="circle-info" %}}
 The expected format is the standard textual zone file, the same one BIND and most DNS tools use. A line such as `@ 4269 IN SOA root ns 2042070136 ...` is a typical example of what you can paste.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Exporting / viewing the zone
 

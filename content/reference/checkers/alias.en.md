@@ -29,9 +29,9 @@ Each rule emits a finding code. Some severities are softened by the options belo
 | `target_resolvable` | The final target of the chain has no A or AAAA record. | Critical |
 | `multiple_records` | An owner in the chain carries more than one CNAME/DNAME record (malformed). | Critical |
 
-{{% notice style="info" title="Why a CNAME at the apex is a problem" %}}
+{{% callout style="info" title="Why a CNAME at the apex is a problem" %}}
 A CNAME owner may carry no other record type, but the zone apex must always hold SOA and NS records. The two requirements are mutually exclusive, so a CNAME at the apex is invalid (RFC 1912 §2.4). Some providers work around this with server-side ALIAS/ANAME "flattening" that publishes plain A/AAAA at the apex; the `apex_flattening` rule recognises that pattern as intentional when **Recognize ALIAS/ANAME flattening** is enabled.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

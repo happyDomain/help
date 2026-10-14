@@ -19,9 +19,9 @@ Chaque service appartient à une famille :
 - **Fournisseurs** : des services liés à un acteur tiers précis qui publie son propre assistant (par exemple un service hébergé nécessitant un ensemble d'enregistrements prédéfini).
 - **Ressources DNS brutes** : une solution de repli qui vous permet d'ajouter directement un enregistrement unique (`A`, `TXT`, `SRV`, etc.), lorsqu'aucun service abstrait ne correspond à votre besoin.
 
-{{% notice style="info" title="Pourquoi des services plutôt que des enregistrements ?" icon="lightbulb" %}}
+{{% callout style="info" title="Pourquoi des services plutôt que des enregistrements ?" icon="lightbulb" %}}
 Travailler avec des services vous évite d'avoir à mémoriser les types d'enregistrements exacts, leur ordre ou leur syntaxe. happyDomain valide votre saisie et génère du DNS correct à votre place, ce qui réduit fortement le risque d'erreur de configuration.
-{{% /notice %}}
+{{% /callout %}}
 
 ## La vue par services d'un sous-domaine
 
@@ -56,9 +56,9 @@ Le sélecteur est organisé en onglets pour vous aider à restreindre la liste :
 
 Vous pouvez également saisir un terme dans le champ de recherche, en haut, pour filtrer la liste par nom. Appuyer sur Entrée sélectionne le premier résultat disponible.
 
-{{% notice style="tip" title="Entrées grisées" icon="circle-info" %}}
+{{% callout style="tip" title="Entrées grisées" icon="circle-info" %}}
 Certains types de services peuvent apparaître désactivés. Cela se produit lorsque le service ne peut pas être ajouté dans le contexte actuel : par exemple parce que votre hébergeur DNS ne prend pas en charge le type d'enregistrement sous-jacent, ou parce que ce service existe déjà sur ce sous-domaine et qu'une seule instance est autorisée. Survolez une entrée désactivée pour en connaître la raison.
-{{% /notice %}}
+{{% /callout %}}
 
 ### 2. Choisir le type de service
 

@@ -28,9 +28,9 @@ This is a **service-level** checker: it runs on a `TLSAs` service. It groups the
 - **Usage 2 (DANE-TA) / 3 (DANE-EE)** — the TLSA itself acts as the trust anchor; PKIX validity is informational.
 - **Selector** 0 (full certificate) or 1 (Subject Public Key Info), and **matching type** 0 (full) / 1 (SHA-256) / 2 (SHA-512), are matched against the chain slot implied by the usage.
 
-{{% notice style="info" title="DANE relies on DNSSEC" %}}
+{{% callout style="info" title="DANE relies on DNSSEC" %}}
 DANE is only trustworthy when the TLSA records are served from a DNSSEC-signed zone and validated by the resolver. The `dane.dnssec_validated` rule checks that the records arrived with the AD (Authenticated Data) bit set; without DNSSEC, a TLSA record could be forged and the whole binding is meaningless.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

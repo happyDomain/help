@@ -4,14 +4,14 @@ title: Running checkers as separate containers
 weight: 17
 ---
 
-{{% notice style="warning" title="This is not the default deployment" %}}
+{{% callout style="warning" title="This is not the default deployment" %}}
 You almost certainly don't need this page. The compose file described in
 [Using Docker]({{% relref "docker" %}}) already gives you **every checker we
 ship**, with the exact same results. Splitting them into containers adds no
 feature; it only changes where they run. (Adding a checker that is *not* part
 of happyDomain is a different question, and the answer there is usually a
 [plugin]({{% relref "/reference/plugins" %}}).)
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## Why this exists
@@ -30,12 +30,12 @@ Once a checker is registered, you can decide **where its work runs**: inside the
 happyDomain process (the default), or in a **standalone container** it delegates
 to over HTTP. That is what this page is about.
 
-{{% notice style="note" title="A container does not register a checker" %}}
+{{% callout style="note" title="A container does not register a checker" %}}
 Running `happydomain/checker-<something>` and setting its endpoint only works
 because that checker is already known to happyDomain. Pointing an endpoint at a
 checker the server has never heard of does nothing: a custom checker must be
 loaded as a plugin first, and only then may it be delegated to a container.
-{{% /notice %}}
+{{% /callout %}}
 
 Take [`checker-ping`](https://framagit.org/happyDomain/checker-ping), which
 verifies that every IP address of a zone answers ICMP within a given delay. It

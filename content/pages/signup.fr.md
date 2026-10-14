@@ -7,9 +7,9 @@ description: "Inscrivez-vous sur happyDomain et validez votre adresse e-mail"
 
 Avant de pouvoir gérer vos domaines, il vous faut un compte happyDomain. Sa création prend moins de deux minutes et ne demande qu'une adresse e-mail et un mot de passe.
 
-{{% notice style="info" title="Où se trouve ce compte ?" icon="server" %}}
+{{% callout style="info" title="Où se trouve ce compte ?" icon="server" %}}
 Le compte que vous créez ici est stocké dans la base de données de **cette** instance happyDomain, quel que soit le serveur sur lequel vous vous trouvez. Rien n'est envoyé vers happydomain.org, sauf si l'adresse affichée dans votre navigateur est `app.happydomain.org` elle-même, l'instance hébergée par le projet. Les instances auto-hébergées sont entièrement indépendantes : l'administrateur qui fait tourner le serveur contrôle sa base de données et décide si l'inscription et la validation par e-mail sont même activées.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Remplir le formulaire d'inscription
 
@@ -24,9 +24,9 @@ Depuis la page d'accueil, suivez le lien d'inscription, puis remplissez le formu
 
 La langue de l'interface que vous utilisez est automatiquement enregistrée avec votre compte ; les e-mails que vous recevrez seront ainsi dans cette langue.
 
-{{% notice style="tip" title="Exigences du mot de passe" icon="key" %}}
+{{% callout style="tip" title="Exigences du mot de passe" icon="key" %}}
 Un mot de passe n'est accepté que s'il contient au moins 8 caractères, dont au moins une majuscule, une minuscule et un chiffre. Il doit en outre contenir un caractère spécial, ou bien faire au moins 11 caractères.
-{{% /notice %}}
+{{% /callout %}}
 
 Certains serveurs affichent une vérification anti-robot (captcha) sous le formulaire. Le cas échéant, complétez-la avant de valider.
 
@@ -40,8 +40,8 @@ Sur la plupart des serveurs, un e-mail est envoyé à l'adresse indiquée juste 
 
 Si vous n'avez pas reçu le message (vérifiez d'abord votre dossier de courrier indésirable), vous pouvez en demander un nouveau depuis la page de validation : saisissez à nouveau votre adresse, puis cliquez sur « Renvoyer ».
 
-{{% notice style="info" title="Serveurs sans e-mail" icon="circle-info" %}}
+{{% callout style="info" title="Serveurs sans e-mail" icon="circle-info" %}}
 Certaines instances happyDomain fonctionnent sans service de messagerie. Sur ces serveurs, aucun message de validation n'est envoyé : votre compte est utilisable immédiatement et vous pouvez [vous connecter]({{% relref "login" %}}) sans attendre.
-{{% /notice %}}
+{{% /callout %}}
 
 Une fois votre adresse validée, vous êtes redirigé vers la [page de connexion]({{% relref "login" %}}) où vous pourrez vous identifier avec vos nouveaux identifiants.

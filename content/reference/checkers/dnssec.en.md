@@ -71,9 +71,9 @@ The checker evaluates the following rules. Several of them are governed by the o
 
 The administrator can also set a bootstrap `resolver` (`host:port`) used to discover the apex name servers and look up the parent `DS`; it defaults to `/etc/resolv.conf`.
 
-{{% notice style="info" title="What this checker does not do" %}}
+{{% callout style="info" title="What this checker does not do" %}}
 The DNSSEC checker does not verify the full cryptographic chain of trust from the root. For that end-to-end validation, use the DNSViz-based checker. This checker complements it by catching policy and operational problems (weak algorithms, expiring signatures, NSEC walkability) that a chain validation alone would not surface.
-{{% /notice %}}
+{{% /callout %}}
 
 ## In happyDomain
 

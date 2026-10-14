@@ -29,8 +29,8 @@ happyDomain ne présente pas le SOA comme un enregistrement à éditer champ par
 
 Le **numéro de série** est, dans la plupart des cas, géré automatiquement. Lors de la publication de vos modifications, de nombreux hébergeurs DNS gèrent eux-mêmes ce numéro. happyDomain détecte cette capacité, puis relit la zone après publication afin de refléter le numéro de série réellement attribué par l'hébergeur. Vous n'avez normalement pas à le renseigner à la main.
 
-{{% notice style="info" title="Ce que l'on peut modifier, et ce que l'on ne peut pas" %}}
+{{% callout style="info" title="Ce que l'on peut modifier, et ce que l'on ne peut pas" %}}
 Le comportement exact dépend de votre hébergeur DNS. Certains exposent l'ensemble du SOA et laissent happyDomain en transmettre les valeurs ; d'autres gèrent eux-mêmes le numéro de série (et parfois les autres minuteries). Lorsque l'hébergeur prend en charge le numéro de série, la valeur affichée par happyDomain reflète simplement l'état publié et se met à jour automatiquement.
-{{% /notice %}}
+{{% /callout %}}
 
 Pour en savoir plus sur la représentation de l'apex et des autres regroupements, consultez le chapitre {{< relref "../services" >}}.

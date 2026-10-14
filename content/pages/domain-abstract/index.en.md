@@ -19,9 +19,9 @@ When you open a domain, the screen is split in two parts:
 
 At the very top of the sidebar you will find the **Add a subdomain** button and a gear menu grouping the other actions. The button used to send your changes to your provider (**Publish my changes**) is also reachable from here; see [this page]({{% relref "publish-changes" %}}) for details.
 
-{{% notice style="info" title="Nothing is sent automatically" icon="cloud" %}}
+{{% callout style="info" title="Nothing is sent automatically" icon="cloud" %}}
 Every change you make in the editor is kept locally in happyDomain. It is only transmitted to your hosting provider once you explicitly publish it.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Browsing the zone
 
@@ -88,9 +88,9 @@ From this panel you can also adjust the **default TTL** of the service, edit it,
 
 The service and all the records it generated are removed from your working copy of the zone.
 
-{{% notice style="warning" title="Some services cannot be removed" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Some services cannot be removed" icon="triangle-exclamation" %}}
 The origin service of a zone (the one carrying the SOA and the authoritative name servers) is essential and cannot be deleted from the editor.
-{{% /notice %}}
+{{% /callout %}}
 
 For aliases (CNAME) and reverse pointers (PTR), a dedicated delete button is available directly on the subdomain heading.
 

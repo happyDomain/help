@@ -22,9 +22,9 @@ Chaque maillon de la chaîne (racine, TLD, intermédiaires, feuille) est listé 
 
 La sortie est analysée : les erreurs et avertissements par zone sont extraits de l'arbre d'enregistrements imbriqués et transformés en états individuels, étiquetés du chemin JSON où ils ont été trouvés. Un catalogue d'échecs DNSSEC courants (chaîne rompue, RRSIG expirée, condensat DS incohérent, algorithme déprécié) est confronté aux constats pour alimenter une section « Fix these first » du rapport HTML.
 
-{{% notice style="info" title="Périmètre" %}}
+{{% callout style="info" title="Périmètre" %}}
 Ce vérificateur rapporte exactement ce que DNSViz rapporte. Le durcissement contre le parcours de zone NSEC/NSEC3 et la politique d'itérations NSEC3PARAM (RFC 9276) sont hors périmètre ici et traités par le vérificateur DNSSEC dédié : voir {{< relref "/reference/checkers/dnssec" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

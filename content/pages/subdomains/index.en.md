@@ -40,9 +40,9 @@ A dialog opens asking for the new subdomain to create under your domain. Type th
 
 The name is validated as you type. You only need to provide the part to the left of your domain name; happyDomain appends the domain for you.
 
-{{% notice style="tip" title="Apex and nested paths" icon="sitemap" %}}
+{{% callout style="tip" title="Apex and nested paths" icon="sitemap" %}}
 Leave the field empty (or use `@`) to target the domain apex itself. You can also create several levels at once by typing a dotted path such as `a.b.c`: the intermediate levels are created as needed.
-{{% /notice %}}
+{{% /callout %}}
 
 ### 2. Add a first service
 
@@ -50,9 +50,9 @@ Creating a subdomain only makes sense if it carries at least one service, so hap
 
 The new subdomain then appears in the sidebar and in the main panel, with the service you just added.
 
-{{% notice style="info" title="Changes are staged" icon="circle-info" %}}
+{{% callout style="info" title="Changes are staged" icon="circle-info" %}}
 Creating a subdomain and its service does not contact your DNS provider immediately. Like every other change, it is staged locally and only sent to your provider when you publish the zone. See the [abstract view]({{% relref "domain-abstract" %}}) for how to review and apply your changes.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Other domain actions
 

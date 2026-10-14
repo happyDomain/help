@@ -34,9 +34,9 @@ Ce vérificateur s'applique au niveau de la **zone** : il opère sur le contenu 
 | `flagGenericPTR` | Si activé, les cibles `PTR` qui intègrent l'IP pointée ou correspondent aux motifs auto-générés courants des FAI sont signalées en avertissement. | `true` |
 | `maxPTRsToCheck` | Plafonne le nombre de `PTR` inspectés par exécution, protégeant le vérificateur contre les très grandes zones inverses. | `1024` |
 
-{{% notice style="info" title="Forward-Confirmed Reverse DNS" %}}
+{{% callout style="info" title="Forward-Confirmed Reverse DNS" %}}
 Le FCrDNS signifie que la cible du `PTR`, résolue en direct, revient bien à l'adresse IP d'origine. Un `PTR` pointant vers un hôte dont le `A`/`AAAA` n'inclut pas cette IP échoue à l'aller-retour et est considéré comme une mauvaise configuration par de nombreux serveurs de courrier et SSH.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Dans happyDomain
 

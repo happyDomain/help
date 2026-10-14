@@ -22,9 +22,9 @@ Every link of the chain (root → TLD → intermediates → leaf) is listed expl
 
 The output is parsed: per-zone errors and warnings are walked out of the nested record tree and turned into individual states tagged with the JSON path where they were found. A curated catalog of common DNSSEC failures (broken chain, expired RRSIG, DS digest mismatch, deprecated algorithm…) is matched against the findings to drive a "Fix these first" section in the HTML report.
 
-{{% notice style="info" title="Scope" %}}
+{{% callout style="info" title="Scope" %}}
 This checker reports exactly what DNSViz reports. NSEC/NSEC3 zone-walk hardening and NSEC3PARAM iteration policy (RFC 9276) are out of scope here and handled by the dedicated DNSSEC checker — see {{< relref "/reference/checkers/dnssec" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

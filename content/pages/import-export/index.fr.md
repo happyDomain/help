@@ -16,9 +16,9 @@ Avant de travailler avec des fichiers, il est utile de savoir que vous pouvez to
 
 Cette action contacte votre hébergeur, lit la zone telle qu'elle est en ce moment, et rafraîchit votre copie de travail à partir d'elle. Utilisez-la lorsque la zone a pu être modifiée en dehors de happyDomain, ou pour repartir d'un état propre.
 
-{{% notice style="warning" title="Cela remplace les modifications non publiées" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Cela remplace les modifications non publiées" icon="triangle-exclamation" %}}
 Réimporter la zone en ligne récupère la version de l'hébergeur. Tout changement local que vous n'aviez pas encore publié peut être écrasé : examinez donc d'abord [vos changements en attente]({{% relref "publish-changes" %}}) si vous souhaitez les conserver.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Importer un fichier de zone
 
@@ -34,9 +34,9 @@ Pour charger une zone à partir d'un fichier de zone standard :
 
 happyDomain analyse le fichier de zone, reconnaît les enregistrements et les regroupe à nouveau en services dans votre copie de travail. Comme pour toute autre modification, le contenu importé reste local tant que vous ne l'avez pas publié.
 
-{{% notice style="info" title="Format standard" icon="circle-info" %}}
+{{% callout style="info" title="Format standard" icon="circle-info" %}}
 Le format attendu est le fichier de zone textuel standard, le même que celui qu'utilisent BIND et la plupart des outils DNS. Une ligne telle que `@ 4269 IN SOA root ns 2042070136 ...` est un exemple typique de ce que vous pouvez coller.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Exporter / visualiser la zone
 

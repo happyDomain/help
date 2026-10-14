@@ -22,9 +22,9 @@ Because a TXT record can hold arbitrary text, it has become the carrier for many
 
 For most of these purposes, happyDomain offers dedicated, higher-level **services** (SPF, DKIM, DMARC, site verification, and more) that are easier and safer to use than a raw TXT record: they guide you with the right fields and validate the syntax for you. Browse them in the {{< relref "/reference/services" >}} chapter, in particular the e-mail-related services. Prefer those services whenever one matches your need.
 
-{{% notice style="info" title="When a TXT record becomes a service" %}}
+{{% callout style="info" title="When a TXT record becomes a service" %}}
 When happyDomain reads your zone, it recognises TXT records that follow a known convention (SPF, DKIM, DMARC, …) and presents them as their dedicated service rather than as a plain Text Record. Only TXT records without a recognised prefix or syntax are shown as a raw **Text Record**.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Editing a TXT record in happyDomain
 
@@ -39,6 +39,6 @@ To work with one:
 
 The value you enter is stored verbatim. Editing it and publishing updates the corresponding TXT record on that subdomain.
 
-{{% notice style="note" title="Long strings" %}}
+{{% callout style="note" title="Long strings" %}}
 A single text string inside a TXT record cannot exceed 255 bytes at the DNS protocol level. Longer values are automatically split into 255-byte chunks for you. You simply enter the complete string in happyDomain — no manual splitting is required.
-{{% /notice %}}
+{{% /callout %}}

@@ -32,9 +32,9 @@ The checker runs a chain of rules, from structural sanity through query success 
 
 The `ptr.target_resolves` and `ptr.fcrdns_match` rules are critical by default but drop to a warning when **Require forward-confirmed reverse DNS** is turned off.
 
-{{% notice style="info" title="FCrDNS, the round-trip rule" %}}
+{{% callout style="info" title="FCrDNS, the round-trip rule" %}}
 Forward-Confirmed Reverse DNS means the chain rounds back to itself: the IP's PTR points to a hostname, and that hostname's A/AAAA includes the original IP. Mail servers reject connections from IPs that fail this round-trip, so leave **Require forward-confirmed reverse DNS** enabled for any host that sends mail.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

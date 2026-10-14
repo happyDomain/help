@@ -22,9 +22,9 @@ Une seule règle, `caa_compliance`, charge la politique CAA `issue` / `issuewild
 | `caa_issuance_disallowed` | La politique contient `CAA 0 issue ";"` (émission explicitement interdite) mais un certificat a tout de même été observé. | Critique |
 | `caa_issuer_unknown` | CCADB n'a aucun mappage pour l'émetteur observé (AKI + DN). | Info |
 
-{{% notice style="info" title="Cohérence à terme avec les sondes TLS" %}}
+{{% callout style="info" title="Cohérence à terme avec les sondes TLS" %}}
 L'état `caa_no_tls` est un état stable normal, pas une erreur : tant que `checker-tls` n'a pas sondé un point d'accès sur la cible ni publié de certificat, le vérificateur CAA n'a rien à comparer et rapporte **Inconnu**. Dès que les sondes arrivent, la vérification se résout à son exécution suivante. Le résultat `caa_issuer_unknown` signifie simplement que l'autorité n'est pas dans l'instantané CCADB courant ; le correctif consiste à soumettre une mise à jour à CCADB, pas à modifier votre zone.
-{{% /notice %}}
+{{% /callout %}}
 
 Le mappage émetteur vers domaine CAA provient d'un instantané embarqué du rapport « CAA Identifiers (V2) » de CCADB. Le rafraîchir ne demande que de ré-embarquer un CSV plus récent et de recompiler : aucun changement de code ni dépendance réseau à la compilation.
 

@@ -21,9 +21,9 @@ Comme un enregistrement TXT peut contenir n'importe quel texte, il est devenu le
 
 Pour la plupart de ces usages, happyDomain propose des **services** dédiés, de plus haut niveau (SPF, DKIM, DMARC, vérification de site, etc.). Ils sont plus simples et plus sûrs à utiliser qu'un enregistrement TXT brut : ils guident la saisie avec les bons champs et en valident la syntaxe. On les retrouve dans le chapitre {{< relref "/reference/services" >}}, notamment parmi les services liés au courrier électronique. Mieux vaut recourir à ces services dès que l'un d'eux correspond au besoin.
 
-{{% notice style="info" title="Quand un enregistrement TXT devient un service" %}}
+{{% callout style="info" title="Quand un enregistrement TXT devient un service" %}}
 Lorsque happyDomain lit votre zone, il reconnaît les enregistrements TXT qui suivent une convention connue (SPF, DKIM, DMARC, etc.) et les présente sous leur service dédié plutôt que comme un simple enregistrement texte. Seuls les enregistrements TXT sans préfixe ni syntaxe reconnus apparaissent comme un **Enregistrement texte** brut.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Éditer un enregistrement TXT dans happyDomain
 
@@ -38,6 +38,6 @@ Pour le manipuler :
 
 La valeur saisie est conservée telle quelle. La modifier puis publier met à jour l'enregistrement TXT correspondant sur ce sous-domaine.
 
-{{% notice style="note" title="Chaînes longues" %}}
+{{% callout style="note" title="Chaînes longues" %}}
 Au niveau du protocole DNS, une chaîne de texte ne peut excéder 255 octets dans un enregistrement TXT. Les valeurs plus longues sont automatiquement découpées en fragments de 255 octets. Il suffit de saisir la chaîne complète dans happyDomain : aucun découpage manuel n'est nécessaire.
-{{% /notice %}}
+{{% /callout %}}

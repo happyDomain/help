@@ -34,9 +34,9 @@ The matrix compares the following capabilities:
 | **SSHFP** | Support for `SSHFP` records, which publish SSH host key fingerprints in DNS. |
 | **TLSA** | Support for `TLSA` records, used by DANE to bind a certificate to a name. |
 
-{{% notice style="info" title="Why this matters" icon="circle-info" %}}
+{{% callout style="info" title="Why this matters" icon="circle-info" %}}
 When you add a [service]({{% relref "services" %}}) to a subdomain, happyDomain only offers the service types your provider can actually publish. If a service you expect is greyed out, the feature matrix is the place to confirm whether the underlying record type is supported by that provider.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Choosing a provider
 

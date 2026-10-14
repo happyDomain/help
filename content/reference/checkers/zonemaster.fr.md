@@ -14,9 +14,9 @@ Ce vérificateur s'applique au **niveau domaine** : il évalue la délégation e
 
 À chaque exécution, le vérificateur soumet le domaine à un point d'accès JSON-RPC Zonemaster (l'API publique officielle par défaut), attend la fin du lot de tests et conserve chaque message renvoyé par Zonemaster. Chaque message porte un module, un cas de test et une sévérité Zonemaster (INFO / NOTICE / WARNING / ERROR / CRITICAL).
 
-{{% notice style="info" title="Ne pointez que vers une instance Zonemaster de confiance" %}}
+{{% callout style="info" title="Ne pointez que vers une instance Zonemaster de confiance" %}}
 L'URL de l'API Zonemaster est une option d'administrateur. Comme le vérificateur émet des requêtes vers l'URL configurée et en restitue les réponses, ne le pointez que vers une instance Zonemaster en laquelle vous avez confiance.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

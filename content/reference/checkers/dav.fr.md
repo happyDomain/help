@@ -12,9 +12,9 @@ Les deux vérificateurs sont de **niveau service** : ils ciblent le service corr
 
 Lorsqu'aucun identifiant n'est fourni, seule la phase anonyme s'exécute (découverte, transport, OPTIONS). Fournir un nom d'utilisateur et un mot de passe déverrouille la phase authentifiée : découverte du principal, home-set, énumération des collections et sonde REPORT.
 
-{{% notice style="info" title="La posture TLS est hors périmètre" %}}
+{{% callout style="info" title="La posture TLS est hors périmètre" %}}
 Ces vérificateurs confirment uniquement qu'une session HTTPS peut être établie vers l'URL de contexte. La validation du certificat (chaîne, nom d'hôte, expiration, algorithmes) est volontairement laissée au vérificateur TLS dédié. Consultez {{< relref "/reference/checkers/tls" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Ce qui est vérifié
 

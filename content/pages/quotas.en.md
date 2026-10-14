@@ -8,9 +8,9 @@ description: "Understand the limits an administrator may set on your account, an
 
 A happyDomain instance can apply **quotas** to each account. Quotas are limits set by the person running the instance (the administrator), not by you. They exist mainly to keep a shared instance fair and to avoid overloading the servers, and they apply above all to the [monitoring & checks]({{% relref "checks" %}}) system.
 
-{{% notice style="info" title="Quotas are managed by the administrator" icon="circle-info" %}}
+{{% callout style="info" title="Quotas are managed by the administrator" icon="circle-info" %}}
 Quotas are **read-only** for regular users. There is no screen in your account where you can view or change your own quota: they are configured server-side and adjusted only through the administration interface. If a limit is getting in your way, the right course of action is to contact the administrator of your instance.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## What quotas can cover
@@ -24,9 +24,9 @@ On a default happyDomain instance, quotas relate to how the monitoring scheduler
 
 Each of these can be left at the instance default, set to a specific value for your account, or explicitly made unlimited, at the administrator's discretion.
 
-{{% notice style="tip" title="No fixed limit on the number of domains" icon="lightbulb" %}}
+{{% callout style="tip" title="No fixed limit on the number of domains" icon="lightbulb" %}}
 On a standard happyDomain instance, the quota system does not impose a built-in cap on the number of domains you can manage. If a particular instance does restrict this, it is a policy of that instance; ask its administrator for the details that apply to you.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## What you see when a limit is reached

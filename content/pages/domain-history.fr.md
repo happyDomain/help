@@ -38,6 +38,6 @@ Sous chaque version (sauf la plus ancienne), la section **Voir les changements**
 
 Dépliez la section pour révéler les modifications : les enregistrements ajoutés, supprimés et modifiés sont mis en évidence, ce qui vous permet de voir d'un coup d'œil ce que chaque publication a changé. La comparaison la plus récente est dépliée automatiquement à l'ouverture de la page.
 
-{{% notice style="info" title="Pas encore d'historique ?" %}}
+{{% callout style="info" title="Pas encore d'historique ?" %}}
 Un domaine ne se constitue un historique qu'à partir du moment où vous commencez à y publier des changements. Si vous venez d'importer un domaine, son historique se remplira au fur et à mesure que vous effectuerez et publierez vos premières modifications.
-{{% /notice %}}
+{{% /callout %}}

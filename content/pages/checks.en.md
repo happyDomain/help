@@ -69,9 +69,9 @@ In the **Schedule** section of the checker configuration page:
 
 <!-- TODO: screenshot of the schedule card -->
 
-{{% notice style="info" title="Interval limits" icon="clock" %}}
+{{% callout style="info" title="Interval limits" icon="clock" %}}
 Each checker defines minimum and maximum intervals to prevent overloading external services. The interface will respect these bounds when you configure the schedule.
-{{% /notice %}}
+{{% /callout %}}
 
 When scheduling is disabled, the checker can still be run manually at any time.
 

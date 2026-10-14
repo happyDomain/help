@@ -22,9 +22,9 @@ Une seule règle, `legacy_records`, inspecte le corps de chaque enregistrement o
 
 Pour chaque type détecté, le rapport nomme chaque propriétaire où il apparaît, la raison RFC, le remplacement suggéré et une instruction concrète de correction. Une zone propre produit un unique état OK avec le décompte de l'analyse ; les erreurs d'analyse rencontrées pendant le balayage sont exposées dans une section « ignorés » distincte, afin qu'un saut silencieux ne se fasse jamais passer pour un passage propre.
 
-{{% notice style="info" title="Le type d'enregistrement SPF, pas la politique SPF" %}}
+{{% callout style="info" title="Le type d'enregistrement SPF, pas la politique SPF" %}}
 Le *type d'enregistrement* `SPF` (RFC 4408) a été déprécié par la RFC 7208 au profit de la publication de la politique SPF dans un enregistrement `TXT`. Ce vérificateur signale le type d'enregistrement `SPF` obsolète, et non votre politique SPF elle-même, qui reste valide et nécessaire lorsqu'elle est publiée dans un enregistrement `TXT`.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

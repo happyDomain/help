@@ -46,9 +46,9 @@ This is a **service-level** checker. It runs SRV discovery (or uses an explicit 
 | RTT critical threshold (ms) | STUN Binding round-trip time above which a critical alert is raised. | 1000 |
 | Per-probe timeout (s) | Time budget for each individual probe. | 5 |
 
-{{% notice style="info" title="Credentials are needed for the TURN tests" %}}
+{{% callout style="info" title="Credentials are needed for the TURN tests" %}}
 The authentication, relay-public and relay-echo rules only run when valid TURN credentials are provided — either a username/password pair or a REST API shared secret. Without them, the checker still validates discovery, reachability, TLS and STUN binding, but cannot exercise the TURN relay path.
-{{% /notice %}}
+{{% /callout %}}
 
 ## In happyDomain
 

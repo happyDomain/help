@@ -50,9 +50,9 @@ Délivre des notifications push sur vos appareils via un distributeur [UnifiedPu
 
 - **Point d'accès UnifiedPush** (obligatoire) : l'URL du point d'accès fournie par votre application UnifiedPush.
 
-{{% notice style="info" title="Autres types de canaux" icon="circle-info" %}}
+{{% callout style="info" title="Autres types de canaux" icon="circle-info" %}}
 La liste des types disponibles dépend de ce que l'administrateur de l'instance a activé. Pour les types pour lesquels happyDomain ne propose pas de formulaire dédié, l'éditeur bascule sur un champ de configuration JSON brut.
-{{% /notice %}}
+{{% /callout %}}
 
 ### Tester un canal
 
@@ -97,9 +97,9 @@ Chaque préférence peut être activée ou désactivée à l'aide d'un interrupt
 
 <!-- TODO: screenshot of the preference editor -->
 
-{{% notice style="tip" title="Commencez simplement" icon="lightbulb" %}}
+{{% callout style="tip" title="Commencez simplement" icon="lightbulb" %}}
 Une configuration courante consiste en une unique préférence **Globale**, pointant vers un canal, avec un statut minimum d'**Avertissement** et les notifications de rétablissement activées. Vous pourrez ensuite ajouter des règles plus spécifiques par domaine ou par service au fur et à mesure de vos besoins.
-{{% /notice %}}
+{{% /callout %}}
 
 
 ## Historique

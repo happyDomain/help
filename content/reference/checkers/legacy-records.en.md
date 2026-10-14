@@ -22,9 +22,9 @@ A single rule, `legacy_records`, inspects each orphan record body for a deprecat
 
 For each detected type the report names every owner where it appears, the RFC reason, the suggested replacement, and a concrete "how to fix" instruction. A clean zone produces a single OK state with the scan count; parse errors encountered during the scan are surfaced in a separate "skipped" section so a silent skip never masquerades as a clean pass.
 
-{{% notice style="info" title="The SPF record type, not the SPF policy" %}}
+{{% callout style="info" title="The SPF record type, not the SPF policy" %}}
 The `SPF` *record type* (RFC 4408) was deprecated by RFC 7208 in favour of publishing the SPF policy in a `TXT` record. This checker flags the obsolete `SPF` record type, not your SPF policy itself — which remains valid and necessary when published as a `TXT` record.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

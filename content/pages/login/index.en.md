@@ -16,9 +16,9 @@ On the login page, enter the email address and password you chose at registratio
 
 If the credentials are correct, you are taken to your dashboard. If they are not, an error message is displayed: double-check your address and password and try again.
 
-{{% notice style="info" title="Repeated attempts" icon="shield" %}}
+{{% callout style="info" title="Repeated attempts" icon="shield" %}}
 For security reasons, the server may ask you to complete an anti-bot challenge (captcha) after a few failed attempts, or temporarily rate-limit further tries. Wait a moment, then retry.
-{{% /notice %}}
+{{% /callout %}}
 
 ### Signing in with an external provider
 
@@ -40,6 +40,6 @@ Open the link from your mailbox to reach the account recovery form, where you ca
 
 Once the password is redefined, you are redirected to the login page to sign in with your new credentials.
 
-{{% notice style="warning" title="Servers without email" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Servers without email" icon="triangle-exclamation" %}}
 On instances that run without a mail service, password recovery is not available: clicking **Forgotten password?** displays a notice inviting you to contact the server administrator to reset your password.
-{{% /notice %}}
+{{% /callout %}}

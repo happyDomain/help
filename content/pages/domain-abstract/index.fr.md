@@ -18,9 +18,9 @@ Lorsque vous ouvrez un domaine, l'écran est divisé en deux parties :
 
 Tout en haut de la barre latérale se trouvent le bouton **Ajouter un sous-domaine** et un menu en forme d'engrenage regroupant les autres actions. Le bouton servant à transmettre vos changements à votre hébergeur (« Diffuser mes changements ») est également accessible depuis cet écran ; voyez [cette page]({{% relref "publish-changes" %}}) pour les détails.
 
-{{% notice style="info" title="Rien n'est envoyé automatiquement" icon="cloud" %}}
+{{% callout style="info" title="Rien n'est envoyé automatiquement" icon="cloud" %}}
 Chaque modification que vous faites dans l'éditeur est conservée localement dans happyDomain. Elle n'est transmise à votre hébergeur que lorsque vous la publiez explicitement.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Parcourir la zone
 
@@ -87,9 +87,9 @@ Depuis ce panneau, vous pouvez aussi ajuster le **TTL par défaut** du service, 
 
 Le service et tous les enregistrements qu'il générait sont retirés de votre copie de travail de la zone.
 
-{{% notice style="warning" title="Certains services ne peuvent pas être supprimés" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Certains services ne peuvent pas être supprimés" icon="triangle-exclamation" %}}
 Le service d'origine d'une zone (celui qui porte le SOA et les serveurs de noms faisant autorité) est essentiel et ne peut pas être supprimé depuis l'éditeur.
-{{% /notice %}}
+{{% /callout %}}
 
 Pour les alias (CNAME) et les pointeurs inverses (PTR), un bouton de suppression dédié est disponible directement sur le titre du sous-domaine.
 

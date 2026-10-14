@@ -7,9 +7,9 @@ happyDomain peut être étendu par des **plugins de vérification** (*checkers*)
 
 Un checker comporte deux moitiés. Il **collecte** d'abord des données brutes sur une cible (une observation). Il **évalue** ensuite ces données au regard d'un ensemble de règles afin de produire un statut. Les résultats sont stockés puis affichés dans l'interface de happyDomain, à côté du domaine ou du service concerné.
 
-{{< notice style="warning" >}}
+{{< callout style="warning" >}}
 Un plugin `.so` est chargé dans le processus happyDomain et s'exécute avec les mêmes privilèges que le serveur. Le répertoire des plugins doit être considéré comme un emplacement de confiance : happyDomain refuse de charger des plugins depuis un répertoire qui ne l'est pas (voir [Sécurité et déploiement](#sécurité-et-déploiement)).
-{{< /notice >}}
+{{< /callout >}}
 
 ---
 
@@ -71,9 +71,9 @@ func NewCheckerPlugin() (*checker.CheckerDefinition, checker.ObservationProvider
 }
 ```
 
-{{< notice style="warning" >}}
+{{< callout style="warning" >}}
 Un plugin Go et le processus hôte partagent le même *runtime*. Ils **doivent** être compilés avec la même version de la chaîne d'outils Go et les mêmes versions de chaque dépendance partagée. Toute divergence produit une erreur bloquante au chargement. Voir [Contraintes de build](#contraintes-de-build).
-{{< /notice >}}
+{{< /callout >}}
 
 ---
 
@@ -121,9 +121,9 @@ Les options sont déclarées par **portée**, c'est-à-dire selon qui les défin
 
 happyDomain fusionne les valeurs des différentes portées, de la moins spécifique (administrateur) à la plus spécifique (exécution), avant d'appeler `Collect`. Le provider reçoit donc une unique table `CheckerOptions` à plat. Chaque option est un `CheckerOptionField` avec des champs comme `Id`, `Type`, `Label`, `Default`, `Choices`, `Required`, `Secret`, `Description` et `AutoFill`. On lit les valeurs typées de la table à l'aide des fonctions du SDK `checker.GetOption`, `checker.GetIntOption`, `checker.GetBoolOption`, …
 
-{{< notice style="info" >}}
+{{< callout style="info" >}}
 Lorsque happyDomain enregistre un checker externalisable, il ajoute automatiquement une option d'administration `endpoint`. L'administrateur peut ainsi déléguer la collecte à un point d'accès HTTP distant plutôt que de l'exécuter dans le processus. Laissée vide, elle fait fonctionner le checker localement.
-{{< /notice >}}
+{{< /callout >}}
 
 ---
 
@@ -160,12 +160,12 @@ Le SDK fournit aussi `checker.Server`, une ossature HTTP pour exécuter un check
 
 ## L'hôte doit être une version compatible avec les plugins
 
-{{< notice style="warning" >}}
+{{< callout style="warning" >}}
 Les binaires happyDomain par défaut et l'image de conteneur par défaut **ne
 peuvent pas charger de plugins**. Ils sont compilés statiquement avec
 `CGO_ENABLED=0`, ce qui les rend plus légers et plus portables, mais désactive
 complètement le paquet `plugin` de Go.
-{{< /notice >}}
+{{< /callout >}}
 
 Pour utiliser les plugins, exécutez une **version `-cgo`** :
 

@@ -46,9 +46,9 @@ Il s'agit d'un vérificateur de **niveau service**. Il effectue la découverte S
 | Seuil critique de RTT (ms) | Temps d'aller-retour du binding STUN au-delà duquel une alerte critique est déclenchée. | 1000 |
 | Délai par sonde (s) | Budget de temps alloué à chaque sonde individuelle. | 5 |
 
-{{% notice style="info" title="Des identifiants sont nécessaires pour les tests TURN" %}}
+{{% callout style="info" title="Des identifiants sont nécessaires pour les tests TURN" %}}
 Les règles d'authentification, de relais public et d'écho de relais ne s'exécutent que lorsque des identifiants TURN valides sont fournis : soit un couple nom d'utilisateur/mot de passe, soit un secret partagé d'API REST. Sans eux, le vérificateur valide tout de même la découverte, l'accessibilité, le TLS et le binding STUN, mais ne peut pas éprouver le chemin de relais TURN.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Dans happyDomain
 

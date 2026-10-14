@@ -32,9 +32,9 @@ Le vérificateur enchaîne une série de règles, de la cohérence structurelle 
 
 Les règles `ptr.target_resolves` et `ptr.fcrdns_match` sont critiques par défaut, mais passent en avertissement lorsque l'option **Exiger le Forward-Confirmed Reverse DNS** est désactivée.
 
-{{% notice style="info" title="Le FCrDNS, la règle de l'aller-retour" %}}
+{{% callout style="info" title="Le FCrDNS, la règle de l'aller-retour" %}}
 Le Forward-Confirmed Reverse DNS signifie que la chaîne boucle sur elle-même : le PTR de l'IP pointe vers un nom d'hôte, et le A/AAAA de ce nom d'hôte inclut l'IP d'origine. Les serveurs de messagerie rejettent les connexions des IP qui échouent à cet aller-retour ; laissez donc **Exiger le Forward-Confirmed Reverse DNS** activé pour tout hôte qui envoie du courrier.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

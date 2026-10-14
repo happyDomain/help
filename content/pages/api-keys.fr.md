@@ -31,9 +31,9 @@ Pour obtenir un jeton utilisable pour appeler l'API :
 
 Le secret du jeton est alors affiché **une seule fois**. Utilisez le bouton en forme d'œil pour le révéler et le bouton de copie pour le placer dans votre presse-papiers.
 
-{{% notice style="warning" title="Copiez le secret immédiatement" icon="triangle-exclamation" %}}
+{{% callout style="warning" title="Copiez le secret immédiatement" icon="triangle-exclamation" %}}
 Le secret de la session n'est affiché qu'au moment de sa création et n'est plus jamais montré ensuite. Copiez-le et conservez-le en lieu sûr avant de fermer la fenêtre. En cas de perte, supprimez la session et créez-en une nouvelle.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Utiliser un jeton avec l'API REST
 
@@ -49,6 +49,6 @@ Remplacez `VOTRE_JETON_SECRET` par le secret que vous avez copié, et l'hôte pa
 
 Pour révoquer une session (et le jeton qui lui est associé), cliquez sur le bouton de suppression sur sa ligne. Le jeton cesse aussitôt de fonctionner. Vous ne pouvez pas supprimer depuis cette liste la session que vous utilisez actuellement ; pour y mettre fin, déconnectez-vous simplement, ou utilisez l'option ci-dessous.
 
-{{% notice style="info" title="Fermer toutes les sessions" icon="circle-info" %}}
+{{% callout style="info" title="Fermer toutes les sessions" icon="circle-info" %}}
 Le bouton « Fermer toutes les sessions » referme l'ensemble des sessions d'un coup, y compris celle que vous utilisez. C'est utile si vous soupçonnez la fuite d'un jeton : tous les jetons existants deviennent invalides et vous êtes renvoyé vers la [page de connexion]({{% relref "login" %}}). Il vous faudra alors vous reconnecter et recréer les jetons d'API dont vous avez encore besoin.
-{{% /notice %}}
+{{% /callout %}}

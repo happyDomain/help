@@ -28,9 +28,9 @@ Une configuration courante ressemble à ceci :
 
 Ici, `mx1` est contacté en premier et `mx2` sert de secours.
 
-{{% notice style="info" title="Un seul service E-Mail par sous-domaine" %}}
+{{% callout style="info" title="Un seul service E-Mail par sous-domaine" %}}
 Le service E-Mail servers est *unique* : un sous-domaine donné ne peut héberger qu'un seul service de ce type, qui rassemble l'ensemble de ses enregistrements `MX`. Pour déclarer des serveurs de courrier à la fois sur l'apex (`example.com`) et sur un sous-domaine (`mail.example.com`), on ajoute le service à chacun d'eux séparément.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Envoyer du courrier : authentification et lutte contre l'usurpation
 

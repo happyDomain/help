@@ -12,9 +12,9 @@ Both checkers are **service-level**: they target the corresponding service publi
 
 When no credentials are supplied, only the anonymous phase runs (discovery, transport, OPTIONS). Supplying a username and password unlocks the authenticated phase: principal discovery, home-set, collection enumeration and the REPORT probe.
 
-{{% notice style="info" title="TLS posture is out of scope" %}}
+{{% callout style="info" title="TLS posture is out of scope" %}}
 These checkers confirm only that an HTTPS session can be established to the context URL. Certificate validation (chain, hostname, expiry, ciphers) is deliberately left to the dedicated TLS checker. See {{< relref "/reference/checkers/tls" >}}.
-{{% /notice %}}
+{{% /callout %}}
 
 ## What it checks
 

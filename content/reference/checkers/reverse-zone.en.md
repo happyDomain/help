@@ -34,9 +34,9 @@ This checker is **zone-level**: it operates on the full content of a reverse zon
 | `flagGenericPTR` | When enabled, `PTR` targets that embed the dotted IP or match common ISP auto-generated patterns are flagged as warning. | `true` |
 | `maxPTRsToCheck` | Caps the number of `PTR` records inspected per run, protecting the checker against very large reverse zones. | `1024` |
 
-{{% notice style="info" title="Forward-Confirmed Reverse DNS" %}}
+{{% callout style="info" title="Forward-Confirmed Reverse DNS" %}}
 FCrDNS means the `PTR` target, looked up forward, resolves back to the original IP address. A `PTR` that points to a host whose `A`/`AAAA` does not include that IP fails the round-trip and is treated as a misconfiguration by many mail and SSH servers.
-{{% /notice %}}
+{{% /callout %}}
 
 ## In happyDomain
 

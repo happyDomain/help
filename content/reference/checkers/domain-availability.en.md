@@ -20,9 +20,9 @@ A single rule, `domain_availability_check`, reports whether the watched domain i
 | **OK** | The domain is still registered (the registrar and expiry date are reported when known) |
 | **Error** | The availability lookup failed |
 
-{{% notice style="info" title="Why available is reported as Critical" %}}
+{{% callout style="info" title="Why available is reported as Critical" %}}
 The status is intentionally inverted compared with the usual convention. Reporting *Critical* when the domain becomes available makes the registered → available transition cross the notification threshold, so you are alerted exactly once when the domain frees up.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

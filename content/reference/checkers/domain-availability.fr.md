@@ -20,9 +20,9 @@ Une seule règle, `domain_availability_check`, indique si le domaine surveillé 
 | **OK** | Le domaine est toujours enregistré (le bureau d'enregistrement et la date d'expiration sont rapportés lorsqu'ils sont connus) |
 | **Erreur** | La requête de disponibilité a échoué |
 
-{{% notice style="info" title="Pourquoi la disponibilité est rapportée comme Critique" %}}
+{{% callout style="info" title="Pourquoi la disponibilité est rapportée comme Critique" %}}
 Le statut est volontairement inversé par rapport à la convention habituelle. Rapporter *Critique* lorsque le domaine devient disponible fait franchir le seuil de notification à la transition enregistré → disponible, de sorte que vous êtes alerté exactement une fois lorsque le domaine se libère.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

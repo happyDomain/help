@@ -23,9 +23,9 @@ Its own rule, `external_whois_collected`, reports only how the collection went:
 | **Warning** | The WHOIS lookup failed for *all* external targets |
 | **Error** | The external WHOIS observation could not be read |
 
-{{% notice style="info" title="Verdicts live in the dangling-reference checker" %}}
+{{% callout style="info" title="Verdicts live in the dangling-reference checker" %}}
 This checker does not decide whether an external domain is dangerously close to expiry. It only retrieves the facts. The expiry, redemption and re-registration verdicts are surfaced by the companion dangling-reference checker, which consumes the facts collected here.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 

@@ -23,9 +23,9 @@ Each rule emits one finding per probed name-server address, with a stable `code`
 | `ns_any_handled` | `ANY` queries are handled per RFC 8482 (HINFO or a minimal answer rather than the full zone contents). | Warning |
 | `ns_is_authoritative` | Name servers answer authoritatively (AA bit set) for the zone. | Info |
 
-{{% notice style="info" title="Why these matter" %}}
+{{% callout style="info" title="Why these matter" %}}
 An open `AXFR` lets anyone download the entire zone, exposing your internal naming. Open recursion turns your authoritative server into an amplification relay and cache-poisoning target. Unbounded `ANY` responses are a classic amplification vector that RFC 8482 was written to neutralise.
-{{% /notice %}}
+{{% /callout %}}
 
 ## Options
 
