@@ -8,7 +8,7 @@ theme: hugo-theme-relearn
 languages:
   en:
     title: "happyDomain help center"
-    languageName: "English"
+    label: "English"
     weight: 1
     params:
       landingPageName: "<i class='fas fa-home'></i> Home"
@@ -25,7 +25,7 @@ languages:
   fr:
     title: "happyDomain centre d'aide"
     weight: 2
-    languageName: "Français"
+    label: "Français"
     params:
       landingPageName: "<i class='fas fa-home'></i> Accueil"
 
