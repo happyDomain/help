@@ -11,8 +11,16 @@ clone:
       recursive: true
 
 steps:
+  # The Hugo image runs as the unprivileged "hugo" user (uid 1000): hand it the
+  # workspace cloned as root, so it can write public/ and git trusts the repo.
+  - name: chown
+    image: alpine
+    commands:
+      - chown -R 1000:1000 .
+
+  # All available Hugo versions are listed under https://github.com/gohugoio/hugo/pkgs/container/hugo.
   - name: build
-    image: hugomods/hugo:git
+    image: ghcr.io/gohugoio/hugo:v0.168.0
     commands:
       - hugo
       - cp public/en/404.html public/404.html

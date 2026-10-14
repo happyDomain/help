@@ -1,10 +1,16 @@
 #
-#   All available Hugo versions are listed under https://gitlab.com/pages/hugo/container_registry.
+#   All available Hugo versions are listed under https://github.com/gohugoio/hugo/pkgs/container/hugo.
 #
-image: hugomods/hugo:git
+image:
+  name: ghcr.io/gohugoio/hugo:v0.168.0
+  # The image entrypoint runs hugo directly; let GitLab run the job script instead.
+  entrypoint: [""]
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
+  # The image runs as the unprivileged "hugo" user: hand it the build directory
+  # instead of relying on umask 0000, so it can write public/ and git trusts the repo.
+  FF_DISABLE_UMASK_FOR_DOCKER_EXECUTOR: "true"
 
 stages:
   - build
