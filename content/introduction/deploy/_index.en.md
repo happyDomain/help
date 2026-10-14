@@ -10,4 +10,4 @@ Thanks to some modularity, there is certainly a path to your needs.
 
 ---
 
-{{% children %}}
+{{% pages %}}

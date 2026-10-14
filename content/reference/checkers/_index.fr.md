@@ -33,4 +33,4 @@ Les vérificateurs rapportent l'un des états suivants, par ordre de gravité :
 | **Erreur** | La vérification elle-même a échoué (erreur de collecte, mauvaise configuration) |
 | **Inconnu** | La vérification n'a pas pu déterminer de résultat |
 
-{{% children %}}
+{{% pages %}}

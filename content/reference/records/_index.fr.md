@@ -8,4 +8,4 @@ aliases:
     records
 ---
 
-{{% children %}}
+{{% pages %}}

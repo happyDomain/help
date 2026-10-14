@@ -7,4 +7,4 @@ aliases:
     services
 ---
 
-{{% children %}}
+{{% pages %}}

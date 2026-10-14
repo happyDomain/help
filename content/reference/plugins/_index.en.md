@@ -10,4 +10,4 @@ Plugins are external pieces of code (shared libraries loaded at startup) that ex
 
 This requires a **plugin-capable build** of happyDomain: the default binaries and container image are statically compiled and silently ignore plugin directories. Look for a binary or a container tag suffixed with `-cgo`, available on the platforms where Go supports plugins (Linux, and a few others).
 
-{{% children %}}
+{{% pages %}}

@@ -10,4 +10,4 @@ Grâce à plusieurs éléments modulables, il y a certainement une voie correspo
 
 ---
 
-{{% children %}}
+{{% pages %}}

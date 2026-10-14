@@ -33,4 +33,4 @@ Checkers report one of the following statuses, in order of severity:
 | **Error** | The check itself failed (collection error, bad configuration) |
 | **Unknown** | The check could not determine a result |
 
-{{% children %}}
+{{% pages %}}

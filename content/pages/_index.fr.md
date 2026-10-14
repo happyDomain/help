@@ -35,4 +35,4 @@ Enfin, vous pouvez peaufiner votre compte : [votre compte et vos réglages]({{% 
 les [sessions et accès API]({{% relref "api-keys" %}}), les
 [notifications]({{% relref "notifications" %}}) et les [quotas]({{% relref "quotas" %}}).
 
-{{% children %}}
+{{% pages %}}

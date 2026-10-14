@@ -6,4 +6,4 @@ archetype: chapter
 weight: 1
 ---
 
-{{% children %}}
+{{% pages %}}

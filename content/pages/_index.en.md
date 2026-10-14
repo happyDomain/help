@@ -32,4 +32,4 @@ Finally, you can fine-tune your account: [your account and settings]({{% relref 
 [sessions and API access]({{% relref "api-keys" %}}),
 [notifications]({{% relref "notifications" %}}) and [quotas]({{% relref "quotas" %}}).
 
-{{% children %}}
+{{% pages %}}

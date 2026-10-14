@@ -8,4 +8,4 @@ aliases:
     services
 ---
 
-{{% children %}}
+{{% pages %}}
