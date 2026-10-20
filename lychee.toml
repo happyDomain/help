@@ -1,0 +1,27 @@
+# Configuration for lychee, the link checker run by the CI on the built site.
+# See https://lychee.cli.rs/guides/config/
+
+no_progress = true
+include_fragments = "anchor-only"
+
+# Links to the site itself are resolved against the build output: root_dir and
+# the remap of https://help.happydomain.org/ are given on the command line, as
+# they need the absolute path of the workspace.
+index_files = ["index.html"]
+
+exclude_loopback = true
+exclude = [
+  # Single-page app: the fragment is a route, not an anchor, and bots are rejected.
+  '^https://matrix\.to/',
+  # Bot protection answers 418 to non-browser clients.
+  '^https://git\.nemunai\.re/',
+  # Issue trackers answer 404 to non-browser clients.
+  '^https://(gitlab\.com|framagit\.org)/happyDomain/happydomain/-/issues',
+]
+
+# Be gentle with remote servers and tolerant with flaky ones.
+max_concurrency = 8
+max_retries = 5
+retry_wait_time = 5
+timeout = 30
+accept = ["100..=103", "200..=299", "429"]

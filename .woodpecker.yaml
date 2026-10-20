@@ -26,3 +26,13 @@ steps:
       - cp public/en/404.html public/404.html
     environment:
       HUGO_ENVIRONMENT: production
+
+  # Check every link of the generated site; settings live in lychee.toml.
+  - name: check-links
+    image: lycheeverse/lychee:0.24-alpine
+    commands:
+      - >-
+        lychee --config lychee.toml
+        --root-dir "$CI_WORKSPACE/public"
+        --remap "https://help\.happydomain\.org/ file://$CI_WORKSPACE/public/"
+        'public/**/*.html'
