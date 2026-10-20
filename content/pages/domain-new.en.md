@@ -7,7 +7,7 @@ weight: 800
 
 Importing a domain into happyDomain does not make happyDomain the owner of your domain. This action does not involve any changes to your usual hosting provider. happyDomain will contact your hosting provider or server to check which services are currently registered.
 
-You reach this screen after having validated on [home page]({{% relref "domains#add-a-domain" %}}) the form to add a domain (and you didn' previously [selected a host in the right filter]({{% relref "domains#your-registries-and-domain-hosters" %}})).
+You reach this screen after having validated on [home page]({{% relref "domains#add-a-domain" %}}) the form to add a domain (and you didn' previously [selected a host in the right filter]({{% relref "domains#your-registries-and-domain-hosts" %}})).
 
 ## Hosting provider selection
 

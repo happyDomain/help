@@ -14,7 +14,7 @@ En effet, le principe de fonctionnement de l'authentification à l'API d'OVH se 
 L'*application* doit être créée à partir d'un compte OVH existant, peu importe qu'il dispose de domaines ou non, il s'agit d'identifier la personne responsable de la mise en œuvre de l'application désignée.
 L'accès aux données d'un compte, notamment aux domaines qu'ils gèrent, se fait au travers de la *Consumer key*.
 
-Pour plus d'information, voir cette page : <https://docs.ovh.com/gb/en/api/api-rights-delegation/#application-registration>
+Pour plus d'information, voir cette page : <https://docs.ovhcloud.com/en/guides/manage-and-operate/api/first-steps#create-your-app-keys>
 
 
 ## Enregistrer votre instance d'happyDomain auprès d'OVH

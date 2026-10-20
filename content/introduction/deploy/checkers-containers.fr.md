@@ -399,7 +399,7 @@ simplement de s'exécuter dans le processus, ce qui reste parfaitement valable.
 
 ## Optionnel : happyDeliver
 
-Si vous exploitez une instance [happyDeliver](https://happydeliver.io) pour
+Si vous exploitez une instance [happyDeliver](https://happydeliver.org/) pour
 surveiller les flux e-mail, décommentez la ligne
 `HAPPYDOMAIN_CHECKER_HAPPYDELIVER_ENDPOINT` et ajoutez le service correspondant :
 

@@ -15,7 +15,7 @@ Tout d'abord, il faut éditer le fichier de configuration principal de knot (gé
 
 ### Ajout d'un secret partagé {#shared-secret}
 
-Sous la section principale [`key`](https://knot.readthedocs.io/en/latest/reference.html#key-section) de votre configuration, ajoutez la clef suivante :
+Sous la section principale [`key`](https://www.knot-dns.cz/docs/latest/html/reference.html#key-section) de votre configuration, ajoutez la clef suivante :
 
 ```yaml
 key:
@@ -32,7 +32,7 @@ Remplacez évidemment `<SOME_SECRET>` par une chaîne de caractères telle qu'ob
 
 En plus de la clef, vous devez préciser dans la configuration comment la clef peut être utilisée.
 
-Pour cela, sous la section principale [`acl`](https://knot.readthedocs.io/en/latest/reference.html#acl-section), on ajoute :
+Pour cela, sous la section principale [`acl`](https://www.knot-dns.cz/docs/latest/html/reference.html#acl-section), on ajoute :
 
 ```yaml
 acl:
@@ -50,7 +50,7 @@ Cela associe la `key` définie juste avant aux actions `transfer` et `update`, r
 
 Maintenant que vous avez créé une règle autorisant la clef `happydomain` à apporter des modifications, il faut indiquer à quelles zones cette règle s'applique.
 
-Pour chaque [zone](https://knot.readthedocs.io/en/latest/reference.html#zone-section), il faut ajouter un élément [`acl`](https://knot.readthedocs.io/en/latest/reference.html#acl) référençant la règle `acl_happydomain` :
+Pour chaque [zone](https://www.knot-dns.cz/docs/latest/html/reference.html#zone-section), il faut ajouter un élément [`acl`](https://www.knot-dns.cz/docs/latest/html/reference.html#acl) référençant la règle `acl_happydomain` :
 
 Par exemple, pour une zone `happydomain.org` déjà existante, on ajoutera la ligne `acl` comme suit :
 

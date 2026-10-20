@@ -14,7 +14,7 @@ Authentication to the OVH API works in 2 stages:
 The *application* must be created from an existing OVH account, regardless of whether it has domains or not; it is a matter of identifying the person responsible for implementing the designated application.
 Access to account data, and in particular to the domains they manage, is via the *Consumer key*.
 
-For more information, see this page: <https://docs.ovh.com/gb/en/api/api-rights-delegation/#application-registration>
+For more information, see this page: <https://docs.ovhcloud.com/en/guides/manage-and-operate/api/first-steps#create-your-app-keys>
 
 
 ## Register your happyDomain instance with OVH

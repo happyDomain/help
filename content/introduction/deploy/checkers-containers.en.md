@@ -387,7 +387,7 @@ perfectly valid outcome.
 
 ## Optional: happyDeliver
 
-If you run a [happyDeliver](https://happydeliver.io) instance for mail-flow
+If you run a [happyDeliver](https://happydeliver.org/) instance for mail-flow
 monitoring, uncomment the `HAPPYDOMAIN_CHECKER_HAPPYDELIVER_ENDPOINT` line and
 add the corresponding service:
 

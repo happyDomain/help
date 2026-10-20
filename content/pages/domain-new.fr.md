@@ -6,7 +6,7 @@ weight: 800
 
 Importer un domaine dans happyDomain ne rend pas happyDomain propriétaire de votre domaine. Cette action n'implique aucune modification auprès de votre hébergeur habituel. happyDomain va communiquer avec votre hébergeur ou votre serveur afin de consulter les services qui sont actuellement enregistrés.
 
-Vous accédez à cet écran après avoir validé sur [la page d'accueil]({{% relref "domains#ajouter-un-domaine" %}}) le formulaire d'ajout de domaine (et que vous n'aviez pas préalablement [sélectionné d'hébergeur dans le filtre de droite]({{% relref "domains#vos-registres-et-hébergeurs-de-domaines" %}})).
+Vous accédez à cet écran après avoir validé sur [la page d'accueil]({{% relref "domains#ajouter-un-domaine" %}}) le formulaire d'ajout de domaine (et que vous n'aviez pas préalablement [sélectionné d'hébergeur dans le filtre de droite]({{% relref "domains#vos-hébergeurs-de-domaines" %}})).
 
 ## Choix de l'hébergeur
 
