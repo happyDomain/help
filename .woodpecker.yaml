@@ -20,7 +20,7 @@ steps:
 
   # All available Hugo versions are listed under https://github.com/gohugoio/hugo/pkgs/container/hugo.
   - name: build
-    image: ghcr.io/gohugoio/hugo:v0.168.0
+    image: ghcr.io/gohugoio/hugo:v0.169.0
     commands:
       - hugo
       - cp public/en/404.html public/404.html

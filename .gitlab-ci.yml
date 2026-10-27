@@ -2,7 +2,7 @@
 #   All available Hugo versions are listed under https://github.com/gohugoio/hugo/pkgs/container/hugo.
 #
 image:
-  name: ghcr.io/gohugoio/hugo:v0.168.0
+  name: ghcr.io/gohugoio/hugo:v0.169.0
   # The image entrypoint runs hugo directly; let GitLab run the job script instead.
   entrypoint: [""]
 
